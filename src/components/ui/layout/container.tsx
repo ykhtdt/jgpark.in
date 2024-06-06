@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 const Container = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="max-w-6xl mx-auto bg-white min-h-screen flex flex-col border-l border-r">
+    <div className="max-w-4xl mx-auto px-8 min-h-screen flex flex-col">
       {children}
     </div>
   )
