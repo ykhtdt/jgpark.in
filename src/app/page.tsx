@@ -28,7 +28,7 @@ const fetchPinnedRepos = async () => {
 }
 
 export default async function Home() {
-  const repos = await fetchPinnedRepos()
+  // const repos = await fetchPinnedRepos()
 
   return (
     <main>
@@ -51,7 +51,7 @@ export default async function Home() {
             기술과 문제를 조금 더 깊게 파보며 과정과 결과를 기록합니다.
           </p>
         </section>
-        <section className="flex flex-col gap-4">
+        {/* <section className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold">
             <Link
               href="https://github.com/ykhtdt"
@@ -86,7 +86,7 @@ export default async function Home() {
               </Card>
             ))}
           </div>
-        </section>
+        </section> */}
       </section>
     </main>
   )
