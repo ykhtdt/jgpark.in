@@ -28,7 +28,7 @@ export default async function Home() {
         </h1>
         <section>
           <p className="text-sm leading-8">
-            안녕하세요. 프론트엔드 개발자 <span className="font-bold text-white">박종광</span>입니다.
+            안녕하세요. 프론트엔드 개발자 <span className="font-bold">박종광</span>입니다.
           </p>
         </section>
         <section>
