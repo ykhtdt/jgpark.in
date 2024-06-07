@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server"
 
 interface Repository {
   name: string;
@@ -42,11 +42,11 @@ export async function GET() {
     }
   `
 
-  const res = await fetch('https://api.github.com/graphql', {
-    method: 'POST',
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${GITHUB_TOKEN}`,
-      'Content-Type': 'application/json'
+      "Authorization": `Bearer ${GITHUB_TOKEN}`,
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({ query })
   })
@@ -54,7 +54,7 @@ export async function GET() {
   const json: PinnedReposResponse  = await res.json()
 
   if (!res.ok) {
-    return NextResponse.json({ error: 'Failed to fetch pinned repositories' }, { status: res.status })
+    return NextResponse.json({ error: "Failed to fetch pinned repositories" }, { status: res.status })
   }
 
   const pinnedRepos = json.data.user.pinnedItems.nodes.map((repo: Repository) => {
