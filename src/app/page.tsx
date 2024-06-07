@@ -62,7 +62,7 @@ export default async function Home() {
             </Link>
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {repos.slice(0, 4).map((repo) => (
+            {repos.slice(0, 4).map((repo: any) => (
               <Card key={repo.name} className="bg-card text-card-foreground rounded-none">
                 <CardHeader>
                   <CardTitle className="font-medium">
