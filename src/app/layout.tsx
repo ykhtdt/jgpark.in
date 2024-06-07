@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${hahmlet.variable} ${source.variable} bg-background min-h-screen`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
