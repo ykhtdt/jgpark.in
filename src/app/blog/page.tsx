@@ -4,6 +4,8 @@ import { getDocuments } from "outstatic/server"
 import { compareDesc, format, parseISO } from "date-fns"
 import { allPosts, Post } from "contentlayer/generated"
 
+import { Separator } from "@/components/ui/separator"
+
 const Page = async () => {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
   // const posts = getDocuments("posts", ["title"])
@@ -21,6 +23,7 @@ const Page = async () => {
             기술과 문제를 조금 더 깊게 파보며 과정과 결과를 기록합니다.
           </p>
         </section>
+        <Separator />
         <section className="flex flex-col gap-4">
           <div className="flex flex-col gap-6">
             {posts.map((post) => (
