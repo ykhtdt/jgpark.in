@@ -1,11 +1,11 @@
 {
-  "commit": "a5be64ed434ed642262bf28e081b4c54510db2b5",
-  "generated": "2024-06-08T14:58:03.480Z",
+  "commit": "1abb8ef83ae555cacc8d8a5ab27b9f19a4c629e7",
+  "generated": "2024-06-08T15:00:40.257Z",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "a5be64ed434ed642262bf28e081b4c54510db2b5",
-        "hash": "3642836093",
+        "commit": "1abb8ef83ae555cacc8d8a5ab27b9f19a4c629e7",
+        "hash": "3602165272",
         "path": "outstatic/content/posts/additional-tasks-to-work-on.md"
       },
       "author": {
@@ -14,7 +14,7 @@
       },
       "collection": "posts",
       "coverImage": "",
-      "description": "outstatic example post 1",
+      "description": "06월 08일 작업 기록",
       "publishedAt": "2024-06-08T10:46:10.661Z",
       "slug": "additional-tasks-to-work-on",
       "status": "published",

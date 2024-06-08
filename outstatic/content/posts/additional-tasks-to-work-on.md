@@ -5,7 +5,7 @@ author:
   name: 'jgpark'
   picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
 slug: 'additional-tasks-to-work-on'
-description: 'outstatic example post 1'
+description: '06월 08일 작업 기록'
 coverImage: ''
 publishedAt: '2024-06-08T10:46:10.661Z'
 ---
