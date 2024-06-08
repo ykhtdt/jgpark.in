@@ -1,10 +1,14 @@
 import Link from "next/link"
 
+import { getDocuments } from "outstatic/server"
 import { compareDesc, format, parseISO } from "date-fns"
 import { allPosts, Post } from "contentlayer/generated"
 
 const Page = async () => {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
+  // const posts = getDocuments("posts", ["title"])
+
+  console.log(posts)
 
   return (
     <main>
@@ -25,8 +29,8 @@ const Page = async () => {
                   <h2 className="text-lg font-semibold">
                     {post.title}
                   </h2>
-                  <time dateTime={post.date} className="mb-2 block text-xs text-zinc-500">
-                    {format(parseISO(post.date), 'LLLL d, yyyy')}
+                  <time dateTime={post.publishedAt} className="mb-2 block text-xs text-zinc-500">
+                    {format(parseISO(post.publishedAt), 'LLLL d, yyyy')}
                   </time>
                   <p className="text-sm leading-8">
                     {post.description}
