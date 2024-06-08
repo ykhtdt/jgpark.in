@@ -1,0 +1,24 @@
+{
+  "commit": "bbd9193be16ba7131de2f3877f0abdb3fcdd7298",
+  "generated": "Sat, 08 Jun 2024 10:09:13 GMT",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "f9af74ff7a0e6134e4d69a2634ede5e27d10afce",
+        "hash": "830642649",
+        "path": "outstatic/content/posts/outstatic-example-post-1.md"
+      },
+      "author": {
+        "name": "jgpark",
+        "picture": "https://avatars.githubusercontent.com/u/150231680?v=4"
+      },
+      "collection": "posts",
+      "coverImage": "",
+      "description": "outstatic example post 1",
+      "publishedAt": "2024-06-08T10:46:10.661Z",
+      "slug": "outstatic-example-post-1",
+      "status": "published",
+      "title": "Outstatic example post 1"
+    }
+  ]
+}
