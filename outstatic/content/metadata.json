@@ -1,12 +1,12 @@
 {
-  "commit": "bbd9193be16ba7131de2f3877f0abdb3fcdd7298",
-  "generated": "Sat, 08 Jun 2024 10:09:13 GMT",
+  "commit": "a5be64ed434ed642262bf28e081b4c54510db2b5",
+  "generated": "2024-06-08T14:58:03.480Z",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "f9af74ff7a0e6134e4d69a2634ede5e27d10afce",
-        "hash": "830642649",
-        "path": "outstatic/content/posts/outstatic-example-post-1.md"
+        "commit": "a5be64ed434ed642262bf28e081b4c54510db2b5",
+        "hash": "3642836093",
+        "path": "outstatic/content/posts/additional-tasks-to-work-on.md"
       },
       "author": {
         "name": "jgpark",
@@ -16,9 +16,9 @@
       "coverImage": "",
       "description": "outstatic example post 1",
       "publishedAt": "2024-06-08T10:46:10.661Z",
-      "slug": "outstatic-example-post-1",
+      "slug": "additional-tasks-to-work-on",
       "status": "published",
-      "title": "Outstatic example post 1"
+      "title": "추가로 작업해야 할 내용"
     }
   ]
 }
