@@ -1,33 +1,48 @@
-import Link from "next/link"
+import { notFound } from "next/navigation"
 
-import { getDocuments, getDocumentBySlug } from "outstatic/server"
-import { compareDesc, format, parseISO } from "date-fns"
-import { allPosts, Post } from "contentlayer/generated"
+import { getDocumentBySlug, getDocumentSlugs } from "outstatic/server"
+import { format, parseISO } from "date-fns"
 
-interface Props {
+import markdownToHtml from "@/lib/markdownToHtml"
+
+interface Params {
   params: {
     slug: string;
   }
 }
 
-const Page = ({ params }: Props) => {
-  // const post = getDocumentBySlug("posts", params.slug, [
-  //   "title",
-  //   "author",
-  //   "slug",
-  //   "description",
-  //   "coverImage",
-  //   "content",
-  // ])
-  const post: Post | undefined = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+async function getData(slug: string) {
+  const post = getDocumentBySlug("posts", slug, [
+    "title",
+    "publishedAt",
+    "description",
+    "slug",
+    "author",
+    "content",
+    "coverImage",
+    "tags",
+  ])
 
   if (!post) {
-    return (
-      <div>
-        Not Found
-      </div>
-    )
+    notFound()
   }
+
+  const content = await markdownToHtml(post.content)
+
+  return {
+    ...post,
+    content
+  }
+
+}
+
+export async function generateStaticParams() {
+  const posts = getDocumentSlugs("posts")
+  return posts.map((slug) => ({ slug }))
+}
+
+const Page = async ({ params }: Params) => {
+  const post = await getData(params.slug)
 
   return (
     <main>
@@ -45,7 +60,7 @@ const Page = ({ params }: Props) => {
             </p>
           </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>
     </main>
   )

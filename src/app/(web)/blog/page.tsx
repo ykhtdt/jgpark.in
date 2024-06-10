@@ -1,16 +1,25 @@
 import Link from "next/link"
 
 import { getDocuments } from "outstatic/server"
-import { compareDesc, format, parseISO } from "date-fns"
-import { allPosts, Post } from "contentlayer/generated"
+import { format, parseISO } from "date-fns"
 
 import { Separator } from "@/components/ui/separator"
 
-const Page = async () => {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.publishedAt), new Date(b.publishedAt)))
-  // const posts = getDocuments("posts", ["title"])
+async function getData() {
+  const posts = getDocuments("posts", [
+    "title",
+    "publishedAt",
+    "slug",
+    "coverImage",
+    "description",
+    "status"
+  ])
+ 
+  return posts
+}
 
-  console.log(posts)
+const Page = async () => {
+  const posts = await getData()
 
   return (
     <main>
@@ -28,12 +37,12 @@ const Page = async () => {
           <div className="flex flex-col gap-6">
             {posts.map((post) => (
               <article key={post.title}>
-                <Link href={post.url}>
+                <Link href={`/blog/${post.slug}`}>
                   <h2 className="text-lg font-semibold">
                     {post.title}
                   </h2>
                   <time dateTime={post.publishedAt} className="mb-2 block text-xs text-zinc-500">
-                    {format(parseISO(post.publishedAt), 'LLLL d, yyyy')}
+                    {format(parseISO(post.publishedAt), "LLLL d, yyyy")}
                   </time>
                   <p className="text-sm leading-8">
                     {post.description}
