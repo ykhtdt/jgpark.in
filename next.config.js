@@ -1,5 +1,3 @@
-const { createContentlayerPlugin } = require("next-contentlayer")
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -34,8 +32,4 @@ const nextConfig = {
   },
 }
 
-const withContentlayer = createContentlayerPlugin({
-  // Additional Contentlayer config options
-})
-
-module.exports = withContentlayer(nextConfig)
+module.exports = nextConfig
