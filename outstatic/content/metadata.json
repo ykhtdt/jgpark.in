@@ -1,6 +1,6 @@
 {
-  "commit": "4084ffe255a833a82943bdb028b1bb22477d2c39",
-  "generated": "2024-06-12T15:46:48.423Z",
+  "commit": "bb8f96f73f9f07d74d7976bd77ee9b4fc53d3743",
+  "generated": "2024-06-12T18:33:18.987Z",
   "metadata": [
     {
       "__outstatic": {
@@ -22,8 +22,8 @@
     },
     {
       "__outstatic": {
-        "commit": "4084ffe255a833a82943bdb028b1bb22477d2c39",
-        "hash": "1582319383",
+        "commit": "bb8f96f73f9f07d74d7976bd77ee9b4fc53d3743",
+        "hash": "4254584923",
         "path": "outstatic/content/posts/example.md"
       },
       "author": {
@@ -33,7 +33,7 @@
       "collection": "posts",
       "coverImage": "",
       "description": "이 글은 예시입니다.",
-      "publishedAt": "1994-02-24T16:13:33.000Z",
+      "publishedAt": "1994-02-24T21:00:33.000Z",
       "slug": "example",
       "status": "published",
       "title": "글 예시"
