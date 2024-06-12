@@ -28,7 +28,7 @@ const components: MDXRemoteProps["components"] = {
     <Link {...props} href={props.href || ""} className="font-medium underline underline-offset-4">{props.children}</Link>
   ),
   strong: (props) => (
-    <strong {...props} className="text-zinc-50">{props.children}</strong>
+    <strong {...props} className="text-zinc-950 dark:text-zinc-50">{props.children}</strong>
   ),
 }
 
