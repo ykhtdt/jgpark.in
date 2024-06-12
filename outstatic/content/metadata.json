@@ -1,6 +1,6 @@
 {
-  "commit": "9e22836eab5dcf723b37cf147cfab5ca88f50b37",
-  "generated": "2024-06-12T15:27:25.117Z",
+  "commit": "6159f69bfde6d70b61930131a616cea370aeebf8",
+  "generated": "2024-06-12T15:40:00.889Z",
   "metadata": [
     {
       "__outstatic": {
@@ -22,7 +22,7 @@
     },
     {
       "__outstatic": {
-        "commit": "9e22836eab5dcf723b37cf147cfab5ca88f50b37",
+        "commit": "6159f69bfde6d70b61930131a616cea370aeebf8",
         "hash": "1582319383",
         "path": "outstatic/content/posts/example.md"
       },
