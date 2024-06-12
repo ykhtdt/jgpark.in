@@ -8,9 +8,9 @@ import Footer from "@/components/ui/footer/footer"
 
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-sans' })
-const hahmlet = Hahmlet({ subsets: ["latin"], variable: '--font-serif' })
-const source = Source_Code_Pro({ subsets: ["latin"], variable: '--font-mono' })
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const hahmlet = Hahmlet({ subsets: ["latin"], variable: "--font-serif" })
+const source = Source_Code_Pro({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
   title: "jgpark",

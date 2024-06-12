@@ -21,7 +21,7 @@ const fetchPinnedRepos = async () => {
   )
 
   if (!res.ok) {
-    throw new Error('Failed to fetch pinned repositories.')
+    throw new Error("Failed to fetch pinned repositories.")
   }
 
   return res.json()
