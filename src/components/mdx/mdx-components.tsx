@@ -22,18 +22,23 @@ const components: MDXRemoteProps["components"] = {
     <li {...props} className="my-2">{props.children}</li>
   ),
   p: (props) => (
-    <p {...props} className="text-sm leading-6">{props.children}</p>
+    <p {...props} className="text-sm leading-6 mt-4 mb-8">{props.children}</p>
   ),
   a: (props) => (
     <Link {...props} href={props.href || ""} className="font-medium underline underline-offset-4">{props.children}</Link>
+  ),
+  strong: (props) => (
+    <strong {...props} className="text-zinc-950 dark:text-zinc-50">{props.children}</strong>
   ),
 }
 
 export default function MDXComponents(props: MDXRemoteProps) {
   return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-    />
+    <div className="text-muted-foreground">
+      <MDXRemote
+        {...props}
+        components={{ ...components, ...(props.components || {}) }}
+      />
+    </div>
   )
 }
