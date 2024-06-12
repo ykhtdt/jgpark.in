@@ -25,7 +25,7 @@ const Page = async () => {
     <main>
       <section className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
         <section className="flex flex-col gap-4">
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-xl font-bold">
             Blog
           </h1>
           <p className="text-sm leading-8">
