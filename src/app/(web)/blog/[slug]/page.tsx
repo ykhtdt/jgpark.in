@@ -40,13 +40,13 @@ const Page = async ({ params }: Params) => {
 
   return (
     <main>
-      <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
+      <div className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
         <div className="flex flex-col gap-4">
           <div className="space-y-2">
             <time dateTime={post.publishedAt} className="block text-sm text-zinc-500">
               {format(parseISO(post.publishedAt), "LLLL d, yyyy")}
             </time>
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-xl font-bold">
               {post.title}
             </h1>
             <p className="text-muted-foreground font-normal">
@@ -54,8 +54,10 @@ const Page = async ({ params }: Params) => {
             </p>
           </div>
         </div>
-        <MDXComponents source={post.content} />
-      </article>
+        <article>
+          <MDXComponents source={post.content} />
+        </article>
+      </div>
     </main>
   )
 }
