@@ -1,6 +1,6 @@
 {
-  "commit": "64e4f54d81dfbbf3e00859345c9089c1d03cf78a",
-  "generated": "2024-06-12T15:42:29.430Z",
+  "commit": "4084ffe255a833a82943bdb028b1bb22477d2c39",
+  "generated": "2024-06-12T15:46:48.423Z",
   "metadata": [
     {
       "__outstatic": {
@@ -22,8 +22,8 @@
     },
     {
       "__outstatic": {
-        "commit": "64e4f54d81dfbbf3e00859345c9089c1d03cf78a",
-        "hash": "2190889268",
+        "commit": "4084ffe255a833a82943bdb028b1bb22477d2c39",
+        "hash": "1582319383",
         "path": "outstatic/content/posts/example.md"
       },
       "author": {
