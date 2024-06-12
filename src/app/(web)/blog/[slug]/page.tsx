@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { getDocumentBySlug, getDocumentSlugs } from "outstatic/server"
 import { format, parseISO } from "date-fns"
 
-import markdownToHtml from "@/lib/markdownToHtml"
+import MDXComponents from "@/components/mdx/mdx-components"
 
 interface Params {
   params: {
@@ -27,13 +27,7 @@ async function getData(slug: string) {
     notFound()
   }
 
-  const content = await markdownToHtml(post.content)
-
-  return {
-    ...post,
-    content
-  }
-
+  return post
 }
 
 export async function generateStaticParams() {
@@ -60,7 +54,7 @@ const Page = async ({ params }: Params) => {
             </p>
           </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <MDXComponents source={post.content} />
       </article>
     </main>
   )
