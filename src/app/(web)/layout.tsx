@@ -1,16 +1,12 @@
 import type { Metadata } from "next"
-import { Inter, Hahmlet, Source_Code_Pro } from "next/font/google"
 
+import { pretendard, hahmlet, source } from "@/fonts/web-font"
 import { ThemeProvider } from "@/components/provider/theme-provider"
 import Container from "@/components/ui/layout/container"
 import Header from "@/components/ui/header/header"
 import Footer from "@/components/ui/footer/footer"
 
 import "./globals.css"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-const hahmlet = Hahmlet({ subsets: ["latin"], variable: "--font-serif" })
-const source = Source_Code_Pro({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
   title: "jgpark",
@@ -24,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${inter.variable} ${hahmlet.variable} ${source.variable} bg-background min-h-screen`}>
+      <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} bg-background min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
