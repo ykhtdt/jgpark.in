@@ -1,0 +1,28 @@
+.mdx {
+  color: hsl(var(--muted-foreground));
+}
+
+.mdx blockquote p::before {
+  content: "\201C";
+}
+
+.mdx blockquote p::after {
+  content: "\201D";
+}
+
+.mdx li > ul {
+  list-style-type: circle;
+}
+
+.mdx code {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.mdx code:not(pre code) {
+  padding: 0.05rem 0.25rem;
+  border: 1px solid hsl(var(--muted));
+  border-radius: .25rem;
+  background-color: hsl(var(--muted));
+}
