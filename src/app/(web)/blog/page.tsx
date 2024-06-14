@@ -47,7 +47,6 @@ const Page = async () => {
                   <p className="text-sm leading-8">
                     {post.description}
                   </p>
-                  {/* <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: post.body.html }} /> */}
                 </Link>
               </article>
             ))}
