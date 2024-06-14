@@ -32,3 +32,35 @@ HTML에서 강조(Emphasis)를 나타내는 태그에는 주로 다음과 같은
   - 이 태그는 텍스트를 기울임체로 표시합니다. 의미적으로는 `<em>` 태그를 사용하는 것이 더 바람직합니다.
 - `<b>` 태그:
   - 이 태그는 텍스트를 굵게 표시합니다. 의미적으로는 `<strong>` 태그를 사용하는 것이 더 적합합니다.
+
+## 코드 블록
+
+`<pre>`, `<code>` 태그로 변환되는 '코드(Code)'를 표현합니다.
+
+### 인라인
+
+인라인 코드는 `` ` `` 기호로 감싸 `Inline Code` 와 같이 표현합니다.
+
+### 블록
+
+블록 코드는 `` ` `` 기호를 3번 이상 입력하고 코드 언어를 명시해서 표현합니다.
+
+```ts
+interface ProductCardProps {
+  id: number;
+  name: string;
+  price: number;
+  description?: string; // [!code highlight]
+}
+
+const ProductCard = (props: ProductCardProps) => {
+  return (
+    <div>
+      <div>
+        {props.id} // [!code --]
+        {props.name} // [!code ++]
+      </div>
+    </div>
+  )
+}
+```
