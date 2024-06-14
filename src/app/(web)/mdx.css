@@ -1,5 +1,5 @@
 .mdx {
-  @apply text-muted-foreground;
+  @apply w-full max-w-max text-muted-foreground;
 }
 
 .mdx h1,
@@ -57,7 +57,7 @@ h3 {
 }
 
 .mdx li {
-  @apply my-2 leading-7;
+  @apply my-2 leading-6;
 }
 
 .mdx li>ul {
@@ -65,10 +65,11 @@ h3 {
 }
 
 .mdx pre {
-  @apply my-4 py-3 px-1.5 rounded-lg text-sm bg-muted;
+  @apply grid w-full my-4 py-3 px-2 rounded-lg text-sm bg-muted;
 }
 
 .mdx pre code {
+  @apply grid overflow-x-auto;
   counter-reset: line;
 }
 
