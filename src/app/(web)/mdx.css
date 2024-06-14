@@ -1,5 +1,39 @@
 .mdx {
-  color: hsl(var(--muted-foreground));
+  @apply text-muted-foreground;
+}
+
+.mdx h1,
+h2,
+h3 {
+  @apply text-zinc-950 dark:text-zinc-50;
+}
+
+.mdx h1 {
+  @apply text-xl font-bold mt-2;
+}
+
+.mdx h2 {
+  @apply text-lg font-semibold mt-12 first:mt-0;
+}
+
+.mdx h3 {
+  @apply text-base font-semibold mt-8;
+}
+
+.mdx p {
+  @apply text-sm leading-6 [&:not(:first-child)]:mt-4;
+}
+
+.mdx a {
+  @apply font-medium underline underline-offset-4;
+}
+
+.mdx strong {
+  @apply text-zinc-950 dark:text-zinc-50;
+}
+
+.mdx blockquote {
+  @apply text-zinc-900 dark:text-zinc-100 mt-6 pl-6 border-l-2 italic font-serif;
 }
 
 .mdx blockquote p::before {
@@ -10,19 +44,75 @@
   content: "\201D";
 }
 
-.mdx li > ul {
+.mdx ol {
+  @apply list-decimal my-3 pl-6 text-sm;
+}
+
+.mdx ul {
+  @apply list-disc pl-6 text-sm;
+}
+
+.mdx ul:not(li > ul) {
+  @apply list-disc my-3;
+}
+
+.mdx li {
+  @apply my-2 leading-7;
+}
+
+.mdx li>ul {
   list-style-type: circle;
 }
 
-.mdx code {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 500;
+.mdx pre {
+  @apply my-4 py-3 px-1.5 rounded-lg text-sm bg-muted;
+}
+
+.mdx pre code {
+  counter-reset: line;
 }
 
 .mdx code:not(pre code) {
+  @apply text-xs font-semibold rounded-sm border-muted bg-muted;
   padding: 0.05rem 0.25rem;
-  border: 1px solid hsl(var(--muted));
-  border-radius: .25rem;
-  background-color: hsl(var(--muted));
+}
+
+.mdx code>[data-line] {
+  @apply pl-2;
+}
+
+.mdx code>[data-line]::before {
+  @apply inline-block w-4 mr-8 text-right text-zinc-500;
+  counter-increment: line;
+  content: counter(line);
+}
+
+.mdx code[data-line-numbers-max-digits="2"]>[data-line]::before {
+  width: 2rem;
+}
+
+.mdx code[data-line-numbers-max-digits="3"]>[data-line]::before {
+  width: 3rem;
+}
+
+.mdx code .highlighted {
+  @apply bg-zinc-700;
+}
+
+.mdx code .diff.remove {
+  @apply bg-red-500/15;
+}
+
+.mdx code .diff.remove::before {
+  content: "-";
+  @apply text-red-400;
+}
+
+.mdx code .diff.add {
+  @apply bg-teal-500/15;
+}
+
+.mdx code .diff.add::before {
+  content: "+";
+  @apply text-teal-400;
 }
