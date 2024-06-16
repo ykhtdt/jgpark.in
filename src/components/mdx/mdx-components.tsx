@@ -1,10 +1,13 @@
 import Link from "next/link"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
-import remarkGfm from "remark-gfm"
 import rehypePrettyCode, { Options } from "rehype-pretty-code"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeSlug  from "rehype-slug"
+import remarkGfm from "remark-gfm"
 import { transformerNotationDiff, transformerNotationHighlight } from "@shikijs/transformers"
 
 import MDXCodeBlock from "./mdx-code-block"
+import MDXHeading from "./mdx-heading"
 
 interface Props {
   source: MDXRemoteProps['source'];
@@ -15,6 +18,8 @@ interface RehypePrettyCodeOptions extends Omit<Options, 'theme'> {
 }
 
 const components: MDXRemoteProps['components'] = {
+  h2: (props) => <MDXHeading {...props} as="2" />,
+  h3: (props) => <MDXHeading {...props} as="3" />,
   a: (props) => (
     <Link {...props} href={props.href || ""} />
   ),
@@ -34,7 +39,7 @@ export default function MDXComponents(props: Props) {
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm],
-            rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+            rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions], rehypeAutolinkHeadings, rehypeSlug],
           },
         }}
         components={{ ...components }}

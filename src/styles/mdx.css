@@ -2,9 +2,7 @@
   @apply w-full max-w-max text-muted-foreground;
 }
 
-.mdx h1,
-h2,
-h3 {
+.mdx h1, h2, h3 {
   @apply text-zinc-950 dark:text-zinc-50;
 }
 
@@ -14,10 +12,34 @@ h3 {
 
 .mdx h2 {
   @apply text-lg font-semibold mt-12 first:mt-0;
+
+  a {
+    @apply flex items-center gap-1;
+  }
+
+  a svg {
+    @apply invisible w-4 h-4 text-zinc-400 dark:text-zinc-500;
+  }
+
+  &:hover a svg {
+    @apply visible;
+  }
 }
 
 .mdx h3 {
   @apply text-base font-semibold mt-8;
+
+  a {
+    @apply flex items-center gap-1;
+  }
+
+  a svg {
+    @apply invisible w-4 h-4 text-zinc-400 dark:text-zinc-500;
+  }
+
+  &:hover a svg {
+    @apply visible;
+  }
 }
 
 .mdx p {
@@ -25,7 +47,11 @@ h3 {
 }
 
 .mdx a {
-  @apply font-medium underline underline-offset-4;
+  @apply font-medium;
+
+  &:hover {
+    @apply hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
+  }
 }
 
 .mdx strong {

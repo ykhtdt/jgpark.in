@@ -6,8 +6,8 @@ import Container from "@/components/ui/layout/container"
 import Header from "@/components/ui/header/header"
 import Footer from "@/components/ui/footer/footer"
 
-import "./globals.css"
-import "./mdx.css"
+import "@/styles/globals.css"
+import "@/styles/mdx.css"
 
 export const metadata: Metadata = {
   title: "jgpark",
