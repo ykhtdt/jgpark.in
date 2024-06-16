@@ -4,6 +4,8 @@ import remarkGfm from "remark-gfm"
 import rehypePrettyCode, { Options } from "rehype-pretty-code"
 import { transformerNotationDiff, transformerNotationHighlight } from "@shikijs/transformers"
 
+import MDXCodeBlock from "./mdx-code-block"
+
 interface Props {
   source: MDXRemoteProps['source'];
 }
@@ -16,6 +18,7 @@ const components: MDXRemoteProps['components'] = {
   a: (props) => (
     <Link {...props} href={props.href || ""} />
   ),
+  pre: (props) => <MDXCodeBlock {...props} />
 }
 
 const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
