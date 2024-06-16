@@ -16,17 +16,18 @@ export default function MDXCodeBlock({
   children,
   ...rest
 }: Props) {
-  console.log(rest)
   const ref = useRef<HTMLSpanElement>(null)
   const [isCopied, setIsCopied] = useState(false)
 
   const handleCopyToClipboard = async () => {
     if (typeof window === "undefined") {
+      console.warn("Clipboard access is not supported in this environment.")
       return
     }
 
     if (!window.navigator.clipboard) {
       console.warn("Clipboard not supported.")
+      return
     }
 
     const text = ref.current?.innerText ?? ""
