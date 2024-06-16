@@ -1,25 +1,7 @@
 {
-  "commit": "eea82254af25c5c4009d6562ab803a2f8bbdd2c6",
-  "generated": "2024-06-13T18:53:19.047Z",
+  "commit": "c6be4ee33344473f50fb78cbaa4e6974dd73b8a2",
+  "generated": "2024-06-16T07:08:03.394Z",
   "metadata": [
-    {
-      "__outstatic": {
-        "commit": "1abb8ef83ae555cacc8d8a5ab27b9f19a4c629e7",
-        "hash": "3602165272",
-        "path": "outstatic/content/posts/additional-tasks-to-work-on.md"
-      },
-      "author": {
-        "name": "jgpark",
-        "picture": "https://avatars.githubusercontent.com/u/150231680?v=4"
-      },
-      "collection": "posts",
-      "coverImage": "",
-      "description": "06월 08일 작업 기록",
-      "publishedAt": "2024-06-08T10:46:10.661Z",
-      "slug": "additional-tasks-to-work-on",
-      "status": "published",
-      "title": "추가로 작업해야 할 내용"
-    },
     {
       "__outstatic": {
         "commit": "eea82254af25c5c4009d6562ab803a2f8bbdd2c6",
