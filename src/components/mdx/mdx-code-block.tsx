@@ -7,7 +7,7 @@ import { ClipboardIcon, CheckIcon } from "@radix-ui/react-icons"
 import { delay } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-interface Props extends React.HTMLProps<HTMLPreElement> {
+interface Props extends React.HTMLAttributes<HTMLPreElement> {
   "data-language"?: string;
   "data-theme"?: string;
 }
@@ -42,11 +42,14 @@ export default function MDXCodeBlock({
 
   return (
     <pre {...rest}>
+      <span ref={ref}>
+        {children}
+      </span>
       <Button
         variant="ghost"
         size="icon"
         onClick={handleCopyToClipboard}
-        className="absolute top-3 right-2 hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
+        className="hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
       >
         {isCopied ? (
           <CheckIcon className="w-3.5 h-3.5" />
@@ -54,9 +57,6 @@ export default function MDXCodeBlock({
           <ClipboardIcon className="w-3.5 h-3.5" />
         )}
       </Button>
-      <span ref={ref} className="grid">
-        {children}
-      </span>
     </pre>
   )
 }
