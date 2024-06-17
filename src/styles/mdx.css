@@ -48,15 +48,11 @@
 
 .mdx h2, h3 {
   a {
-    @apply flex items-center font-medium;
-
-    &:hover {
-      @apply hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
-    }
+    @apply flex items-center font-medium hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
   }
 }
 
-.mdx a:not(:is(h2 a, h3 a)) {
+.mdx a:not(:is(h2,h3)>a) {
   @apply inline-flex items-center gap-0.5 text-zinc-50 underline underline-offset-4 decoration-zinc-700;
 
   svg {
