@@ -53,10 +53,10 @@
 }
 
 .mdx a:not(:is(h2,h3)>a) {
-  @apply inline-flex items-center gap-0.5 text-zinc-50 underline underline-offset-4 decoration-zinc-700;
+  @apply inline-flex items-center gap-0.5 text-zinc-700 dark:text-zinc-50 underline underline-offset-4 decoration-zinc-700;
 
   svg {
-    @apply relative -top-1 w-3 h-3 text-zinc-50;
+    @apply relative -top-1 w-3 h-3 text-zinc-700 dark:text-zinc-50;
   }
 }
 
