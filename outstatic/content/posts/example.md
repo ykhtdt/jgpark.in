@@ -38,6 +38,7 @@ HTML에서 강조(Emphasis)를 나타내는 태그에는 주로 다음과 같은
 마크다운에서 링크를 삽입하는 방법입니다. 인라인 링크와 참조 링크가 있습니다.
 
 ### 인라인 링크
+
 인라인 링크는 링크 텍스트와 URL을 한 줄에 함께 작성합니다.
 
 ```markdown
@@ -56,7 +57,6 @@ HTML a 태그는 ["Anchor"](https://developer.mozilla.org/ko/docs/Web/HTML/Eleme
 
 ```markdown
 [링크 텍스트][참조 이름]
-
 [참조 이름]: URL "링크 설명"
 ```
 
@@ -65,6 +65,29 @@ HTML a 태그는 ["Anchor"](https://developer.mozilla.org/ko/docs/Web/HTML/Eleme
 [a11y]: https://developer.mozilla.org/ko/docs/Web/Accessibility
 
 [웹 접근성][a11y]이란 모든 사용자가 웹 사이트 및 웹 애플리케이션에서 동등하게 접근할 수 있도록 설계된 웹 콘텐츠의 접근 가능성을 의미합니다.
+
+## 이미지
+
+`<img>` 태그로 변환되는 '이미지(Image)'를 표현합니다.
+
+### 기본 이미지
+
+```markdown
+![대체 텍스트](이미지 URL "타이틀 텍스트")
+```
+
+결과는 다음과 같습니다.
+
+![The cat under the blanket](/static/images/example/cat_01.jpg "cat")
+
+### 링크 이미지
+```markdown
+[![대체 텍스트](이미지 URL "타이틀 텍스트")](링크)
+```
+
+결과는 다음과 같습니다.
+
+[![A cat looking up](/static/images/example/cat_02.jpg "https://www.jgpark.in/")](https://www.jgpark.in/)
 
 ## 코드 블록
 
