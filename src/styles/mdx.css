@@ -157,3 +157,7 @@
   content: "+";
   @apply text-teal-400;
 }
+
+.mdx hr {
+  @apply my-3;
+}
