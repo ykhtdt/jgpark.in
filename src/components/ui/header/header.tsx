@@ -15,7 +15,7 @@ const Header = () => {
   }
 
   return (
-    <header className="py-4 boreder-b">
+    <header className="py-4">
       <div className="flex justify-between items-center w-full h-16">
         <Link href="/" className="font-bold">
           JGPARK
