@@ -47,7 +47,7 @@ const Page = async ({ params }: Params) => {
    */
   return (
     <main className="relative md:flex md:flex-row">
-      <aside className="fixed order-last hidden translate-x-[864px] w-48 pt-4 md:pt-8 xl:flex">
+      <aside className="fixed order-last hidden translate-x-[864px] w-44 pt-4 md:pt-8 xl:flex">
         <ol className="w-full text-muted-foreground text-sm space-y-2">
           {tableOfContent.map((item) => (
             <li key={item.slug} className="space-y-2">
