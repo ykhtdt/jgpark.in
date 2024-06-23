@@ -1,11 +1,10 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { getDocumentBySlug, getDocumentSlugs } from "outstatic/server"
 import { format, parseISO } from "date-fns"
 
 import MDXComponents from "@/components/mdx/mdx-components"
-import { generateToc } from "@/lib/mdx"
+import TableOfContent from "@/components/toc/table-of-content"
 
 interface Params {
   params: {
@@ -39,7 +38,6 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }: Params) => {
   const post = await getData(params.slug)
-  const tableOfContent = generateToc(post.content)
 
   /**
    * @todo
@@ -47,28 +45,7 @@ const Page = async ({ params }: Params) => {
    */
   return (
     <main className="relative md:flex md:flex-row">
-      <aside className="fixed order-last hidden translate-x-[864px] w-48 pt-4 md:pt-8 xl:flex">
-        <ol className="w-full text-muted-foreground text-sm space-y-2">
-          {tableOfContent.map((item) => (
-            <li key={item.slug} className="space-y-2">
-              <Link href={`#${item.slug}`} className="transition-colors hover:text-foreground hover:font-medium">
-                {item.text}
-              </Link>
-              {item.children.length > 0 && (
-                <ol className="space-y-2 pl-4">
-                  {item.children.map((child) => (
-                    <li key={child.slug}>
-                      <Link href={`#${child.slug}`} className="transition-colors hover:text-foreground hover:font-medium">
-                        {child.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </li>
-          ))}
-        </ol>
-      </aside>
+      <TableOfContent content={post.content} />
       <div className="grid items-center pt-4 gap-9 pb-10 md:pt-8 md:pb-12">
         <div className="flex flex-col gap-4">
           <div className="space-y-2">
