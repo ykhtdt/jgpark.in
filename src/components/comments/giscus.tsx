@@ -1,14 +1,14 @@
 "use client"
 
 import { useEffect } from "react"
+import { useTheme } from "next-themes"
 
 const COMMENTS_ID = "comments"
 
 export default function Giscus() {
+  const { theme } = useTheme()
 
   useEffect(() => {
-    const theme = document.documentElement.classList.contains("dark") ? "dark" : "light"
-
     const script = document.createElement("script")
 
     const attributes = {
@@ -44,7 +44,7 @@ export default function Giscus() {
         comments.removeChild(script)
       }
     }
-  }, [])
+  }, [theme])
 
   return (
     <section>
