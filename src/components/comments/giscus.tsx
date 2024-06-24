@@ -13,7 +13,7 @@ export default function Giscus() {
 
     const attributes = {
       "src": "https://giscus.app/client.js",
-      "data-repo": "ykhtdt/blog",
+      "data-repo": "ykhtdt/jgpark.in",
       "data-repo-id": "R_kgDOMEHs3A",
       "data-category": "General",
       "data-category-id": "DIC_kwDOMEHs3M4CgUvD",
