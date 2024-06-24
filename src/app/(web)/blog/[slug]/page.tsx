@@ -5,6 +5,7 @@ import { format, parseISO } from "date-fns"
 
 import MDXComponents from "@/components/mdx/mdx-components"
 import TableOfContent from "@/components/toc/table-of-content"
+import Giscus from "@/components/comments/giscus"
 
 interface Params {
   params: {
@@ -46,7 +47,7 @@ const Page = async ({ params }: Params) => {
   return (
     <main className="relative md:flex md:flex-row">
       <TableOfContent content={post.content} />
-      <div className="grid items-center pt-4 gap-9 pb-10 md:pt-8 md:pb-12">
+      <div className="grid items-center pt-4 pb-10 gap-10 md:gap-12 md:pt-8 md:pb-12">
         <div className="flex flex-col gap-4">
           <div className="space-y-2">
             <time dateTime={post.publishedAt} className="block text-sm text-zinc-500">
@@ -63,6 +64,7 @@ const Page = async ({ params }: Params) => {
         <article>
           <MDXComponents source={post.content} />
         </article>
+        <Giscus />
       </div>
     </main>
   )
