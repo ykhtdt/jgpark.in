@@ -2,7 +2,7 @@
   @apply w-full max-w-max text-muted-foreground;
 }
 
-.mdx h1, h2, h3 {
+.mdx h1, .mdx h2, .mdx h3 {
   @apply text-zinc-950 dark:text-zinc-50;
 }
 
@@ -46,7 +46,7 @@
   @apply text-sm leading-6 [&:not(:first-child)]:mt-4;
 }
 
-.mdx h2, h3 {
+.mdx h2, .mdx h3 {
   a {
     @apply flex items-center font-medium hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
   }
