@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/surface/card"
+} from "@/components/ui/card"
 
 const fetchPinnedRepos = async () => {
   const res = await fetch(

@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 
 import { pretendard, hahmlet, source } from "@/fonts/web-font"
 import { ThemeProvider } from "@/components/provider/theme-provider"
-import Container from "@/components/ui/layout/container"
-import Header from "@/components/ui/header/header"
-import Footer from "@/components/ui/footer/footer"
+import Container from "@/components/ui/container"
+import Header from "@/components/ui/header"
+import Footer from "@/components/ui/footer"
 
 import "@/styles/globals.css"
 import "@/styles/mdx.css"
