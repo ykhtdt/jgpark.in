@@ -50,7 +50,7 @@ const Page = async () => {
         <div className="flex flex-col gap-4">
           {sortedPostsKeys.map((year) => (
             <section key={year} className="flex flex-col gap-2">
-              <h2 className="font-medium text-[#76ABAE]">
+              <h2 className="font-medium">
                 {year}
               </h2>
               <div className="flex flex-col gap-2 border-l ml-4 pl-4">
