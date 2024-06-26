@@ -7,7 +7,8 @@ export default function NotFound() {
             페이지를 찾을 수 없습니다.
           </span>
           <span className="block text-[0]">
-            <span className="mt-8 w-16 h-1 max-w-full inline-flex bg-gradient-to-r from-[#4A91E2] to-[#FFC857]" />
+            {/* <span className="mt-8 w-16 h-1 max-w-full inline-flex bg-gradient-to-r from-[#4A91E2] to-[#FFC857]" /> */}
+            <span className="mt-8 w-16 h-1 max-w-full inline-flex bg-[#E60000]" />
           </span>
         </h1>
         <p className="text-muted-foreground font-normal text-center text-sm">
