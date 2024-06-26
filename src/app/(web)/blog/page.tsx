@@ -53,7 +53,7 @@ const Page = async () => {
               <h2 className="font-medium text-[#76ABAE]">
                 {year}
               </h2>
-              <div className="flex flex-col gap-2 border-l border-[#76ABAE] ml-2 pl-2 md:ml-4 md:pl-4">
+              <div className="flex flex-col gap-2 border-l border-[#76ABAE] ml-4 pl-4">
                 {posts[parseInt(year)].map((post) => (
                   <Fragment key={post.slug}>
                     <article>
