@@ -35,7 +35,7 @@ const Feature = ({ config }: { config: HomeConfig }) => {
       <h2 className="text-lg font-semibold">
         {config.title}
       </h2>
-      <ul className="text-sm text-muted-foreground font-light flex flex-col gap-2 list-disc pl-4 lg:pl-0">
+      <ul className="text-sm text-muted-foreground font-light flex flex-col gap-2 list-disc pl-4">
         {config.config.map((item) => (
           <li key={item.title} className={cn(
             {
