@@ -1,12 +1,14 @@
 import { Fragment } from "react"
 import Link from "next/link"
 
-import { getDocuments } from "outstatic/server"
+import { getDocuments, getCollections } from "outstatic/server"
 import { format, parseISO, getYear } from "date-fns"
 
 import { Separator } from "@/components/ui/separator"
 
 async function getData() {
+  // const collections = getCollections()
+
   const posts = getDocuments("posts", [
     "title",
     "publishedAt",
@@ -43,7 +45,7 @@ const Page = async () => {
             Blog
           </h1>
           <p className="text-sm leading-8">
-            기술과 문제를 조금 더 깊게 파보며 과정과 결과를 기록합니다.
+            이해하고 경험하며 돌아보는 기록
           </p>
         </header>
         <Separator />
