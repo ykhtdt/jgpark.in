@@ -1,13 +1,5 @@
 {
   "title": "diary",
   "type": "object",
-  "properties": {
-    "description": {
-      "required": false,
-      "description": "",
-      "fieldType": "String",
-      "dataType": "string",
-      "title": "description"
-    }
-  }
+  "properties": {}
 }
