@@ -1,6 +1,6 @@
 {
-  "commit": "cec33074c003115ab4519c7de13719e460bada20",
-  "generated": "2024-07-07T13:05:54.987Z",
+  "commit": "ee2a25074571a1dee0dff56c965447d7f802f07d",
+  "generated": "2024-07-08T14:28:26.790Z",
   "metadata": [
     {
       "__outstatic": {
@@ -19,6 +19,24 @@
       "slug": "example",
       "status": "published",
       "title": "글 예시"
+    },
+    {
+      "__outstatic": {
+        "commit": "ee2a25074571a1dee0dff56c965447d7f802f07d",
+        "hash": "2707667023",
+        "path": "outstatic/content/posts/typescript-infer.md"
+      },
+      "author": {
+        "name": "jgpark",
+        "picture": "https://avatars.githubusercontent.com/u/150231680?v=4"
+      },
+      "collection": "posts",
+      "coverImage": "",
+      "description": "Typescript의 infer 키워드는 조건부 타입 내에서 타입 추론을 할 때 사용됩니다.",
+      "publishedAt": "2024-07-08T14:47:38.795Z",
+      "slug": "typescript-infer",
+      "status": "draft",
+      "title": "Typescript - infer"
     }
   ]
 }
