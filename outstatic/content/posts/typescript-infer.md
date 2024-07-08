@@ -1,6 +1,6 @@
 ---
 title: 'Typescript - infer'
-status: 'draft'
+status: 'published'
 author:
   name: 'jgpark'
   picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
