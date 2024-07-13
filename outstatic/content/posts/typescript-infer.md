@@ -29,3 +29,34 @@ type ArrayElement = string | number | boolean;
 
 const arrayA = ["jgpark", 7281, true];
 ```
+
+만약, infer 없이 배열 요소 타입을 추출하려면, 모든 가능한 배열 타입에 대해 타입을 정의해야 합니다.
+
+예를들어,
+
+```typescript
+type ArrayElement<T> =
+  T extends (string | number | boolean)[] ? string | number | boolean : never;
+```
+
+이 타입에서 배열의 요소 타입이 추가되거나 변경되면, 매번 타입 정의를 수정해주어야 합니다.\
+그리고 조건부 타입에서 배열의 요소 타입을 다시 명시해야 하므로, 코드가 중복되고 길어집니다.
+
+infer를 사용한 새로운 타입 정의
+
+```typescript
+type ArrayElement<T> = T extends (infer E)[] ? E : never;
+```
+
+이렇게 사용하면 타입스크립트가 E 타입을 추론해냅니다.
+
+결과를 살펴보면,
+
+```typescript
+const arrayA = ["jgpark", 7281, true, undefined]
+type ArrayElement<T> = T extends (infer E)[] ? E : never;
+const element: ArrayElement<typeof arrayA> = "welcome"
+```
+
+위 코드에서 element의 타입이 \`string | number | boolean | undefined\`로 추론됩니다.\
+이처럼 다른 타입의 요소를 추가해도 자동으로 추론되어, 타입이 추가되거나 변경될 때마다 타입 정의를 수정할 필요가 없습니다.

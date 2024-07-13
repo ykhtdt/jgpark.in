@@ -1,6 +1,6 @@
 {
-  "commit": "e7d3da0851f1b767d0d077cdf5fe73e6ddaf99ad",
-  "generated": "2024-07-08T14:42:24.415Z",
+  "commit": "1324781f08b1270b350c2d6be10104cf27bbbdc6",
+  "generated": "2024-07-13T06:20:30.078Z",
   "metadata": [
     {
       "__outstatic": {
@@ -22,8 +22,8 @@
     },
     {
       "__outstatic": {
-        "commit": "e7d3da0851f1b767d0d077cdf5fe73e6ddaf99ad",
-        "hash": "1603178677",
+        "commit": "1324781f08b1270b350c2d6be10104cf27bbbdc6",
+        "hash": "846297376",
         "path": "outstatic/content/posts/typescript-infer.md"
       },
       "author": {
