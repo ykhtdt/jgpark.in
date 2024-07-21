@@ -1,6 +1,6 @@
 {
-  "commit": "1324781f08b1270b350c2d6be10104cf27bbbdc6",
-  "generated": "2024-07-13T06:20:30.078Z",
+  "commit": "fb9a67c7731f6a2681b435e8350d74d9bfd120b9",
+  "generated": "2024-07-21T03:14:08.241Z",
   "metadata": [
     {
       "__outstatic": {
@@ -22,8 +22,8 @@
     },
     {
       "__outstatic": {
-        "commit": "1324781f08b1270b350c2d6be10104cf27bbbdc6",
-        "hash": "846297376",
+        "commit": "fb9a67c7731f6a2681b435e8350d74d9bfd120b9",
+        "hash": "2721435536",
         "path": "outstatic/content/posts/typescript-infer.md"
       },
       "author": {
@@ -35,7 +35,7 @@
       "description": "복잡한 제네릭 타입에서 타입 추론을 자동으로 해보자.",
       "publishedAt": "2024-07-08T14:47:38.795Z",
       "slug": "typescript-infer",
-      "status": "published",
+      "status": "draft",
       "title": "Typescript - infer"
     }
   ]
