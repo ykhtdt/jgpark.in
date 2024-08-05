@@ -35,7 +35,7 @@ export default function Layout({
               return (
                 <Fragment key={path}>
                   <BreadcrumbItem className="capitalize">
-                    <BreadcrumbLink href={`/${paths.slice(0, index + 1).join('/')}`}>{path}</BreadcrumbLink>
+                    <BreadcrumbLink href={`/${paths.slice(0, index + 1).join("/")}`}>{path}</BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
                 </Fragment>
