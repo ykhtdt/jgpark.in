@@ -16,7 +16,7 @@ export const browseConfig: HomeConfig = {
       href: "/blog",
     },
     {
-      published: false,
+      published: true,
       title: "Moments",
       href: "/moments",
     },
