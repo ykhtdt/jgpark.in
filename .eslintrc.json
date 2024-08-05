@@ -4,6 +4,10 @@
     "plugin:storybook/recommended"
   ],
   "rules": {
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
     "indent": [
       "error",
       2
@@ -14,6 +18,10 @@
     "semi": [
       "error",
       "never"
+    ],
+    "quotes": [
+      "error",
+      "double"
     ]
   }
 }
