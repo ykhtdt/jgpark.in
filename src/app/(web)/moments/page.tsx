@@ -52,7 +52,7 @@ const Page = () => {
               Gallery
             </h2>
             <div className="flex flex-wrap gap-5 items-center justify-center">
-              {/* 이미지 Lazy Loader 및 클릭 시 Zoom 기능 및 UI 필요 */}
+              {/* 이미지 Lazy Loader 및 클릭 시 Zoom 기능 및 UI 필요, 반응형 디자인 필요, 이미지 Background를 gray 정도로 줘서 카드처럼 보이게(모바일) */}
               {IMAGE_EXAMPLES.map((image) => (
                 <figure key={image.src} className="relative w-48 h-auto aspect-square">
                   <Image
