@@ -30,6 +30,24 @@ const IMAGE_EXAMPLES = [
   }, {
     src: "/static/images/moments/08.jpg",
     alt: "jg_moments_08",
+  }, {
+    src: "/static/images/moments/09.jpg",
+    alt: "jg_moments_09",
+  }, {
+    src: "/static/images/moments/10.jpg",
+    alt: "jg_moments_10",
+  }, {
+    src: "/static/images/moments/11.jpg",
+    alt: "jg_moments_11",
+  }, {
+    src: "/static/images/moments/12.jpg",
+    alt: "jg_moments_12",
+  }, {
+    src: "/static/images/moments/13.jpg",
+    alt: "jg_moments_13",
+  }, {
+    src: "/static/images/moments/14.jpg",
+    alt: "jg_moments_14",
   }, 
 ]
 
@@ -53,14 +71,15 @@ const Page = () => {
             </h2>
             <div className="flex flex-wrap gap-5 items-center justify-center">
               {/* 이미지 Lazy Loader 및 클릭 시 Zoom 기능 및 UI 필요, 이미지 Background를 gray 정도로 줘서 카드처럼 보이게(모바일) */}
-              {IMAGE_EXAMPLES.map((image) => (
+              {IMAGE_EXAMPLES.map((image, index) => (
                 <figure key={image.src} className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     width={192}
                     height={192}
-                    priority
+                    loading={index <= 12 ? "eager" : "lazy"}
+                    priority={index <= 12 ? true : false}
                     className="absolute w-auto h-auto max-w-[75%] max-h-[75%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   />
                 </figure>
