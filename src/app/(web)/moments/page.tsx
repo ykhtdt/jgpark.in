@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+import { supabase } from "@/lib/supabaseclient"
+
 import { Separator } from "@/components/ui/separator"
 
 /**
@@ -48,10 +50,39 @@ const IMAGE_EXAMPLES = [
   }, {
     src: "/static/images/moments/14.jpg",
     alt: "jg_moments_14",
-  }, 
+  },
 ]
 
-const Page = () => {
+const getImages = async () => {
+  const { data, error } = await supabase.storage.from("jgpark").list("ykhtdt", { limit: 10 })
+  console.log(data, error)
+
+  if (error) {
+    console.log("Error fetching images:", error)
+    return
+  }
+
+  const urls = await Promise.all(
+    data.map(async (file) => {
+      const { data, error } = await supabase
+        .storage
+        .from("jgpark")
+        .createSignedUrl(`ykhtdt/${file.name}`, 60 * 60)
+
+      if (error) {
+        console.error("Error generating signed URL:", error)
+        return null
+      }
+
+      return data
+    })
+  )
+
+  return urls.filter(url => url)
+}
+
+const Page = async () => {
+  const images = await getImages()
   return (
     <main>
       <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
