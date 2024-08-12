@@ -1,88 +1,68 @@
 import Image from "next/image"
 
+import { SupabaseClient } from "@supabase/supabase-js"
+
 import { supabase } from "@/lib/supabaseclient"
 
 import { Separator } from "@/components/ui/separator"
 
-/**
- * 별도의 이미지 저장소 및 로드 필요
- */
-const IMAGE_EXAMPLES = [
-  {
-    src: "/static/images/moments/01.jpg",
-    alt: "jg_moments_01",
-  }, {
-    src: "/static/images/moments/02.jpg",
-    alt: "jg_moments_02",
-  }, {
-    src: "/static/images/moments/03.jpg",
-    alt: "jg_moments_03",
-  }, {
-    src: "/static/images/moments/04.jpg",
-    alt: "jg_moments_04",
-  }, {
-    src: "/static/images/moments/05.jpg",
-    alt: "jg_moments_05",
-  }, {
-    src: "/static/images/moments/06.jpg",
-    alt: "jg_moments_06",
-  }, {
-    src: "/static/images/moments/07.jpg",
-    alt: "jg_moments_07",
-  }, {
-    src: "/static/images/moments/08.jpg",
-    alt: "jg_moments_08",
-  }, {
-    src: "/static/images/moments/09.jpg",
-    alt: "jg_moments_09",
-  }, {
-    src: "/static/images/moments/10.jpg",
-    alt: "jg_moments_10",
-  }, {
-    src: "/static/images/moments/11.jpg",
-    alt: "jg_moments_11",
-  }, {
-    src: "/static/images/moments/12.jpg",
-    alt: "jg_moments_12",
-  }, {
-    src: "/static/images/moments/13.jpg",
-    alt: "jg_moments_13",
-  }, {
-    src: "/static/images/moments/14.jpg",
-    alt: "jg_moments_14",
-  },
-]
+interface FileObject {
+  name: string;
+  [key: string]: any;
+}
 
-const getImages = async () => {
-  const { data, error } = await supabase.storage.from("jgpark").list("ykhtdt", { limit: 10 })
+interface SignedUrlData {
+  signedUrl: string;
+}
+
+interface SignedUrlResponse {
+  data: SignedUrlData | null;
+  error: Error | null;
+}
+
+interface ListResponse {
+  data: FileObject[] | null;
+  error: Error | null;
+}
+
+interface FileWithSignedUrl {
+  name: string;
+  signedUrl: string;
+}
+
+const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]> => {
+  const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("ykhtdt", { limit: 10 })
   console.log(data, error)
 
   if (error) {
     console.log("Error fetching images:", error)
-    return
+    return []
+  } else if (data) {
+    const urls = await Promise.all(
+      data.map(async (file): Promise<FileWithSignedUrl | null> => {
+        const { data, error }: SignedUrlResponse = await supabase
+          .storage
+          .from("jgpark")
+          .createSignedUrl(`ykhtdt/${file.name}`, 60 * 60)
+  
+        if (error) {
+          console.error("Error generating signed URL:", error)
+          return null
+        }
+  
+        return data ? { name: file.name, signedUrl: data.signedUrl } : null
+      })
+    )
+  
+    return urls.filter((file): file is FileWithSignedUrl => file !== null)
+  } else {
+    return []
   }
-
-  const urls = await Promise.all(
-    data.map(async (file) => {
-      const { data, error } = await supabase
-        .storage
-        .from("jgpark")
-        .createSignedUrl(`ykhtdt/${file.name}`, 60 * 60)
-
-      if (error) {
-        console.error("Error generating signed URL:", error)
-        return null
-      }
-
-      return data
-    })
-  )
-
-  return urls.filter(url => url)
 }
 
 const Page = async () => {
-  const images = await getImages()
+  const images = await getImages(supabase)
+  console.log(images)
   return (
     <main>
       <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
@@ -102,11 +82,11 @@ const Page = async () => {
             </h2>
             <div className="flex flex-wrap gap-5 items-center justify-center">
               {/* 이미지 Lazy Loader 및 클릭 시 Zoom 기능 및 UI 필요, 이미지 Background를 gray 정도로 줘서 카드처럼 보이게(모바일) */}
-              {IMAGE_EXAMPLES.map((image, index) => (
-                <figure key={image.src} className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square">
+              {images.map((image, index) => (
+                <figure key={image.name} className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square">
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={image.signedUrl}
+                    alt={image.name}
                     width={192}
                     height={192}
                     loading={index <= 12 ? "eager" : "lazy"}
