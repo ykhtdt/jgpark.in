@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    deviceSizes: [640, 768, 1024, 1280, 1536, 1920]
+    deviceSizes: [640, 768, 1024, 1280, 1536, 1920],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "gttodwhxxsuwsyueiogd.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/sign/**",
+      },
+    ],
   },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
