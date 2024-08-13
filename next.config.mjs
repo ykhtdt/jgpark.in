@@ -1,4 +1,6 @@
-/** @type {import('next').NextConfig} */
+import withPlaiceholder from "@plaiceholder/next"
+
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   images: {
     deviceSizes: [640, 768, 1024, 1280, 1536, 1920],
@@ -40,4 +42,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default withPlaiceholder(nextConfig)
