@@ -12,12 +12,12 @@ export const getImageBase64 = async (src: string) => {
   const buffer = Buffer.from(arrayBuffer)
 
   const {
-    metadata: { width, height },
+    // metadata: { width, height },
     ...plaiceholder
   } = await getPlaiceholder(buffer, { size: 10 })
 
   return {
     ...plaiceholder,
-    image: { src, width, height },
+    image: { src },
   }
 }
