@@ -5,6 +5,7 @@ import { SupabaseClient } from "@supabase/supabase-js"
 import { supabase } from "@/lib/supabaseclient"
 
 import { Separator } from "@/components/ui/separator"
+import { ImageWithPlaceholder } from "@/components/image/image-with-placeholder"
 
 interface FileObject {
   name: string;
@@ -31,8 +32,7 @@ interface FileWithSignedUrl {
 }
 
 const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]> => {
-  const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("ykhtdt", { limit: 10 })
-  console.log(data, error)
+  const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("moments", { limit: 15 })
 
   if (error) {
     console.log("Error fetching images:", error)
@@ -43,10 +43,14 @@ const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]>
         const { data, error }: SignedUrlResponse = await supabase
           .storage
           .from("jgpark")
-          .createSignedUrl(`ykhtdt/${file.name}`, 60 * 60)
+          .createSignedUrl(`moments/${file.name}`, 60 * 60)
   
         if (error) {
           console.error("Error generating signed URL:", error)
+          return null
+        }
+
+        if (data && data.signedUrl.includes("emptyFolderPlaceholder")) {
           return null
         }
   
@@ -62,7 +66,7 @@ const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]>
 
 const Page = async () => {
   const images = await getImages(supabase)
-  console.log(images)
+
   return (
     <main>
       <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
@@ -84,7 +88,7 @@ const Page = async () => {
               {/* 이미지 Lazy Loader 및 클릭 시 Zoom 기능 및 UI 필요, 이미지 Background를 gray 정도로 줘서 카드처럼 보이게(모바일) */}
               {images.map((image, index) => (
                 <figure key={image.name} className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square">
-                  <Image
+                  <ImageWithPlaceholder
                     src={image.signedUrl}
                     alt={image.name}
                     width={192}
