@@ -9,7 +9,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "gttodwhxxsuwsyueiogd.supabase.co",
         port: "",
-        pathname: "/storage/v1/object/sign/jgpark/ykhtdt/**",
+        pathname: "/storage/v1/object/sign/jgpark/moments/**",
       },
     ],
   },
