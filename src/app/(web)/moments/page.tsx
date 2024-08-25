@@ -1,36 +1,16 @@
-import Link from "next/link"
+import type {
+  FileWithSignedUrl,
+  ListResponse,
+  SignedUrlResponse,
+} from "./types"
 
 import { SupabaseClient } from "@supabase/supabase-js"
 
 import { supabase } from "@/lib/supabaseclient"
 
 import { Separator } from "@/components/ui/separator"
-import { ImageWithPlaceholder } from "@/components/image/image-with-placeholder"
 
-interface FileObject {
-  name: string;
-  [key: string]: any;
-}
-
-interface SignedUrlData {
-  signedUrl: string;
-}
-
-interface SignedUrlResponse {
-  data: SignedUrlData | null;
-  error: Error | null;
-}
-
-interface ListResponse {
-  data: FileObject[] | null;
-  error: Error | null;
-}
-
-interface FileWithSignedUrl {
-  id: number;
-  name: string;
-  signedUrl: string;
-}
+import { Moments } from "./(components)/moments"
 
 const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]> => {
   const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("moments", { limit: 15 })
@@ -45,7 +25,7 @@ const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]>
           .storage
           .from("jgpark")
           .createSignedUrl(`moments/${file.name}`, 60 * 60)
-  
+
         if (error) {
           console.error("Error generating signed URL:", error)
           return null
@@ -54,7 +34,7 @@ const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]>
         if (data && data.signedUrl.includes("emptyFolderPlaceholder")) {
           return null
         }
-  
+
         return data ? {
           id: index + 1,
           name: file.name,
@@ -62,7 +42,7 @@ const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]>
         } : null
       })
     )
-  
+
     return urls.filter((file): file is FileWithSignedUrl => file !== null)
   } else {
     return []
@@ -90,24 +70,7 @@ const Page = async () => {
               Gallery
             </h2>
             <div className="flex flex-wrap gap-5 items-center justify-center">
-              {images.map((image, index) => (
-                <Link
-                  href={`/moments/?imageId=${image.id}`}
-                  as={`/moments/i/${image.id}`}
-                  key={image.name}
-                  className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square cursor-zoom-in"
-                >
-                  <ImageWithPlaceholder
-                    src={image.signedUrl}
-                    alt={image.name}
-                    width={192}
-                    height={192}
-                    loading={index <= 12 ? "eager" : "lazy"}
-                    priority={index <= 12 ? true : false}
-                    className="absolute w-auto h-auto max-w-[75%] max-h-[75%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  />
-                </Link>
-              ))}
+              <Moments images={images} />
             </div>
           </section>
         </div>
