@@ -3,7 +3,7 @@
 import type { FileWithSignedUrl } from "../types"
 
 import { useState, useReducer } from "react"
-import Image from "next/image"
+import Image, { type ImageLoader, type ImageLoaderProps } from "next/image"
 
 import {
   Dialog,
@@ -17,6 +17,11 @@ import { ImageWithPlaceholder } from "@/components/image/image-with-placeholder"
 
 type MomentsProps = {
   images: FileWithSignedUrl[];
+}
+
+const imageLoader: ImageLoader = ({ src, width }: ImageLoaderProps) => {
+  // return `${src}?w=${width}`
+  return `${src}`
 }
 
 export const Moments = ({
@@ -40,6 +45,7 @@ export const Moments = ({
         >
           {/* ImageWithPlaceholder */}
           <Image
+            loader={imageLoader}
             src={image.signedUrl}
             alt={image.name}
             width={192}
@@ -60,6 +66,7 @@ export const Moments = ({
                 {detailImage.name}
               </DialogDescription>
               <Image
+                loader={imageLoader}
                 src={detailImage.signedUrl}
                 alt={detailImage.name}
                 width={1280}
