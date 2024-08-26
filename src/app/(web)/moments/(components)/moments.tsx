@@ -53,6 +53,7 @@ export const Moments = ({
             loading={index <= 12 ? "eager" : "lazy"}
             priority={index <= 12 ? true : false}
             onClick={() => handleImageClick(image)}
+            unoptimized
             className="absolute w-auto h-auto max-w-[75%] max-h-[75%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
@@ -71,6 +72,7 @@ export const Moments = ({
                 alt={detailImage.name}
                 width={1280}
                 height={854}
+                unoptimized
               />
             </DialogHeader>
           </DialogContent>
