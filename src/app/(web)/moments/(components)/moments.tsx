@@ -1,6 +1,6 @@
 "use client"
 
-import type { FileWithSignedUrl } from "../types"
+import type { FileWithSignedUrl } from "@/types/moments"
 
 import { useState, useReducer } from "react"
 import Image, { type ImageLoader, type ImageLoaderProps } from "next/image"
