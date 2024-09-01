@@ -1,70 +1,77 @@
-// import { SupabaseClient } from "@supabase/supabase-js"
+import type {
+  FileWithSignedUrl,
+  ListResponse,
+  SignedUrlResponse,
+} from "@/types/moments"
 
-// import { supabase } from "@/lib/supabaseclient"
+import { SupabaseClient } from "@supabase/supabase-js"
+
+import { supabase } from "@/lib/supabaseclient"
 
 import { Separator } from "@/components/ui/separator"
 
 import { Moments } from "./(components)/moments"
 
-// const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]> => {
-//   const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("moments", { limit: 15 })
+const getImages = async (supabase: SupabaseClient): Promise<FileWithSignedUrl[]> => {
+  const { data, error }: ListResponse = await supabase.storage.from("jgpark").list("moments", { limit: 15 })
 
-//   if (error) {
-//     console.log("Error fetching images:", error)
-//     return []
-//   } else if (data) {
-//     const urls = await Promise.all(
-//       data.map(async (file, index): Promise<FileWithSignedUrl | null> => {
-//         const { data, error }: SignedUrlResponse = await supabase
-//           .storage
-//           .from("jgpark")
-//           .createSignedUrl(`moments/${file.name}`, 60 * 60)
+  if (error) {
+    console.log("Error fetching images:", error)
+    return []
+  } else if (data) {
+    const urls = await Promise.all(
+      data.map(async (file, index): Promise<FileWithSignedUrl | null> => {
+        const { data, error }: SignedUrlResponse = await supabase
+          .storage
+          .from("jgpark")
+          .createSignedUrl(`moments/${file.name}`, 60 * 60)
 
-//         if (error) {
-//           console.error("Error generating signed URL:", error)
-//           return null
-//         }
+        if (error) {
+          console.error("Error generating signed URL:", error)
+          return null
+        }
 
-//         if (data && data.signedUrl.includes("emptyFolderPlaceholder")) {
-//           return null
-//         }
+        if (data && data.signedUrl.includes("emptyFolderPlaceholder")) {
+          return null
+        }
 
-//         return data ? {
-//           id: index + 1,
-//           name: file.name,
-//           signedUrl: data.signedUrl
-//         } : null
-//       })
-//     )
+        return data ? {
+          id: index + 1,
+          name: file.name,
+          signedUrl: data.signedUrl
+        } : null
+      })
+    )
 
-//     return urls.filter((file): file is FileWithSignedUrl => file !== null)
-//   } else {
-//     return []
-//   }
-// }
-
-const getImages = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/moments`,
-    {
-      next: {
-        revalidate: 60 * 60,
-        tags: ["moments"]
-      }
-    }
-  )
-
-  if (!response.ok) {
-    throw new Error("Error")
+    return urls.filter((file): file is FileWithSignedUrl => file !== null)
+  } else {
+    return []
   }
-
-  const data = await response.json()
-
-  return data
 }
 
+// const getImages = async () => {
+//   const response = await fetch(
+//     "/api/moments",
+//     // {
+//     //   next: {
+//     //     revalidate: 60,
+//     //   }
+//     // }
+//   )
+
+//   if (!response.ok) {
+//     console.log("Error")
+//   }
+
+//   const data = await response.json()
+
+//   return data
+// }
+
+export const revalidate = 60 * 59
+
 const Page = async () => {
-  const images = await getImages()
+  const images = await getImages(supabase)
 
   return (
     <main>
