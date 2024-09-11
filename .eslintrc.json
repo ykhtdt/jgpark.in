@@ -1,6 +1,7 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
     "plugin:storybook/recommended"
   ],
   "rules": {
@@ -25,6 +26,7 @@
     "quotes": [
       "error",
       "double"
-    ]
+    ],
+    "react/no-children-prop": "off"
   }
 }
