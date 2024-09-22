@@ -16,7 +16,7 @@ import {
 import { ImageWithPlaceholder } from "@/components/image/image-with-placeholder"
 
 type MomentsProps = {
-  images: FileWithSignedUrl[];
+  images: string[];
 }
 
 const imageLoader: ImageLoader = ({ src, width }: ImageLoaderProps) => {
@@ -27,11 +27,11 @@ const imageLoader: ImageLoader = ({ src, width }: ImageLoaderProps) => {
 export const Moments = ({
   images,
 }: MomentsProps) => {
-  const [detailImage, setDetailImage] = useState<FileWithSignedUrl>()
-  
+  const [detailImage, setDetailImage] = useState<string>()
+
   const [isImageDetailDialogOpen, toggleIsImageDetailDialogOpen] = useReducer((state) => !state, false)
 
-  const handleImageClick = (image: FileWithSignedUrl) => {
+  const handleImageClick = (image: string) => {
     toggleIsImageDetailDialogOpen()
     setDetailImage(image)
   }
@@ -40,21 +40,21 @@ export const Moments = ({
     <>
       {images.map((image, index) => (
         <div
-          key={image.name}
-          className="relative w-[calc(50%-1.25rem)] sm:w-48 h-auto aspect-square cursor-zoom-in"
+          key={`${image}_${index}`}
+          className="relative aspect-square h-auto w-[calc(50%-1.25rem)] cursor-zoom-in sm:w-48"
         >
           {/* ImageWithPlaceholder */}
           <Image
             loader={imageLoader}
-            src={image.signedUrl}
-            alt={image.name}
+            src={image}
+            alt={image}
             width={192}
             height={192}
             loading={index <= 12 ? "eager" : "lazy"}
             priority={index <= 12 ? true : false}
             onClick={() => handleImageClick(image)}
             unoptimized
-            className="absolute w-auto h-auto max-w-[75%] max-h-[75%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 size-auto max-h-[75%] max-w-[75%] -translate-x-1/2 -translate-y-1/2"
           />
         </div>
       ))}
@@ -64,12 +64,12 @@ export const Moments = ({
             <DialogHeader>
               <DialogTitle>Image Detail</DialogTitle>
               <DialogDescription>
-                {detailImage.name}
+                {detailImage}
               </DialogDescription>
               <Image
                 loader={imageLoader}
-                src={detailImage.signedUrl}
-                alt={detailImage.name}
+                src={detailImage}
+                alt={detailImage}
                 width={1280}
                 height={854}
                 unoptimized
