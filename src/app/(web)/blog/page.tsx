@@ -39,13 +39,13 @@ const Page = async () => {
 
   return (
     <main>
-      <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
+      <article className="grid items-center gap-9 py-4 pb-10 md:py-8 md:pb-12">
         <header className="flex flex-col gap-4">
           <h1 className="text-xl font-bold">
             Blog
           </h1>
           <p className="text-sm leading-8">
-            이해하고 경험하며 돌아보는 기록
+            Learning history
           </p>
         </header>
         <Separator />
@@ -55,7 +55,7 @@ const Page = async () => {
               <h2 className="font-medium">
                 {year}
               </h2>
-              <div className="flex flex-col gap-2 border-l ml-4 pl-4">
+              <div className="ml-4 flex flex-col gap-2 border-l pl-4">
                 {posts[parseInt(year)].map((post) => (
                   <Fragment key={post.slug}>
                     <article>
