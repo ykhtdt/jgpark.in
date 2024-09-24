@@ -12,7 +12,7 @@ export default function MDXImage({
   ...rest
 }: Props) {
   return (
-    <Image src={src} alt={alt || "Uncaptioned"} width="832" height="468" priority {...rest}>
+    <Image src={src} alt={alt || "Uncaptioned"} width="832" height="556" style={{ width: "832px", height: "556px" }} priority {...rest}>
       {children}
     </Image>
   )
