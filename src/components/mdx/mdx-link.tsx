@@ -1,3 +1,5 @@
+import { isValidElement } from "react"
+
 import Link from "next/link"
 
 import { ArrowTopRightIcon } from "@radix-ui/react-icons"
@@ -10,10 +12,12 @@ export default function MDXLink({
   children,
   ...rest
 }: Props) {
+  const isImageComponent = isValidElement(children) && typeof children.type === "function" && children.type.name === "img"
+
   return (
     <Link target={target} href={href || ""} {...rest}>
       {children}
-      <ArrowTopRightIcon />
+      {!isImageComponent && <ArrowTopRightIcon />}
     </Link>
   )
 }
