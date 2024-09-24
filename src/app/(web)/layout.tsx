@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} bg-background min-h-screen`}>
+      <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} min-h-screen bg-background`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

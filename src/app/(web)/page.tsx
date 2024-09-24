@@ -35,14 +35,14 @@ const Feature = ({ config }: { config: HomeConfig }) => {
       <h2 className="text-lg font-semibold">
         {config.title}
       </h2>
-      <ul className="text-sm text-muted-foreground font-light flex flex-col gap-2 list-disc pl-4">
+      <ul className="flex list-disc flex-col gap-2 pl-4 text-sm font-light text-muted-foreground">
         {config.config.map((item) => (
           <li key={item.title} className={cn(
             {
               "pointer-events-none line-through": !item.published
             }
           )}>
-            <Link href={item.href} className="hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors">
+            <Link href={item.href} className="transition-colors hover:text-zinc-950 dark:hover:text-zinc-50">
               {item.title}
             </Link>
           </li>
@@ -57,7 +57,7 @@ export default async function Home() {
 
   return (
     <main>
-      <article className="grid items-center md:py-8 py-4 gap-9 pb-10 md:pb-12">
+      <article className="grid items-center gap-9 py-4 pb-10 md:py-8 md:pb-12">
         <header className="flex flex-col gap-4">
           <h1 className="text-xl font-bold">
             Welcome

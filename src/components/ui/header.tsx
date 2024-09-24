@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="py-4">
-      <div className="flex justify-between items-center w-full h-16">
+      <div className="flex h-16 w-full items-center justify-between">
         <Link href="/" className="font-bold">
           JGPARK
         </Link>
@@ -25,14 +25,14 @@ const Header = () => {
             <li>
               <Button
                 asChild
-                className="p-0 w-5 h-5 border-none bg-inherit text-foreground shadow-none focus:outline-none focus-visible:ring-0 hover:bg-inherit"
+                className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0"
               >
                 <Link
                   href="mailto:jgpark7281@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <EnvelopeOpenIcon className="w-4 h-4" />
+                  <EnvelopeOpenIcon className="size-4" />
                   <span className="sr-only">
                     JGPARK Email
                   </span>
@@ -42,14 +42,14 @@ const Header = () => {
             <li>
               <Button
                 asChild
-                className="p-0 w-5 h-5 border-none bg-inherit text-foreground shadow-none focus:outline-none focus-visible:ring-0 hover:bg-inherit"
+                className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0"
               >
                 <Link
                   href="https://github.com/ykhtdt"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <GitHubLogoIcon className="w-4 h-4" />
+                  <GitHubLogoIcon className="size-4" />
                   <span className="sr-only">
                     JGPARK Github
                   </span>
@@ -59,10 +59,10 @@ const Header = () => {
             <li>
               <Button
                 onClick={handleThemeChange}
-                className="p-0 w-5 h-5 border-none bg-inherit text-foreground shadow-none focus:outline-none focus-visible:ring-0 hover:bg-inherit"
+                className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0"
               >
-                <SunIcon className="w-4 h-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <MoonIcon className="absolute w-4 h-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <MoonIcon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">
                   Toggle theme
                 </span>

@@ -52,9 +52,9 @@ export default function MDXCodeBlock({
         className="hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
       >
         {isCopied ? (
-          <CheckIcon className="w-3.5 h-3.5" />
+          <CheckIcon className="size-3.5" />
         ) : (
-          <ClipboardIcon className="w-3.5 h-3.5" />
+          <ClipboardIcon className="size-3.5" />
         )}
       </Button>
     </pre>

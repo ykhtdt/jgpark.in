@@ -47,7 +47,7 @@ const Page = async ({ params }: Params) => {
   return (
     <main className="relative md:flex md:flex-row">
       <TableOfContent content={post.content} />
-      <div className="grid items-center pt-4 pb-10 gap-10 md:gap-12 md:pt-8 md:pb-12">
+      <div className="grid items-center gap-10 pb-10 pt-4 md:gap-12 md:pb-12 md:pt-8">
         <div className="flex flex-col gap-4">
           <div className="space-y-2">
             <time dateTime={post.publishedAt} className="block text-sm text-zinc-500">
@@ -56,7 +56,7 @@ const Page = async ({ params }: Params) => {
             <h1 className="text-xl font-bold">
               {post.title}
             </h1>
-            <p className="text-muted-foreground font-normal">
+            <p className="font-normal text-muted-foreground">
               {post.description}
             </p>
           </div>
