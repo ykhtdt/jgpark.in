@@ -1,5 +1,5 @@
 .mdx {
-  @apply w-full max-w-max text-muted-foreground;
+  @apply w-full max-w-[832px] text-muted-foreground;
 }
 
 .mdx h1, .mdx h2, .mdx h3 {
