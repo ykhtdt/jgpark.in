@@ -33,7 +33,7 @@ const components: MDXRemoteProps["components"] = {
 }
 
 const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
-  theme: "none",
+  theme: "vitesse-dark",
   transformers: [transformerNotationDiff(), transformerNotationHighlight()],
 }
 
