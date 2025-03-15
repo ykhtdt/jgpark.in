@@ -1,7 +1,7 @@
 @import "./reset.css";
 
 body {
-  background-image: url(/texture/noise.webp);
+  /* background-image: url(/texture/noise.webp);
   background-position: 0 0;
-  background-size: 200px 200px;
+  background-size: 200px 200px; */
 }

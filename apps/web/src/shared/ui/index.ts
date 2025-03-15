@@ -1,4 +1,7 @@
 export {
   ModeToggle,
   ModeToggleDropdown,
-} from "./ModeToggle"
+} from "./mode-toggle"
+
+export { MDXComponents } from "./mdx-components"
+export { MDXHeading } from "./mdx-heading"
