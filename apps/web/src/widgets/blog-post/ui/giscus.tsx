@@ -2,9 +2,13 @@
 
 import { useEffect } from "react"
 
+import { useTheme } from "next-themes"
+
 const COMMENTS_ID = "comments"
 
 export function Giscus() {
+  const { theme } = useTheme()
+
   useEffect(() => {
     const script = document.createElement("script")
 
@@ -19,7 +23,7 @@ export function Giscus() {
       "data-reactions-enabled": "1",
       "data-emit-metadata": "0",
       "data-input-position": "bottom",
-      "data-theme": "noborder_gray",
+      "data-theme": theme === "dark" ? "noborder_gray" : "light",
       "data-lang": "ko",
       "crossorigin": "anonymous"
     }
@@ -41,7 +45,7 @@ export function Giscus() {
         comments.removeChild(script)
       }
     }
-  }, [])
+  }, [theme])
 
   return (
     <section>

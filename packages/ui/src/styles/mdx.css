@@ -109,6 +109,11 @@
   counter-reset: line;
 }
 
+.mdx code {
+  @apply text-xs sm:text-sm;
+  --default-mono-font-family: var(--font-mono);
+}
+
 .mdx code:not(pre code) {
   @apply text-xs font-semibold rounded-sm border-muted bg-muted;
   padding: 0.05rem 0.25rem;
@@ -123,7 +128,7 @@
 }
 
 .mdx code>[data-line]::before {
-  @apply inline-flex items-center w-4 mr-8 text-right text-zinc-500;
+  @apply inline-flex items-center w-4 mr-6 text-right text-zinc-500;
   counter-increment: line;
   content: counter(line);
 }

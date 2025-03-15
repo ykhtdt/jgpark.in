@@ -16,7 +16,7 @@ export function TableOfContent({
   const activeId = useToc()
 
   return (
-    <aside className="fixed hidden w-44 translate-x-[50rem] pt-4 md:pt-8 xl:flex">
+    <aside className="fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex">
       <ol className="w-full space-y-2 text-sm text-muted-foreground">
         {tableOfContent.map((item) => (
           <li key={item.slug} className="space-y-2">

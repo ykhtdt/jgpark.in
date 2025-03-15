@@ -4,12 +4,7 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 
-import { MDXComponents } from "@/shared/ui"
-import {
-  Frontmatter,
-  Giscus,
-  TableOfContent,
-} from "@/widgets/blog-post"
+import { BlogPostPage } from "@/pages/blog"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -21,7 +16,7 @@ interface Frontmatter {
   description: string
 }
 
-const getMarkdownContent = async (slug: string) => {
+const getMarkdownContent = (slug: string) => {
   const filePath = path.join(process.cwd(), "content", `${slug}.md`)
 
   if (!fs.existsSync(filePath)) {
@@ -54,7 +49,7 @@ export default async function Page({
   params,
 }: PageProps) {
   const { slug } = await params
-  const post = await getMarkdownContent(slug)
+  const post = getMarkdownContent(slug)
 
   if (!post) {
     notFound()
@@ -63,15 +58,6 @@ export default async function Page({
   const { content, frontmatter } = post
 
   return (
-    <main className="relative">
-      <TableOfContent content={content} />
-      <div className="flex flex-col gap-6 sm:gap-10">
-        <Frontmatter frontmatter={frontmatter} />
-        <article>
-          <MDXComponents source={content} />
-        </article>
-        <Giscus />
-      </div>
-    </main>
+    <BlogPostPage frontmatter={frontmatter} content={content} />
   )
 }
