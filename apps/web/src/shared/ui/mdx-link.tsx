@@ -4,14 +4,12 @@ import Link from "next/link"
 
 import { ArrowTopRightIcon } from "@radix-ui/react-icons"
 
-interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> { }
-
 export function MDXLink({
   target = "_blank",
   href,
   children,
   ...rest
-}: Props) {
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const isImageComponent = isValidElement(children) && typeof children.type === "function" && children.type.name === "img"
 
   return (
