@@ -63,7 +63,7 @@ export default async function Page({
   const { content, frontmatter } = post
 
   return (
-    <main className="relative mx-auto w-full max-w-3xl p-4 mb-8">
+    <main className="relative">
       <TableOfContent content={content} />
       <div className="flex flex-col gap-6 sm:gap-10">
         <Frontmatter frontmatter={frontmatter} />
