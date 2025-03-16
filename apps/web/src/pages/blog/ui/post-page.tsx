@@ -1,4 +1,4 @@
-import { MDXComponents } from "@/shared/ui"
+import { MDXComponents } from "@/features/markdown"
 import {
   Frontmatter,
   Giscus,
