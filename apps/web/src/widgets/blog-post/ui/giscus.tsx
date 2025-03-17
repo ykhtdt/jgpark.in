@@ -7,15 +7,15 @@ import { useTheme } from "next-themes"
 const COMMENTS_ID = "comments"
 
 const getCurrentTheme = (theme?: string, systemTheme?: string) => {
-  if (systemTheme === "dark") {
+  if (theme === "dark") {
     return "noborder_gray"
   }
 
-  if (systemTheme === "light") {
+  if (theme === "light") {
     return "light"
   }
 
-  if (theme === "dark") {
+  if (systemTheme === "dark") {
     return "noborder_gray"
   }
 
