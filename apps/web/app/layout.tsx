@@ -1,3 +1,5 @@
+import type { Metadata } from "next"
+
 import "@workspace/ui/globals.css"
 import "@/app/styles/globals.css"
 
@@ -7,6 +9,11 @@ import {
   hahmlet,
   source,
 } from "@/app/fonts"
+
+export const metadata: Metadata = {
+  title: "JGPARK",
+  description: "JGPARK - Frontend Engineer based in Seoul, South Korea.",
+}
 
 export default function RootLayout({
   children,
