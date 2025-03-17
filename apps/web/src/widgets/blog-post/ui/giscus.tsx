@@ -6,8 +6,24 @@ import { useTheme } from "next-themes"
 
 const COMMENTS_ID = "comments"
 
+const getCurrentTheme = (theme?: string, systemTheme?: string) => {
+  if (systemTheme === "dark") {
+    return "noborder_gray"
+  }
+
+  if (systemTheme === "light") {
+    return "light"
+  }
+
+  if (theme === "dark") {
+    return "noborder_gray"
+  }
+
+  return "light"
+}
+
 export function Giscus() {
-  const { theme } = useTheme()
+  const { theme, systemTheme } = useTheme()
 
   useEffect(() => {
     const script = document.createElement("script")
@@ -23,7 +39,7 @@ export function Giscus() {
       "data-reactions-enabled": "1",
       "data-emit-metadata": "0",
       "data-input-position": "bottom",
-      "data-theme": theme === "dark" ? "noborder_gray" : "light",
+      "data-theme": getCurrentTheme(theme, systemTheme),
       "data-lang": "ko",
       "crossorigin": "anonymous"
     }
@@ -45,7 +61,7 @@ export function Giscus() {
         comments.removeChild(script)
       }
     }
-  }, [theme])
+  }, [theme, systemTheme])
 
   return (
     <section>
