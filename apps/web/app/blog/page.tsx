@@ -1,7 +1,7 @@
+import { BlogPostListPage } from "@/pages/blog"
+
 export default function Page() {
   return (
-    <div>
-      Post List Page
-    </div>
+    <BlogPostListPage />
   )
 }

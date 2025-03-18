@@ -12,23 +12,17 @@ import {
   BreadcrumbSeparator,
 } from "@workspace/ui/components/breadcrumb"
 
-import { Header } from "@/widgets/header"
-import { Footer } from "@/widgets/footer"
-
 export default function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   const pathname = usePathname()
 
   const paths = pathname?.split("/").filter(path => path)
 
   return (
-    <div className="mx-auto w-full max-w-4xl p-4 mb-8 flex flex-col gap-6 sm:gap-10">
-      {/* Header */}
-      <Header />
-
+    <Fragment>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbList>
@@ -62,8 +56,6 @@ export default function Layout({
       {/* page */}
       {children}
 
-      {/* Footer */}
-      <Footer />
-    </div>
+    </Fragment>
   )
 }
