@@ -7,6 +7,7 @@
       "pattern": "packages/*/"
     }
   ],
+  "eslint.nodePath": "./node_modules/.pnpm/node_modules",
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
