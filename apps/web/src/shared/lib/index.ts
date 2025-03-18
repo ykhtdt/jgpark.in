@@ -1,1 +1,1 @@
-export { cn, delay } from "./utils"
+export { delay } from "./utils"
