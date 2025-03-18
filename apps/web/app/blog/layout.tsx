@@ -9,15 +9,17 @@ export default function Layout({
 }>) {
 
   return (
-    <Container>
-      {/* Header */}
-      <Header />
+    <div className="pt-20 flex-1 flex">
+      <Container>
+        {/* Header */}
+        <Header />
 
-      {/* page */}
-      {children}
+        {/* page */}
+        {children}
 
-      {/* Footer */}
-      <Footer />
-    </Container>
+        {/* Footer */}
+        <Footer />
+      </Container>
+    </div>
   )
 }

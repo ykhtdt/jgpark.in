@@ -4,7 +4,7 @@ export const Container = ({
   children,
 }: PropsWithChildren) => {
   return (
-    <div className="mx-auto w-full max-w-4xl p-4 mb-8 flex flex-col gap-6 sm:gap-10">
+    <div className="mx-auto w-full max-w-4xl p-4 flex flex-col flex-1 gap-6 sm:gap-10">
       {children}
     </div>
   )
