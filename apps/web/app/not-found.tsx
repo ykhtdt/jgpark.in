@@ -6,8 +6,8 @@ export default function NotFound() {
           <span className="font-bold text-2xl sm:text-3xl">
             페이지를 찾을 수 없습니다.
           </span>
-          <span className="block">
-            <span className="mt-8 inline-flex h-1 w-16 max-w-full bg-gradient-to-r from-orange-600 to-red-600" />
+          <span className="flex justify-center mt-8">
+            <span className="inline-flex h-1 w-16 max-w-full bg-gradient-to-r from-orange-500 to-50% to-red-600" />
           </span>
         </h1>
         <p className="text-center text-xs/5 sm:text-sm/6 font-normal text-muted-foreground">
