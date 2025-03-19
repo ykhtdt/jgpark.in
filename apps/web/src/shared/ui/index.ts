@@ -1,3 +1,5 @@
+export { Clock } from "./decorations/clock"
+
 export { Container } from "./layout/container"
 
 export {
