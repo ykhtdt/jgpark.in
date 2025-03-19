@@ -5,9 +5,25 @@ import {
   useState,
 } from "react"
 
-export function Clock() {
-  const [time, setTime] = useState(new Date())
-  const [indicators, setIndicators] = useState<Array<{ x: number; y: number; key: number }>>([])
+interface Indicator {
+  x: number
+  y: number
+  key: number
+}
+
+export const Clock = () => {
+  const [time, setTime] = useState<Date | null>(null)
+  const [indicators, setIndicators] = useState<Indicator[]>([])
+
+  useEffect(() => {
+    setTime(new Date())
+
+    const interval = setInterval(() => {
+      setTime(new Date())
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const points = [...Array(12)].map((_, i) => {
@@ -20,13 +36,15 @@ export function Clock() {
     setIndicators(points)
   }, [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date())
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
+  if (!time) {
+    return (
+      <div className="flex justify-center">
+        <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="text-zinc-800 dark:text-zinc-200">
+          <rect x="35" y="35" width="110" height="110" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+      </div>
+    )
+  }
 
   const hours = time.getHours()
   const minutes = time.getMinutes()
@@ -50,19 +68,27 @@ export function Clock() {
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
 
   return (
-    <div className="flex justify-center mb-12">
-      <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="text-zinc-800 dark:text-zinc-200">
+    <div className="flex justify-center">
+      <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="font-serif text-zinc-800 dark:text-zinc-200">
         {/* Grid */}
-        <line x1="30" y1="90" x2="150" y2="90" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.4" />
-        <line x1="90" y1="30" x2="90" y2="150" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.4" />
+        <line x1="30" y1="90" x2="150" y2="90" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
+        <line x1="90" y1="30" x2="90" y2="150" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
 
         {/* Clock Reference */}
-        <text x="90" y="25" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">T</text>
-        <text x="155" y="90" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">3</text>
-        <text x="90" y="160" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">6</text>
-        <text x="25" y="90" textAnchor="middle" fontSize="10" fontFamily="monospace" fill="currentColor">9</text>
+        <text x="90" y="25" textAnchor="middle" fontSize="10" fill="currentColor">
+          T
+        </text>
+        <text x="155" y="90" textAnchor="middle" fontSize="10" fill="currentColor">
+          3
+        </text>
+        <text x="90" y="160" textAnchor="middle" fontSize="10" fill="currentColor">
+          6
+        </text>
+        <text x="25" y="90" textAnchor="middle" fontSize="10" fill="currentColor">
+          9
+        </text>
 
-        {/* Minimal Frame */}
+        {/* Frame */}
         <rect x="35" y="35" width="110" height="110" fill="none" stroke="currentColor" strokeWidth="1" />
 
         {/* Minute indicators */}
@@ -83,18 +109,18 @@ export function Clock() {
         <circle cx="90" cy="90" r="2" fill="currentColor" />
 
         {/* Time Label */}
-        <text x="95" y="115" fontSize="12" fontFamily="monospace" fill="currentColor" letterSpacing="1">
+        <text x="95" y="115" fontSize="12" fill="currentColor" letterSpacing="1">
           H{formattedHours}
         </text>
-        <text x="95" y="130" fontSize="12" fontFamily="monospace" fill="currentColor" letterSpacing="1">
+        <text x="95" y="130" fontSize="12" fill="currentColor" letterSpacing="1">
           M{formattedMinutes}
         </text>
 
         {/* Metadata */}
-        <text x="40" y="180" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.7">
+        <text x="40" y="180" fontSize="8" fill="currentColor" opacity="0.75">
           T_0
         </text>
-        <text x="140" y="180" fontSize="8" fontFamily="monospace" fill="currentColor" opacity="0.7">
+        <text x="140" y="180" fontSize="8" fill="currentColor" opacity="0.75">
           {currentYear}
         </text>
       </svg>
