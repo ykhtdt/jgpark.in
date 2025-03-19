@@ -22,7 +22,7 @@ export const BlogWritingPage = ({
         </h1>
       </div>
       <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">
-        학습은 한 그루의 나무가 모여 숲을 이루듯, 시간이 지나면서 작은 노력이 하나씩 쌓여 가는 과정입니다.
+        학습: 한 그루의 나무가 모여 숲을 이루듯, 시간이 지나면서 작은 노력이 하나씩 쌓여 가는 과정입니다.
       </p>
     </div>
 

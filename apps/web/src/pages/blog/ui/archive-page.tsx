@@ -22,7 +22,7 @@ export const BlogArchivePage = ({
         </h1>
       </div>
       <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">
-        경험은 파도가 점점 더 커지듯, 시간이 지나면서 점점 더 강해지는 과정입니다.
+        경험: 파도가 점점 더 커지듯, 시간이 지나면서 점점 더 강해지는 과정입니다.
       </p>
     </div>
 
