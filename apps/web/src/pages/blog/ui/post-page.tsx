@@ -20,7 +20,7 @@ export const BlogPostPage = ({
 }: BlogPostPageProps) => {
 
   return (
-    <main className="relative">
+    <main className="relative flex-1">
       <TableOfContent content={content} />
       <div className="flex flex-col gap-6 sm:gap-10">
         <Frontmatter frontmatter={frontmatter} />

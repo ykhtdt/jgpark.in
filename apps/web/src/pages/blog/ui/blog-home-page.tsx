@@ -1,14 +1,16 @@
+import Link from "next/link"
+
 import { CircleSmallIcon } from "lucide-react"
 import { ArrowTopRightIcon } from "@radix-ui/react-icons"
 
-import Link from "next/link"
+import { Clock } from "@/shared/ui"
 
 export const BlogHomePage = () => (
-  <main className="relative">
+  <main className="relative flex-1">
 
     {/* Intro */}
     <div className="mb-8">
-      <h1 className="text-base font-bold tracking-wider mb-4">
+      <h1 className="text-base font-bold tracking-wider mb-2">
         시간을 새기는 서재 속 한 권의 기록
       </h1>
       <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">
@@ -24,7 +26,7 @@ export const BlogHomePage = () => (
       <li className="group flex items-center gap-2">
         <CircleSmallIcon className="size-2" />
         <div className="flex gap-3">
-          <Link href="/blog/forest" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
+          <Link href="/blog/writing" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
             <span className="text-sm font-medium tracking-wide">
               숲
             </span>
@@ -40,7 +42,7 @@ export const BlogHomePage = () => (
       <li className="group flex items-center gap-2">
         <CircleSmallIcon className="size-2" />
         <div className="flex gap-3">
-          <Link href="/blog/wave" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
+          <Link href="/blog/archive" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
             <span className="text-sm font-medium tracking-wide">
               파도
             </span>
@@ -56,7 +58,7 @@ export const BlogHomePage = () => (
       <li className="group flex items-center gap-2">
         <CircleSmallIcon className="size-2" />
         <div className="flex gap-3">
-          <Link href="/blog/embers" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
+          <Link href="/blog/insight" className="inline-flex items-center gap-0.5 underline underline-offset-4 decoration-zinc-700">
             <span className="text-sm font-medium tracking-wide">
               잿불
             </span>
@@ -68,6 +70,10 @@ export const BlogHomePage = () => (
         </div>
       </li>
     </ul>
+
+    <div className="flex justify-end my-8">
+      <Clock />
+    </div>
 
   </main>
 )
