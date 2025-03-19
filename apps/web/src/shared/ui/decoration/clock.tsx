@@ -25,7 +25,7 @@ const GRID_START = 30
 const GRID_END = 150
 
 const TRANSITION_DURATION = "1.5s"
-const TRANSITION_DURATION_MS = 1500 // Same as above but in milliseconds
+const TRANSITION_DURATION_MS = 1500
 
 interface Indicator {
   x: number
