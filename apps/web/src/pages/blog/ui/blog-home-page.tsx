@@ -1,10 +1,12 @@
+import Link from "next/link"
+
 import { CircleSmallIcon } from "lucide-react"
 import { ArrowTopRightIcon } from "@radix-ui/react-icons"
 
-import Link from "next/link"
+import { Clock } from "@/shared/ui"
 
 export const BlogHomePage = () => (
-  <main className="relative">
+  <main className="relative flex-1">
 
     {/* Intro */}
     <div className="mb-8">
@@ -68,6 +70,10 @@ export const BlogHomePage = () => (
         </div>
       </li>
     </ul>
+
+    <div className="flex justify-end my-8">
+      <Clock />
+    </div>
 
   </main>
 )
