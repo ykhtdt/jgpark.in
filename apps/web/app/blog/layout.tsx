@@ -7,9 +7,8 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-
   return (
-    <div className="pt-20 flex-1 flex">
+    <div className="pt-10 sm:pt-20 flex flex-1">
       <Container>
         {/* Header */}
         <Header />
