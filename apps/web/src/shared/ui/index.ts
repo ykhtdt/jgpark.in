@@ -1,4 +1,4 @@
-export { Clock } from "./decorations/clock"
+export { Clock } from "./decoration/clock"
 
 export { Container } from "./layout/container"
 
