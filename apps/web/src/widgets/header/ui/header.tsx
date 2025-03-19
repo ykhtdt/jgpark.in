@@ -21,7 +21,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="py-4">
+    <header>
       <div className="flex h-16 w-full items-center justify-between">
         <Link href="/" className="font-bold">
           JGPARK
