@@ -49,7 +49,7 @@ export const BlogHomePage = () => (
             <ArrowTopRightIcon className="relative -top-1 size-2.5 text-zinc-700 dark:text-zinc-50" />
           </Link>
           <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">
-            업무와 관련된 내용은 <span className="font-medium group-hover:bg-gradient-to-r group-hover:from-sky-500 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent">“파도”</span>에 기록합니다.
+            경험과 관련된 내용은 <span className="font-medium group-hover:bg-gradient-to-r group-hover:from-sky-500 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent">“파도”</span>에 기록합니다.
           </span>
         </div>
       </li>
