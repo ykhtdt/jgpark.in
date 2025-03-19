@@ -1,5 +1,5 @@
 export const BlogArchivePage = () => (
-  <main className="relative">
+  <main className="relative flex-1">
 
     {/* Intro */}
     <div className="mb-8">
