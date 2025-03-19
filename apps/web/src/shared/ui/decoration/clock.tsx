@@ -24,6 +24,9 @@ const FRAME_SIZE = 110
 const GRID_START = 30
 const GRID_END = 150
 
+const TRANSITION_DURATION = "1.5s"
+const TRANSITION_DURATION_MS = 1500 // Same as above but in milliseconds
+
 interface Indicator {
   x: number
   y: number
@@ -31,17 +34,48 @@ interface Indicator {
 }
 
 export const Clock = () => {
-  const [time, setTime] = useState<Date | null>(null)
+  const [time, setTime] = useState<Date>(new Date(new Date().setHours(0, 0, 0, 0)))
   const [indicators, setIndicators] = useState<Indicator[]>([])
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [animationState, setAnimationState] = useState({
+    hourRotation: 0,
+    minuteRotation: 0,
+    secondRotation: 0
+  })
 
   useEffect(() => {
-    setTime(new Date())
+    const setupTimer = setTimeout(() => {
+      const currentTime = new Date()
+      const hours = currentTime.getHours()
+      const minutes = currentTime.getMinutes()
+      const seconds = currentTime.getSeconds()
 
-    const interval = setInterval(() => {
-      setTime(new Date())
-    }, 1000)
+      const hourRotation = ((hours % HOURS_IN_CLOCK) * DEGREES_PER_HOUR + minutes * MINUTE_CONTRIBUTION_TO_HOUR)
+      const minuteRotation = (minutes * DEGREES_PER_MINUTE)
+      const secondRotation = (seconds * DEGREES_PER_SECOND)
 
-    return () => clearInterval(interval)
+      setAnimationState({
+        hourRotation,
+        minuteRotation,
+        secondRotation
+      })
+      setIsAnimating(true)
+
+      const updateTimer = setTimeout(() => {
+        setIsAnimating(false)
+        setTime(currentTime)
+
+        const interval = setInterval(() => {
+          setTime(new Date())
+        }, 1000)
+
+        return () => clearInterval(interval)
+      }, TRANSITION_DURATION_MS)
+
+      return () => clearTimeout(updateTimer)
+    }, 200)
+
+    return () => clearTimeout(setupTimer)
   }, [])
 
   useEffect(() => {
@@ -54,16 +88,6 @@ export const Clock = () => {
 
     setIndicators(points)
   }, [])
-
-  if (!time) {
-    return (
-      <div className="flex justify-center">
-        <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="text-zinc-800 dark:text-zinc-200">
-          <rect x={FRAME_START_X} y={FRAME_START_Y} width={FRAME_SIZE} height={FRAME_SIZE} fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
-      </div>
-    )
-  }
 
   const hours = time.getHours()
   const minutes = time.getMinutes()
@@ -85,6 +109,32 @@ export const Clock = () => {
 
   const formattedHours = hours < 10 ? `0${hours}` : hours
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
+
+  const hourHandStyle = isAnimating
+    ? {
+      transform: `rotate(${animationState.hourRotation}deg)`,
+      transformOrigin: `${CLOCK_CENTER_X}px ${CLOCK_CENTER_Y}px`,
+      transition: `transform ${TRANSITION_DURATION} cubic-bezier(0.4, 0, 0.2, 1)`
+    }
+    : {}
+
+  const minuteHandStyle = isAnimating
+    ? {
+      transform: `rotate(${animationState.minuteRotation}deg)`,
+      transformOrigin: `${CLOCK_CENTER_X}px ${CLOCK_CENTER_Y}px`,
+      transition: `transform ${TRANSITION_DURATION} cubic-bezier(0.4, 0, 0.2, 1)`
+    }
+    : {}
+
+  const secondHandStyle = isAnimating
+    ? {
+      transform: `rotate(${animationState.secondRotation}deg)`,
+      transformOrigin: `${CLOCK_CENTER_X}px ${CLOCK_CENTER_Y}px`,
+      transition: `transform ${TRANSITION_DURATION} cubic-bezier(0.4, 0, 0.2, 1)`
+    }
+    : {}
+
+  const textTransitionStyle = isAnimating ? { transition: `all ${TRANSITION_DURATION} ease-in-out` } : {}
 
   return (
     <div className="flex justify-center">
@@ -115,23 +165,91 @@ export const Clock = () => {
           <circle key={point.key} cx={point.x} cy={point.y} r="1" fill="currentColor" />
         ))}
 
-        {/* Hour Hand */}
-        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={hourX} y2={hourY} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        {isAnimating ? (
+          <>
+            {/* Animated Hour Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={CLOCK_CENTER_X}
+              y2={CLOCK_CENTER_Y - HOUR_HAND_LENGTH}
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              style={hourHandStyle}
+            />
 
-        {/* Minute Hand */}
-        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={minuteX} y2={minuteY} stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+            {/* Animated Minute Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={CLOCK_CENTER_X}
+              y2={CLOCK_CENTER_Y - MINUTE_HAND_LENGTH}
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              style={minuteHandStyle}
+            />
 
-        {/* Second Hand */}
-        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={secondX} y2={secondY} stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" opacity="0.7" />
+            {/* Animated Second Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={CLOCK_CENTER_X}
+              y2={CLOCK_CENTER_Y - SECOND_HAND_LENGTH}
+              stroke="currentColor"
+              strokeWidth="0.5"
+              strokeLinecap="round"
+              opacity="0.7"
+              style={secondHandStyle}
+            />
+          </>
+        ) : (
+          <>
+            {/* Regular Hour Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={hourX}
+              y2={hourY}
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+
+            {/* Regular Minute Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={minuteX}
+              y2={minuteY}
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+
+            {/* Regular Second Hand */}
+            <line
+              x1={CLOCK_CENTER_X}
+              y1={CLOCK_CENTER_Y}
+              x2={secondX}
+              y2={secondY}
+              stroke="currentColor"
+              strokeWidth="0.5"
+              strokeLinecap="round"
+              opacity="0.7"
+            />
+          </>
+        )}
 
         {/* Center */}
         <circle cx={CLOCK_CENTER_X} cy={CLOCK_CENTER_Y} r="2" fill="currentColor" />
 
         {/* Time Label */}
-        <text x="95" y="115" fontSize="12" fill="currentColor" letterSpacing="1">
+        <text x="95" y="115" fontSize="12" fill="currentColor" letterSpacing="1" style={textTransitionStyle}>
           H{formattedHours}
         </text>
-        <text x="95" y="130" fontSize="12" fill="currentColor" letterSpacing="1">
+        <text x="95" y="130" fontSize="12" fill="currentColor" letterSpacing="1" style={textTransitionStyle}>
           M{formattedMinutes}
         </text>
 
