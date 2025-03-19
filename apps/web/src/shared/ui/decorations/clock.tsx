@@ -5,6 +5,25 @@ import {
   useState,
 } from "react"
 
+const CLOCK_CENTER_X = 90
+const CLOCK_CENTER_Y = 90
+const CLOCK_RADIUS = 70
+const HOUR_HAND_LENGTH = 35
+const MINUTE_HAND_LENGTH = 55
+const SECOND_HAND_LENGTH = 60
+const HOURS_IN_CLOCK = 12
+const DEGREES_PER_HOUR = 30 // 360° ÷ 12
+const DEGREES_PER_MINUTE = 6 // 360° ÷ 60
+const DEGREES_PER_SECOND = 6 // 360° ÷ 60
+const MINUTE_CONTRIBUTION_TO_HOUR = 0.5 // 시침은 1시간(60분)에 30도 이동, 따라서 1분당 시침의 이동 각도는 30° ÷ 60분 = 0.5°
+
+const FRAME_START_X = 35
+const FRAME_START_Y = 35
+const FRAME_SIZE = 110
+
+const GRID_START = 30
+const GRID_END = 150
+
 interface Indicator {
   x: number
   y: number
@@ -26,10 +45,10 @@ export const Clock = () => {
   }, [])
 
   useEffect(() => {
-    const points = [...Array(12)].map((_, i) => {
-      const angle = (i * 30) * Math.PI / 180
-      const x = 90 + 70 * Math.sin(angle)
-      const y = 90 - 70 * Math.cos(angle)
+    const points = [...Array(HOURS_IN_CLOCK)].map((_, i) => {
+      const angle = (i * DEGREES_PER_HOUR) * Math.PI / 180
+      const x = CLOCK_CENTER_X + CLOCK_RADIUS * Math.sin(angle)
+      const y = CLOCK_CENTER_Y - CLOCK_RADIUS * Math.cos(angle)
       return { x, y, key: i }
     })
 
@@ -40,7 +59,7 @@ export const Clock = () => {
     return (
       <div className="flex justify-center">
         <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="text-zinc-800 dark:text-zinc-200">
-          <rect x="35" y="35" width="110" height="110" fill="none" stroke="currentColor" strokeWidth="1" />
+          <rect x={FRAME_START_X} y={FRAME_START_Y} width={FRAME_SIZE} height={FRAME_SIZE} fill="none" stroke="currentColor" strokeWidth="1" />
         </svg>
       </div>
     )
@@ -51,18 +70,18 @@ export const Clock = () => {
   const seconds = time.getSeconds()
   const currentYear = time.getFullYear()
 
-  const hourAngle = ((hours % 12) * 30 + minutes * 0.5) * Math.PI / 180
-  const minuteAngle = (minutes * 6) * Math.PI / 180
-  const secondAngle = (seconds * 6) * Math.PI / 180
+  const hourAngle = ((hours % HOURS_IN_CLOCK) * DEGREES_PER_HOUR + minutes * MINUTE_CONTRIBUTION_TO_HOUR) * Math.PI / 180
+  const minuteAngle = (minutes * DEGREES_PER_MINUTE) * Math.PI / 180
+  const secondAngle = (seconds * DEGREES_PER_SECOND) * Math.PI / 180
 
-  const hourX = 90 + 35 * Math.sin(hourAngle)
-  const hourY = 90 - 35 * Math.cos(hourAngle)
+  const hourX = CLOCK_CENTER_X + HOUR_HAND_LENGTH * Math.sin(hourAngle)
+  const hourY = CLOCK_CENTER_Y - HOUR_HAND_LENGTH * Math.cos(hourAngle)
 
-  const minuteX = 90 + 55 * Math.sin(minuteAngle)
-  const minuteY = 90 - 55 * Math.cos(minuteAngle)
+  const minuteX = CLOCK_CENTER_X + MINUTE_HAND_LENGTH * Math.sin(minuteAngle)
+  const minuteY = CLOCK_CENTER_Y - MINUTE_HAND_LENGTH * Math.cos(minuteAngle)
 
-  const secondX = 90 + 60 * Math.sin(secondAngle)
-  const secondY = 90 - 60 * Math.cos(secondAngle)
+  const secondX = CLOCK_CENTER_X + SECOND_HAND_LENGTH * Math.sin(secondAngle)
+  const secondY = CLOCK_CENTER_Y - SECOND_HAND_LENGTH * Math.cos(secondAngle)
 
   const formattedHours = hours < 10 ? `0${hours}` : hours
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
@@ -71,25 +90,25 @@ export const Clock = () => {
     <div className="flex justify-center">
       <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" className="font-serif text-zinc-800 dark:text-zinc-200">
         {/* Grid */}
-        <line x1="30" y1="90" x2="150" y2="90" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
-        <line x1="90" y1="30" x2="90" y2="150" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
+        <line x1={GRID_START} y1={CLOCK_CENTER_Y} x2={GRID_END} y2={CLOCK_CENTER_Y} stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
+        <line x1={CLOCK_CENTER_X} y1={GRID_START} x2={CLOCK_CENTER_X} y2={GRID_END} stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.75" />
 
         {/* Clock Reference */}
-        <text x="90" y="25" textAnchor="middle" fontSize="10" fill="currentColor">
+        <text x={CLOCK_CENTER_X} y="25" textAnchor="middle" fontSize="10" fill="currentColor">
           T
         </text>
-        <text x="155" y="90" textAnchor="middle" fontSize="10" fill="currentColor">
+        <text x="155" y={CLOCK_CENTER_Y} textAnchor="middle" fontSize="10" fill="currentColor">
           3
         </text>
-        <text x="90" y="160" textAnchor="middle" fontSize="10" fill="currentColor">
+        <text x={CLOCK_CENTER_X} y="160" textAnchor="middle" fontSize="10" fill="currentColor">
           6
         </text>
-        <text x="25" y="90" textAnchor="middle" fontSize="10" fill="currentColor">
+        <text x="25" y={CLOCK_CENTER_Y} textAnchor="middle" fontSize="10" fill="currentColor">
           9
         </text>
 
         {/* Frame */}
-        <rect x="35" y="35" width="110" height="110" fill="none" stroke="currentColor" strokeWidth="1" />
+        <rect x={FRAME_START_X} y={FRAME_START_Y} width={FRAME_SIZE} height={FRAME_SIZE} fill="none" stroke="currentColor" strokeWidth="1" />
 
         {/* Minute indicators */}
         {indicators.map((point) => (
@@ -97,16 +116,16 @@ export const Clock = () => {
         ))}
 
         {/* Hour Hand */}
-        <line x1="90" y1="90" x2={hourX} y2={hourY} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={hourX} y2={hourY} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
 
         {/* Minute Hand */}
-        <line x1="90" y1="90" x2={minuteX} y2={minuteY} stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={minuteX} y2={minuteY} stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
 
         {/* Second Hand */}
-        <line x1="90" y1="90" x2={secondX} y2={secondY} stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" opacity="0.7" />
+        <line x1={CLOCK_CENTER_X} y1={CLOCK_CENTER_Y} x2={secondX} y2={secondY} stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" opacity="0.7" />
 
         {/* Center */}
-        <circle cx="90" cy="90" r="2" fill="currentColor" />
+        <circle cx={CLOCK_CENTER_X} cy={CLOCK_CENTER_Y} r="2" fill="currentColor" />
 
         {/* Time Label */}
         <text x="95" y="115" fontSize="12" fill="currentColor" letterSpacing="1">
