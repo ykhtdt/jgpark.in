@@ -1,9 +1,10 @@
+import { BaseLayout } from "@/widgets/layout"
 import { Button } from "@workspace/ui/components/button"
 
 export const HomePage = () => {
   return (
-    <div className="flex items-center justify-center min-h-svh">
-      <div className="flex flex-col items-center justify-center gap-4">
+    <BaseLayout>
+      <div className="flex flex-col flex-1 items-center justify-center gap-4">
         <h1 className="text-2xl font-bold">
           Hello World
         </h1>
@@ -11,6 +12,6 @@ export const HomePage = () => {
           Button
         </Button>
       </div>
-    </div>
+    </BaseLayout>
   )
 }

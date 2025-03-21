@@ -1,5 +1,7 @@
 import type { PostFrontmatter } from "@/entities/blog"
 
+import { Fragment } from "react"
+
 import { MDXComponents } from "@/features/markdown"
 import {
   Frontmatter,
@@ -18,7 +20,7 @@ export const BlogPostPage = ({
 }: BlogPostPageProps) => {
 
   return (
-    <main className="relative flex-1">
+    <Fragment>
       <TableOfContent content={content} />
       <div className="flex flex-col gap-6 sm:gap-10">
         <Frontmatter frontmatter={frontmatter} />
@@ -27,6 +29,6 @@ export const BlogPostPage = ({
         </article>
         <Giscus />
       </div>
-    </main>
+    </Fragment>
   )
 }

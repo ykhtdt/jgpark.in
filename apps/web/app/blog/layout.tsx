@@ -1,6 +1,4 @@
-import { Header } from "@/widgets/header"
-import { Footer } from "@/widgets/footer"
-import { Container } from "@/shared/ui"
+import { BaseLayout } from "@/widgets/layout"
 
 export default function Layout({
   children,
@@ -8,17 +6,8 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="pt-10 sm:pt-20 flex flex-1">
-      <Container>
-        {/* Header */}
-        <Header />
-
-        {/* page */}
-        {children}
-
-        {/* Footer */}
-        <Footer />
-      </Container>
-    </div>
+    <BaseLayout>
+      {children}
+    </BaseLayout>
   )
 }

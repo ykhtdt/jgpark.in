@@ -22,7 +22,7 @@ export default function Layout({
   const paths = pathname?.split("/").filter(path => path)
 
   return (
-    <Fragment>
+    <div className="flex flex-col gap-4 sm:gap-8">
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbList>
@@ -56,6 +56,6 @@ export default function Layout({
       {/* page */}
       {children}
 
-    </Fragment>
+    </div>
   )
 }
