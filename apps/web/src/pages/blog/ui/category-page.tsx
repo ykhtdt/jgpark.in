@@ -1,12 +1,12 @@
 import type { Post } from "@/entities/blog"
 
+import { Fragment } from "react"
 import Link from "next/link"
-import { format, parseISO } from "date-fns"
 
-interface CategoryGradient {
-  from: string
-  to: string
-}
+import {
+  format,
+  parseISO,
+} from "date-fns"
 
 interface BlogCategoryPageProps {
   posts: Post[]
@@ -14,7 +14,10 @@ interface BlogCategoryPageProps {
     name: string
     path: string
     description: string
-    gradient: CategoryGradient
+    gradient: {
+      from: string
+      to: string
+    }
   }
 }
 
@@ -39,12 +42,14 @@ export const BlogCategoryPage = ({
   category,
 }: BlogCategoryPageProps) => {
   return (
-    <main className="relative flex-1">
+    <div className="flex flex-col gap-8">
 
       {/* Intro */}
-      <div className="mb-8">
-        <div className="flex items-center mb-2">
-          {gradient(category.path)}
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center">
+          <Fragment>
+            {gradient(category.path)}
+          </Fragment>
           <h1 className="text-base font-bold tracking-wider">
             {category.name}
           </h1>
@@ -80,6 +85,6 @@ export const BlogCategoryPage = ({
           </p>
         )}
       </div>
-    </main>
+    </div>
   )
 }

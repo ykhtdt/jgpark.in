@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import Link from "next/link"
 
 import { CircleSmallIcon } from "lucide-react"
@@ -6,7 +7,7 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons"
 import { Clock } from "@/shared/ui"
 
 export const BlogHomePage = () => (
-  <main className="relative flex-1">
+  <Fragment>
 
     {/* Intro */}
     <div className="mb-8">
@@ -75,5 +76,5 @@ export const BlogHomePage = () => (
       <Clock />
     </div>
 
-  </main>
+  </Fragment>
 )
