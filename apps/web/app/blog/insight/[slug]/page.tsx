@@ -1,3 +1,5 @@
+import type { PostFrontmatter } from "@/entities/blog"
+
 import { notFound } from "next/navigation"
 
 import fs from "fs"
@@ -8,12 +10,6 @@ import { BlogPostPage } from "@/pages/blog"
 
 interface PageProps {
   params: Promise<{ slug: string }>
-}
-
-interface Frontmatter {
-  publishedAt: string
-  title: string
-  description: string
 }
 
 const getMarkdownContent = (slug: string) => {
@@ -28,7 +24,7 @@ const getMarkdownContent = (slug: string) => {
   const { data, content } = matter(fileContents)
 
   return {
-    frontmatter: data as Frontmatter,
+    frontmatter: data as PostFrontmatter,
     content,
   }
 }
