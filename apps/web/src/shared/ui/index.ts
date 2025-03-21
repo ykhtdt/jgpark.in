@@ -1,3 +1,4 @@
+export { Logo } from "./decoration/logo"
 export { Clock } from "./decoration/clock"
 
 export { Container } from "./layout/container"
