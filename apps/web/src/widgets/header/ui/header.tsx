@@ -26,8 +26,8 @@ export const Header = () => {
     <header>
       <div className="flex h-16 w-full items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-6 w-6" />
-          <span className="font-bold">
+          <Logo className="size-6" />
+          <span className="font-bold text-sm">
             JGPARK
           </span>
         </Link>
