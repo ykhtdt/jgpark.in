@@ -1,3 +1,5 @@
+import type { PostFrontmatter } from "@/entities/blog"
+
 import { MDXComponents } from "@/features/markdown"
 import {
   Frontmatter,
@@ -6,11 +8,7 @@ import {
 } from "@/widgets/blog-post"
 
 interface BlogPostPageProps {
-  frontmatter: {
-    publishedAt: string
-    title: string
-    description: string
-  }
+  frontmatter: PostFrontmatter
   content: string
 }
 

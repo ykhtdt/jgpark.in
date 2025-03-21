@@ -1,10 +1,13 @@
-import { BlogArchivePage } from "@/pages/blog"
-import { getAllPostsWithExample } from "@/features/blog"
+import type { BlogCategory } from "@/entities/blog"
 
-export default async function Page() {
+import { BLOG_CATEGORIES } from "@/entities/blog"
+import { getAllPostsWithExample } from "@/features/blog"
+import { BlogCategoryPage } from "@/pages/blog"
+
+export default function Page() {
   const posts = getAllPostsWithExample("archive")
 
   return (
-    <BlogArchivePage posts={posts} />
+    <BlogCategoryPage posts={posts} category={BLOG_CATEGORIES.archive as BlogCategory} />
   )
 }
