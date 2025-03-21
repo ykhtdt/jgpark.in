@@ -1,12 +1,9 @@
+import type { PostFrontmatter } from "@/entities/blog"
 
 import { format, parseISO } from "date-fns"
 
 interface FrontmatterProps {
-  frontmatter: {
-    publishedAt: string
-    title: string
-    description: string
-  }
+  frontmatter: PostFrontmatter
 }
 
 export const Frontmatter = ({
