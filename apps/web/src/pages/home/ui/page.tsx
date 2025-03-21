@@ -3,7 +3,7 @@ import { Button } from "@workspace/ui/components/button"
 
 export const HomePage = () => {
   return (
-    <BaseLayout>
+    <BaseLayout className="flex flex-col">
       <div className="flex flex-col flex-1 items-center justify-center gap-4">
         <h1 className="text-2xl font-bold">
           Hello World
