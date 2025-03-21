@@ -13,6 +13,8 @@ import {
 
 import { Button } from "@workspace/ui/components/button"
 
+import { Logo } from "@/shared/ui"
+
 export const Header = () => {
   const { theme, setTheme } = useTheme()
 
@@ -23,8 +25,11 @@ export const Header = () => {
   return (
     <header>
       <div className="flex h-16 w-full items-center justify-between">
-        <Link href="/" className="font-bold">
-          JGPARK
+        <Link href="/" className="flex items-center gap-2">
+          <Logo className="h-6 w-6" />
+          <span className="font-bold">
+            JGPARK
+          </span>
         </Link>
         <nav>
           <ul className="flex items-center gap-x-5 text-sm [&>li]:flex">
