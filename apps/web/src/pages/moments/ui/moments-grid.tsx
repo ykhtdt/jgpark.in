@@ -47,7 +47,7 @@ export const MomentsGrid = ({
                   alt={file.name}
                   fill
                   sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
-                  className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-75 group-hover:filter-none transition-all"
+                  className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
                   priority={currentPage === 1}
                   style={{ objectFit: "cover" }}
                 />
@@ -61,7 +61,7 @@ export const MomentsGrid = ({
       {emptyCells.map((_, index) => (
         <div
           key={`empty-${index}`}
-          className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/50 shadow-sm p-3 flex items-center justify-center"
+          className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/50 shadow-sm p-4 flex items-center justify-center"
         >
           <div className="w-full h-full rounded-xs flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500">
             <ImageIcon className="w-9 h-9 mb-2 opacity-50 stroke-1" />
