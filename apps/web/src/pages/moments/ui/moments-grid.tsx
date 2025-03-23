@@ -61,7 +61,7 @@ export const MomentsGrid = ({
       {emptyCells.map((_, index) => (
         <div
           key={`empty-${index}`}
-          className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/50 shadow-sm p-4 flex items-center justify-center"
+          className="hidden sm:flex items-center justify-center aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/50 shadow-sm p-4"
         >
           <div className="w-full h-full rounded-xs flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500">
             <ImageIcon className="w-9 h-9 mb-2 opacity-50 stroke-1" />
