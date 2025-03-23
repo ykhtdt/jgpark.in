@@ -2,30 +2,33 @@ import type { PostFrontmatter } from "@/entities/blog"
 
 import { notFound } from "next/navigation"
 
-import fs from "fs"
+import { promises } from "fs"
 import path from "path"
 import matter from "gray-matter"
 
 import { BlogPostPage } from "@/pages/blog"
 
+export const revalidate = 3600
+
 interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-const getMarkdownContent = (slug: string) => {
+const getMarkdownContent = async (slug: string) => {
   const filePath = path.join(process.cwd(), "content", `${slug}.md`)
 
-  if (!fs.existsSync(filePath)) {
+  try {
+    await promises.access(filePath)
+
+    const fileContents = await promises.readFile(filePath, "utf8")
+    const { data, content } = matter(fileContents)
+
+    return {
+      frontmatter: data as PostFrontmatter,
+      content,
+    }
+  } catch {
     return undefined
-  }
-
-  const fileContents = fs.readFileSync(filePath, "utf8")
-
-  const { data, content } = matter(fileContents)
-
-  return {
-    frontmatter: data as PostFrontmatter,
-    content,
   }
 }
 
@@ -45,7 +48,7 @@ export default async function Page({
   params,
 }: PageProps) {
   const { slug } = await params
-  const post = getMarkdownContent(slug)
+  const post = await getMarkdownContent(slug)
 
   if (!post) {
     notFound()
