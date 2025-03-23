@@ -2,7 +2,7 @@ import { Metadata } from "next"
 
 import { MomentsPage } from "@/pages/moments"
 
-export const revalidate = 60
+export const revalidate = 600
 
 interface PageProps {
   searchParams: Promise<{ page?: string }>
