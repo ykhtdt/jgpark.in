@@ -1,5 +1,6 @@
-import { BaseLayout } from "@/widgets/layout"
 import Link from "next/link"
+
+import { BaseLayout } from "@/widgets/layout"
 
 export const HomePage = () => {
   return (
@@ -26,6 +27,11 @@ export const HomePage = () => {
             <li>
               <Link href="/moments" className="text-sm font-medium hover:text-emerald-600 transition-colors">
                 순간
+              </Link>
+            </li>
+            <li>
+              <Link href="/books" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+                도서
               </Link>
             </li>
             <li>

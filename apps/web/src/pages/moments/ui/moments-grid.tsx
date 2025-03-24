@@ -40,7 +40,7 @@ export const MomentsGrid = ({
         return (
           <div
             key={file.id || file.name}
-            className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
+            className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
           >
             <div className="relative w-full h-full overflow-hidden rounded-xs">
               <div className="absolute inset-0 flex items-center justify-center">
@@ -53,7 +53,6 @@ export const MomentsGrid = ({
                     loading={priority ? undefined : "lazy"}
                     priority={priority}
                     className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
-                    style={{ objectFit: "cover" }}
                   />
                 </div>
               </div>
