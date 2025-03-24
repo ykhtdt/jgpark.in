@@ -12,7 +12,6 @@ interface MomentsGridProps {
 
 export const MomentsGrid = ({
   files,
-  currentPage,
   imagesPerPage,
 }: MomentsGridProps) => {
   const hasNoImages = !files || files.length === 0
@@ -34,28 +33,34 @@ export const MomentsGrid = ({
   return (
     <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {/* Image Cells */}
-      {files.map((file) => (
-        <div
-          key={file.id || file.name}
-          className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
-        >
-          <div className="relative w-full h-full overflow-hidden rounded-xs">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative size-full rounded-xs overflow-hidden group">
-                <Image
-                  src={file.url}
-                  alt={file.name}
-                  fill
-                  sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
-                  className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
-                  priority={currentPage === 1}
-                  style={{ objectFit: "cover" }}
-                />
+      {files.map((file, index) => {
+        const indexInPage = index % imagesPerPage
+        const priority = indexInPage <= 3
+
+        return (
+          <div
+            key={file.id || file.name}
+            className="aspect-square rounded-xs overflow-hidden bg-zinc-100 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
+          >
+            <div className="relative w-full h-full overflow-hidden rounded-xs">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative size-full rounded-xs overflow-hidden group">
+                  <Image
+                    src={file.url}
+                    alt={file.name}
+                    fill
+                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
+                    loading={priority ? undefined : "lazy"}
+                    priority={priority}
+                    className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
 
       {/* Empty Cells */}
       {emptyCells.map((_, index) => (
