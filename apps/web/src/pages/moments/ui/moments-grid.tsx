@@ -53,7 +53,6 @@ export const MomentsGrid = ({
                     loading={priority ? undefined : "lazy"}
                     priority={priority}
                     className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
-                    style={{ objectFit: "cover" }}
                   />
                 </div>
               </div>
