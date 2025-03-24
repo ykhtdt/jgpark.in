@@ -56,7 +56,9 @@ export const MomentsPage = async ({ pageIndex }: MomentsPageProps) => {
         <MomentsGrid files={files} currentPage={currentPage} imagesPerPage={IMAGES_PER_PAGE} />
 
         {/* Pagination */}
-        <MomentsPagination currentPage={currentPage} totalPages={totalPages} />
+        {totalPages > 0 && (
+          <MomentsPagination currentPage={currentPage} totalPages={totalPages} />
+        )}
       </div>
     </Fragment>
   )
