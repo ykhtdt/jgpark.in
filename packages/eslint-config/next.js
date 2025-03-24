@@ -74,6 +74,7 @@ export const nextJsConfig = [
         "double"
       ],
       "eol-last": ["error", "always"],
+      "@typescript-eslint/no-explicit-any": "off"
     },
   },
 ]
