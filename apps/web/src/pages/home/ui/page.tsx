@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { BaseLayout } from "@/widgets/layout"
+import { BaseLayout } from "@/app/layouts"
 
 export const HomePage = () => {
   return (

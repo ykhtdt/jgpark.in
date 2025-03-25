@@ -1,4 +1,4 @@
-import { BaseLayout } from "@/widgets/layout"
+import { BaseLayout } from "@/app/layouts"
 
 export default function Layout({
   children,
