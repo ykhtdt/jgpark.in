@@ -5,7 +5,7 @@ import path from "path"
 import matter from "gray-matter"
 
 export const getPostsByCategory = (category: string): Post[] => {
-  const contentDir = path.join(process.cwd(), "content", category)
+  const contentDir = path.join(process.cwd(), "content", "blog", category)
 
   if (!fs.existsSync(contentDir)) {
     return []
@@ -57,7 +57,7 @@ export const sortPostsByDate = (posts: Post[]): Post[] => {
 
 export const getAllPostsWithExample = (category: string): Post[] => {
   const categoryPosts = getPostsByCategory(category)
-  const examplePath = path.join(process.cwd(), "content", "example.md")
+  const examplePath = path.join(process.cwd(), "content", "blog", "example.md")
   const examplePost = getPostByPath(examplePath)
 
   const allPosts = [...categoryPosts]

@@ -10,7 +10,9 @@ export interface BlogCategory {
   gradient: CategoryGradient
 }
 
-export const BLOG_CATEGORIES: Record<string, BlogCategory> = {
+export type ValidCategory = "writing" | "archive" | "insight"
+
+export const BLOG_CATEGORIES: Record<ValidCategory, BlogCategory> = {
   writing: {
     name: "숲",
     path: "writing",

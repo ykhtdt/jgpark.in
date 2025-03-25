@@ -7,6 +7,7 @@ export type {
 export type {
   CategoryGradient,
   BlogCategory,
+  ValidCategory,
 } from "./model/categories"
 
 export {
