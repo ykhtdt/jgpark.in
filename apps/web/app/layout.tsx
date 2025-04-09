@@ -1,6 +1,3 @@
-// This component must be the top-most import in this file
-import { ReactScan } from "@/app/lib"
-
 import type { Metadata } from "next"
 
 import "@workspace/ui/globals.css"
@@ -25,7 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <ReactScan />
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
         <ThemeProvider>
           {children}
