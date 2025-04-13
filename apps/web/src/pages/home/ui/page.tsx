@@ -29,7 +29,7 @@ export const HomePage = () => {
                 순간
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/books" className="text-sm font-medium hover:text-emerald-600 transition-colors">
                 도서
               </Link>
@@ -38,7 +38,7 @@ export const HomePage = () => {
               <Link href="/resume" className="text-sm font-medium hover:text-emerald-600 transition-colors">
                 이력서
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
