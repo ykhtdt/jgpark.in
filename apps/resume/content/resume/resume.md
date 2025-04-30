@@ -1,6 +1,6 @@
 ---
 title: '박종광'
-description: 'Frontend Engineer'
+description: '프론트엔드 엔지니어'
 email: 'jgpark7281@gmail.com'
 github: 'https://github.com/ykhtdt'
 phone: '010-3502-7281'
