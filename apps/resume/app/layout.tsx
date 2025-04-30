@@ -11,8 +11,8 @@ import {
 } from "@/app/fonts"
 
 export const metadata: Metadata = {
-  title: "JGPARK",
-  description: "JGPARK - Frontend Engineer based in Seoul, South Korea.",
+  title: "박종광 | 프론트엔드 엔지니어",
+  description: "이력서",
 }
 
 export default function RootLayout({
