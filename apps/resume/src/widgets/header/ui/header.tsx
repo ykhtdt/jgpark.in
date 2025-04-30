@@ -33,8 +33,8 @@ export const Header = ({
         <nav>
           <ul className="flex items-center gap-x-5 text-sm [&>li]:flex">
             <li>
-              <Button asChild className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
-                <Link
+              <Button disabled className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+                {/* <Link
                   download
                   href="/resume.pdf"
                   target="_blank"
@@ -44,7 +44,11 @@ export const Header = ({
                   <span className="sr-only">
                     JGPARK Email
                   </span>
-                </Link>
+                </Link> */}
+                <DownloadIcon className="size-4" />
+                <span className="sr-only">
+                  JGPARK Email
+                </span>
               </Button>
             </li>
             <li>
