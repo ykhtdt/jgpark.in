@@ -169,3 +169,14 @@
 .mdx hr {
   @apply my-3;
 }
+
+.mdx .page-break {
+  break-after: page;
+}
+
+@media print {
+  .mdx .page-break {
+    height: 0;
+    visibility: hidden;
+  }
+}
