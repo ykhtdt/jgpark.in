@@ -7,9 +7,9 @@ import {
 import { useTheme } from "next-themes"
 
 import {
-  Moon,
-  Sun,
-} from "lucide-react"
+  MoonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons"
 
 import { Button } from "@workspace/ui/components/button"
 import {
@@ -26,8 +26,8 @@ export const ModeToggleDropdown = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="size-9 border border-border">
-          <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <SunIcon className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <MoonIcon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -53,7 +53,8 @@ export const ModeToggle = () => {
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark")
     setTheme(isDarkMode ? "dark" : "theme-light")
-  }, [setTheme])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const mediaQueryList = window.matchMedia("print")
@@ -98,10 +99,12 @@ export const ModeToggle = () => {
   }
 
   return (
-    <Button variant="outline" size="icon" onClick={handleClick} className="size-9 border border-border bg-muted">
-      <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
+    <Button variant="outline" size="icon" onClick={handleClick} className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+      <SunIcon className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <MoonIcon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">
+        Toggle theme
+      </span>
     </Button>
   )
 }
