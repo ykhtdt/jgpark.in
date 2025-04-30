@@ -12,11 +12,10 @@ interface FrontmatterProps {
 export const ResumeFrontmatter = ({
   frontmatter,
 }: FrontmatterProps) => {
-  console.log(frontmatter)
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-2xl font-bold">
           {frontmatter.title}
         </h1>
         <p className="font-normal dark:text-muted-foreground">
