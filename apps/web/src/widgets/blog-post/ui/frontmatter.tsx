@@ -14,7 +14,7 @@ export const Frontmatter = ({
       <time dateTime={frontmatter.publishedAt} className="block text-sm text-zinc-500">
         {format(parseISO(frontmatter.publishedAt), "LLLL d, yyyy")}
       </time>
-      <h1 className="text-xl font-bold">
+      <h1 className="text-2xl font-bold">
         {frontmatter.title}
       </h1>
       <p className="font-normal text-muted-foreground">
