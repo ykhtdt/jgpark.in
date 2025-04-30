@@ -21,7 +21,7 @@ export const HomePage = ({
   return (
     <Fragment>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
-      <Container className="border">
+      <Container className="border print:border-none">
         <ResumeFrontmatter frontmatter={frontmatter} />
         <div className="flex size-full">
           <div className="flex flex-col gap-6 sm:gap-10">
