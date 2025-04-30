@@ -12,7 +12,7 @@ export const HomePage = () => {
         <h2 className="text-base font-medium tracking-tight mt-3">
           프론트엔드 엔지니어
         </h2>
-        <div className="h-px w-16 bg-zinc-300 dark:bg-zinc-700 my-3 sm:my-4" />
+        {/* <div className="h-px w-16 bg-zinc-300 dark:bg-zinc-700 my-3 sm:my-4" /> */}
         <p className="text-sm mt-2 text-zinc-600 dark:text-zinc-400">
           미니멀리즘, 단순성, 향상된 UX를 위해.
         </p>
