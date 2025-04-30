@@ -1,5 +1,5 @@
 .mdx {
-  @apply w-full max-w-4xl text-zinc-600 dark:text-muted-foreground;
+  @apply w-full max-w-4xl text-zinc-800 dark:text-muted-foreground;
 }
 
 .mdx h1,
