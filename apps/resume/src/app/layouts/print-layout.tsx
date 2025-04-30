@@ -15,7 +15,7 @@ export const PrintLayout = ({
     <Fragment>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
       <Container className="border">
-        <div className="flex size-full border border-dashed border-border print:border-none">
+        <div className="flex size-full">
           {children}
         </div>
       </Container>
