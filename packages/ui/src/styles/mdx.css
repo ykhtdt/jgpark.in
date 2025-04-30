@@ -1,5 +1,5 @@
 .mdx {
-  @apply w-full max-w-4xl text-muted-foreground;
+  @apply w-full max-w-4xl text-zinc-600 dark:text-muted-foreground;
 }
 
 .mdx h1,
@@ -13,7 +13,7 @@
 }
 
 .mdx h2 {
-  @apply text-lg font-semibold mt-12 first:mt-0;
+  @apply text-lg font-semibold mt-10 first:mt-0;
 
   a {
     @apply flex items-center gap-1;
