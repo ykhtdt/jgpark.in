@@ -1,8 +1,10 @@
 .mdx {
-  @apply w-full max-w-3xl text-muted-foreground;
+  @apply w-full max-w-4xl text-zinc-600 dark:text-muted-foreground;
 }
 
-.mdx h1, .mdx h2, .mdx h3 {
+.mdx h1,
+.mdx h2,
+.mdx h3 {
   @apply text-zinc-950 dark:text-zinc-50;
 }
 
@@ -11,7 +13,7 @@
 }
 
 .mdx h2 {
-  @apply text-lg font-semibold mt-12 first:mt-0;
+  @apply text-lg font-semibold mt-10 first:mt-0;
 
   a {
     @apply flex items-center gap-1;
@@ -46,13 +48,14 @@
   @apply text-sm leading-6 [&:not(:first-child)]:mt-4;
 }
 
-.mdx h2, .mdx h3 {
+.mdx h2,
+.mdx h3 {
   a {
     @apply flex items-center font-medium hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
   }
 }
 
-.mdx a:not(:is(h2,h3)>a) {
+.mdx a:not(:is(h2, h3)>a) {
   @apply inline-flex items-center gap-0.5 text-zinc-700 dark:text-zinc-50 underline underline-offset-4 decoration-zinc-700;
 
   svg {
@@ -165,4 +168,15 @@
 
 .mdx hr {
   @apply my-3;
+}
+
+.mdx .page-break {
+  break-after: page;
+}
+
+@media print {
+  .mdx .page-break {
+    height: 0;
+    visibility: hidden;
+  }
 }

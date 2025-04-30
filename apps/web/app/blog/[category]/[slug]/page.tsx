@@ -12,8 +12,6 @@ import matter from "gray-matter"
 import { BLOG_CATEGORIES } from "@/entities/blog"
 import { BlogPostPage } from "@/pages/blog"
 
-export const revalidate = 3600
-
 const getMarkdownContent = async (category: string, slug: string) => {
   const filePath = slug === "example"
     ? path.join(process.cwd(), "content", "blog", "example.md")
