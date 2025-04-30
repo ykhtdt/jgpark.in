@@ -1,8 +1,15 @@
 "use client"
 
+import {
+  useEffect,
+  useState,
+} from "react"
 import { useTheme } from "next-themes"
 
-import { Moon, Sun } from "lucide-react"
+import {
+  Moon,
+  Sun,
+} from "lucide-react"
 
 import { Button } from "@workspace/ui/components/button"
 import {
@@ -41,6 +48,46 @@ export const ModeToggleDropdown = () => {
 
 export const ModeToggle = () => {
   const { theme, systemTheme, setTheme } = useTheme()
+  const [isPrintMode, setIsPrintMode] = useState<boolean>(false)
+
+  useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains("dark")
+    setTheme(isDarkMode ? "dark" : "theme-light")
+  }, [setTheme])
+
+  useEffect(() => {
+    const mediaQueryList = window.matchMedia("print")
+
+    const handlePrintChange = (event: MediaQueryListEvent) => {
+      setIsPrintMode(event.matches)
+
+      if (event.matches) {
+        document.documentElement.classList.remove("dark")
+      } else {
+        const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+      }
+    }
+
+    setIsPrintMode(mediaQueryList.matches)
+
+    if (mediaQueryList.matches) {
+      document.documentElement.classList.remove("dark")
+    }
+
+    mediaQueryList.addEventListener("change", handlePrintChange)
+
+    return () => {
+      mediaQueryList.removeEventListener("change", handlePrintChange)
+    }
+  }, [theme])
+
+  useEffect(() => {
+    if (!isPrintMode) {
+      const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+    }
+  }, [theme, isPrintMode])
 
   const handleClick = () => {
     if (systemTheme === "light" || theme === "light") {
