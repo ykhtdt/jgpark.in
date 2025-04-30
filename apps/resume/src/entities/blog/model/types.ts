@@ -9,4 +9,7 @@ export interface PostFrontmatter {
     name: string
     picture?: string
   }
+  github?: string
+  email?: string
+  phone?: string
 }
