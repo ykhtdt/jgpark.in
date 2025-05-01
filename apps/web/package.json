@@ -17,6 +17,7 @@
     "@shikijs/transformers": "^3.2.1",
     "@supabase/supabase-js": "^2.49.1",
     "@workspace/ui": "workspace:*",
+    "@workspace/core": "workspace:*",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",

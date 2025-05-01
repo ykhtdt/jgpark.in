@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import "@workspace/ui/globals.css"
+import "@workspace/core/globals.css"
 import "@/app/styles/globals.css"
 
 import { ThemeProvider } from "@/app/providers"
