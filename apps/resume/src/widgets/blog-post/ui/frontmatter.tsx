@@ -13,7 +13,7 @@ export const ResumeFrontmatter = ({
   frontmatter,
 }: FrontmatterProps) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-bold">
           {frontmatter.title}
