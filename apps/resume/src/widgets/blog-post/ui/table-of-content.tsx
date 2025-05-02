@@ -22,7 +22,7 @@ export function TableOfContent({
   level,
 }: Props) {
   const tableOfContent = generateToc(content, level)
-  const activeId = useToc()
+  const activeId = useToc(level)
 
   return (
     <aside className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
