@@ -1,14 +1,14 @@
 import type { Metadata } from "next"
 
 import "@workspace/core/globals.css"
-import "@/app/styles/globals.css"
+import "@/app/styles/print.css"
 
-import { ThemeProvider } from "@/app/providers"
 import {
   pretendard,
   hahmlet,
   source,
-} from "@/app/fonts"
+} from "@workspace/core/app/fonts"
+import { ThemeProvider } from "@workspace/core/app/providers"
 
 export const metadata: Metadata = {
   title: "박종광 | 프론트엔드 엔지니어",
