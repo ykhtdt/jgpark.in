@@ -13,6 +13,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
+    "next": "15.1.7",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -32,6 +33,6 @@
   },
   "exports": {
     "./globals.css": "./src/app/styles/globals.css",
-    "./app/*": "./src/app/*.tsx"
+    "./app/*": "./src/app/*.{ts,tsx}"
   }
 }

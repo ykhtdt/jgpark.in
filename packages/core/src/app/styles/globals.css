@@ -1,3 +1,10 @@
 @import "@workspace/ui/globals.css";
 
+@import "./reset.css";
 @import "./mdx.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
