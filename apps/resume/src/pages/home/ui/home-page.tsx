@@ -3,7 +3,10 @@ import type { PostFrontmatter } from "@/entities/blog"
 import { Fragment } from "react"
 
 import { Header } from "@/widgets/header"
-import { ResumeFrontmatter } from "@/widgets/blog-post"
+import {
+  ResumeFrontmatter,
+  TableOfContent,
+} from "@/widgets/blog-post"
 import { MDXComponents } from "@/features/markdown"
 import { Container } from "@/shared/ui"
 
@@ -22,6 +25,7 @@ export const HomePage = ({
     <Fragment>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
       <Container className="border print:border-none">
+        <TableOfContent content={content} level={{ topLevel: 2 }} className="print:hidden" />
         <ResumeFrontmatter frontmatter={frontmatter} />
         <div className="flex size-full">
           <div className="flex flex-col gap-6 sm:gap-10">
