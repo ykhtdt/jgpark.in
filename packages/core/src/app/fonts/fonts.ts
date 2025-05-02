@@ -1,8 +1,11 @@
 import localFont from "next/font/local"
-import { Hahmlet, Source_Code_Pro } from "next/font/google"
+import {
+  Hahmlet,
+  Source_Code_Pro,
+} from "next/font/google"
 
 export const pretendard = localFont({
-  src: "../../../public/fonts/PretendardVariable.woff2",
+  src: "./PretendardVariable.woff2",
   variable: "--font-sans",
   display: "swap",
   weight: "45 920",

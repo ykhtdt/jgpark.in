@@ -1,7 +1,7 @@
 import {
   type MDXRemoteProps,
   MDXRemote,
-} from "next-mdx-remote/rsc"
+} from "next-mdx-remote-client/rsc"
 import rehypePrettyCode, { Options } from "rehype-pretty-code"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeSlug from "rehype-slug"
