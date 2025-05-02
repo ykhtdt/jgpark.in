@@ -1,2 +1,6 @@
 export { useToc } from "./model/use-toc"
-export { generateToc } from "./model/generate-toc"
+
+export {
+  type TocLevel,
+  generateToc,
+} from "./model/generate-toc"

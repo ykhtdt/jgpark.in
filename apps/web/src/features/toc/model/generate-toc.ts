@@ -1,19 +1,27 @@
 type TableOfContent = TableOfContentItem & {
-  children: TableOfContentItem[];
-};
+  children: TableOfContentItem[]
+}
 
 type TableOfContentItem = {
-  slug: string;
-  text: string;
-};
+  slug: string
+  text: string
+}
 
-export const generateToc = (content: string): TableOfContent[] => {
+export type TocLevel = {
+  topLevel: number
+  subLevel?: number
+}
+
+export const generateToc = (
+  content: string,
+  levels: TocLevel = { topLevel: 2, subLevel: 3 }
+): TableOfContent[] => {
   return content.split("\n").reduce((acc: TableOfContent[], line) => {
     const match = line.match(/^(#{1,3})\s/)
 
     if (match && match[1]) {
-      const level = match[1].length.toString()
-      const slug = line.replace(/^#{1,3}\s*/, "").trim().replace(/\s/g, "-")
+      const level = match[1].length
+      const slug = line.replace(/^#{1,3}\s*/, "").trim().replace(/\s/g, "-").toLowerCase()
       const text = line.replace(/^#{1,3}\s*/, "").trim()
       const item: TableOfContent = {
         slug,
@@ -21,9 +29,9 @@ export const generateToc = (content: string): TableOfContent[] => {
         children: [],
       }
 
-      if (level === "2") {
+      if (level === levels.topLevel) {
         acc.push(item)
-      } else if (level === "3" && acc.length > 0) {
+      } else if (levels.subLevel && level === levels.subLevel && acc.length > 0) {
         acc[acc.length - 1]?.children.push(item)
       }
     }
@@ -31,6 +39,3 @@ export const generateToc = (content: string): TableOfContent[] => {
     return acc
   }, [])
 }
-
-
-
