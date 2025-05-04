@@ -24,7 +24,8 @@
     "next.config.mjs",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../packages/core/src"
   ],
   "exclude": [
     "node_modules"
