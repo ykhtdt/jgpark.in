@@ -216,7 +216,7 @@ AI Ground 프론트엔드 리드
 - 기술 스택: React, Java, Spring Boot 2.0, MySQL
 - 주요 내용
   - React Class Component의 라이프사이클을 이용하여 컴포넌트 상태 관리 및 데이터 흐름을 통일
-  - REST API 기반의 데이터 조회 및 수정 기능 개발
+  - RESTful API 기반의 데이터 조회 및 수정 기능 개발
   - MVC 구조 기반의 Controller, Service, Mapper 패턴을 이용하여 백엔드 개발
   - Eclipse 환경에서 JUnit 기반의 단위 테스트를 작성하고, Coverage를 통해 핵심 로직의 안정성을 향상
   - 신입 개발자로써 기획자와 팀과 협업 및 코드리뷰 등 프로젝트의 진행 방식을 배움
