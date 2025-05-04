@@ -1,8 +1,13 @@
 "use client"
 
-import Link from "next/link"
-
 import { cn } from "@workspace/ui/lib/utils"
+
+import {
+  TableOfContentsList,
+  TableOfContentsTitle,
+  TableOfContentsItem,
+  TableOfContentsLink,
+} from "@workspace/core/features/toc"
 
 import {
   type TocLevel,
@@ -16,46 +21,32 @@ interface Props {
   level: TocLevel
 }
 
-export function TableOfContent({
+export const TableOfContent = ({
   className,
   content,
   level,
-}: Props) {
+}: Props) => {
   const tableOfContent = generateToc(content, level)
   const activeId = useToc(level)
 
   return (
-    <aside className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
-      <ol className="w-full space-y-2 text-sm text-muted-foreground">
+    <div className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
+      <TableOfContentsList className="w-full text-sm text-muted-foreground">
+        <TableOfContentsTitle>
+          On This Page
+        </TableOfContentsTitle>
         {tableOfContent.map((item) => (
-          <li key={item.slug} className="space-y-2">
-            <Link
+          <TableOfContentsItem key={item.slug}>
+            <TableOfContentsLink
               href={`#${item.slug}`}
-              className={cn("transition-colors hover:text-foreground hover:font-medium", {
-                "text-foreground": item.slug === activeId
-              })}
+              isActive={item.slug === activeId}
+              className={cn("transition-colors hover:text-foreground hover:font-medium")}
             >
               {item.text}
-            </Link>
-            {item.children.length > 0 && (
-              <ol className="space-y-2 pl-4">
-                {item.children.map((child) => (
-                  <li key={child.slug}>
-                    <Link
-                      href={`#${child.slug}`}
-                      className={cn("transition-colors hover:text-foreground hover:font-medium", {
-                        "text-foreground": child.slug === activeId
-                      })}
-                    >
-                      {child.text}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            )}
-          </li>
+            </TableOfContentsLink>
+          </TableOfContentsItem>
         ))}
-      </ol>
-    </aside>
+      </TableOfContentsList>
+    </div>
   )
 }

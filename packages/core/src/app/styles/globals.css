@@ -1,5 +1,7 @@
 @import "@workspace/ui/globals.css";
 
+@source "../../../src/**/*.{ts,tsx}";
+
 @import "./reset.css";
 @import "./mdx.css";
 
