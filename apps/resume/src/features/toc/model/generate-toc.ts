@@ -3,30 +3,51 @@ import type {
   TableOfContentLevel,
 } from "./types"
 
-export const generateToc = (
-  content: string,
-  levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 }
-): TableOfContent[] => {
-  return content.split("\n").reduce((acc: TableOfContent[], line) => {
-    const match = line.match(/^(#{1,3})\s/)
+interface GenerateTocParams {
+  content: string
+  levels: TableOfContentLevel
+}
+
+const HEADING_PATTERN = /^(#{2,3})\s/
+
+const getHeadingInfo = (headingLine: string) => {
+  const headingText = headingLine.replace(/^#{2,3}\s*/, "").trim()
+
+  return {
+    slug: headingText.replace(/\s/g, "-").toLowerCase(),
+    text: headingText
+  }
+}
+
+export const generateToc = ({
+  content,
+  levels,
+}: GenerateTocParams): TableOfContent[] => {
+  const toc = content.split("\n").reduce((tocItems: TableOfContent[], line) => {
+    const match = line.match(HEADING_PATTERN)
 
     if (match && match[1]) {
       const level = match[1].length
-      const slug = line.replace(/^#{1,3}\s*/, "").trim().replace(/\s/g, "-").toLowerCase()
-      const text = line.replace(/^#{1,3}\s*/, "").trim()
+      const { slug, text } = getHeadingInfo(line)
+
       const item: TableOfContent = {
         slug,
         text,
         children: [],
       }
 
-      if (level === levels.topLevel) {
-        acc.push(item)
-      } else if (levels.subLevel && level === levels.subLevel && acc.length > 0) {
-        acc[acc.length - 1]?.children.push(item)
+      const isTopLevel = level === levels.topLevel
+      const isValidSubLevel = levels.subLevel && level === levels.subLevel && tocItems.length > 0
+
+      if (isTopLevel) {
+        tocItems.push(item)
+      } else if (isValidSubLevel) {
+        tocItems[tocItems.length - 1]?.children.push(item)
       }
     }
 
-    return acc
+    return tocItems
   }, [])
+
+  return toc
 }

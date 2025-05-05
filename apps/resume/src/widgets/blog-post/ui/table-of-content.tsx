@@ -23,7 +23,7 @@ export const TableOfContent = ({
   className,
   content,
 }: Props) => {
-  const tableOfContent = generateToc(content, { topLevel: 2 })
+  const tableOfContent = generateToc({ content, levels: { topLevel: 2 } })
   const activeId = useToc({ topLevel: 2 })
 
   return (
