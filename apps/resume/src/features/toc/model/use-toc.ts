@@ -7,17 +7,24 @@ import {
 
 import throttle from "lodash-es/throttle"
 
+import { useMediaQuery } from "@workspace/core/shared/lib"
+
 const minWidthForTOC = 1280
 
-export function useToc(levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 }) {
+export function useToc(
+  levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 },
+  options = { breakpoint: minWidthForTOC }
+) {
   const [activeId, setActiveId] = useState("")
 
-  useEffect(() => {
-    const handleScroll = throttle(() => {
-      if (window.innerWidth < minWidthForTOC) {
-        return
-      }
+  const isLargeScreen = useMediaQuery(`(min-width: ${options.breakpoint}px)`)
 
+  useEffect(() => {
+    if (!isLargeScreen) {
+      return undefined
+    }
+
+    const handleScroll = throttle(() => {
       const selectors = levels.subLevel
         ? [`.mdx h${levels.topLevel}`, `.mdx h${levels.subLevel}`]
         : [`.mdx h${levels.topLevel}`]
@@ -45,13 +52,13 @@ export function useToc(levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 
     }, 25)
 
     window.addEventListener("scroll", handleScroll)
-    window.addEventListener("resize", handleScroll)
+
+    handleScroll()
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleScroll)
     }
-  }, [levels])
+  }, [levels, isLargeScreen, options.breakpoint])
 
   return activeId
 }
