@@ -1,20 +1,11 @@
-type TableOfContent = TableOfContentItem & {
-  children: TableOfContentItem[]
-}
-
-type TableOfContentItem = {
-  slug: string
-  text: string
-}
-
-export type TocLevel = {
-  topLevel: number
-  subLevel?: number
-}
+import type {
+  TableOfContent,
+  TableOfContentLevel,
+} from "./types"
 
 export const generateToc = (
   content: string,
-  levels: TocLevel = { topLevel: 2, subLevel: 3 }
+  levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 }
 ): TableOfContent[] => {
   return content.split("\n").reduce((acc: TableOfContent[], line) => {
     const match = line.match(/^(#{1,3})\s/)

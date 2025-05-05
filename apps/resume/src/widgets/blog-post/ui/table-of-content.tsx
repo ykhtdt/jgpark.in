@@ -10,7 +10,7 @@ import {
 } from "@workspace/core/features/toc"
 
 import {
-  type TocLevel,
+  type TableOfContentLevel,
   useToc,
   generateToc,
 } from "@/features/toc"
@@ -18,7 +18,7 @@ import {
 interface Props {
   className?: string
   content: string
-  level: TocLevel
+  level: TableOfContentLevel
 }
 
 export const TableOfContent = ({

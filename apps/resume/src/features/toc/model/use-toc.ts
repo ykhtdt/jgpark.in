@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react"
+import type { TableOfContentLevel } from "./types"
+
+import {
+  useEffect,
+  useState,
+} from "react"
 
 import throttle from "lodash-es/throttle"
 
-import { TocLevel } from "./generate-toc"
-
 const minWidthForTOC = 1280
 
-export function useToc(levels: TocLevel = { topLevel: 2, subLevel: 3 }) {
+export function useToc(levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 }) {
   const [activeId, setActiveId] = useState("")
 
   useEffect(() => {
