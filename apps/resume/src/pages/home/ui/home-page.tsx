@@ -22,7 +22,7 @@ export const HomePage = ({
     <Fragment>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
       <Container className="border print:border-none">
-        <TableOfContent content={content} level={{ topLevel: 2 }} className="print:hidden pt-0 md:pt-0" />
+        <TableOfContent content={content} className="print:hidden pt-0 md:pt-0" />
         <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">

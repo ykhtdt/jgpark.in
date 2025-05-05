@@ -10,7 +10,6 @@ import {
 } from "@workspace/core/features/toc"
 
 import {
-  type TableOfContentLevel,
   useToc,
   generateToc,
 } from "@/features/toc"
@@ -18,16 +17,14 @@ import {
 interface Props {
   className?: string
   content: string
-  level: TableOfContentLevel
 }
 
 export const TableOfContent = ({
   className,
   content,
-  level,
 }: Props) => {
-  const tableOfContent = generateToc(content, level)
-  const activeId = useToc(level)
+  const tableOfContent = generateToc(content, { topLevel: 2 })
+  const activeId = useToc({ topLevel: 2 })
 
   return (
     <div className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
