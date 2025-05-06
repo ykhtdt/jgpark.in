@@ -1,11 +1,11 @@
-import type { TableOfContentLevel } from "../model/types"
-
 import {
   useEffect,
   useState,
 } from "react"
 
 import throttle from "lodash-es/throttle"
+
+import type { TableOfContentLevel } from "../model/types"
 
 interface UseTocParams {
   levels: TableOfContentLevel
