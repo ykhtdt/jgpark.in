@@ -1,7 +1,7 @@
 import type {
   TableOfContent,
   TableOfContentLevel,
-} from "./types"
+} from "../model/types"
 
 interface GenerateTocParams {
   content: string

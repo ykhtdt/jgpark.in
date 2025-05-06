@@ -1,4 +1,4 @@
-import type { TableOfContentLevel } from "./types"
+import type { TableOfContentLevel } from "../model/types"
 
 import {
   useEffect,
@@ -7,20 +7,19 @@ import {
 
 import throttle from "lodash-es/throttle"
 
-import { useMediaQuery } from "@workspace/core/shared/lib"
+interface UseTocParams {
+  levels: TableOfContentLevel
+  disable?: boolean
+}
 
-const minWidthForTOC = 1280
-
-export function useToc(
-  levels: TableOfContentLevel = { topLevel: 2, subLevel: 3 },
-  options = { breakpoint: minWidthForTOC }
-) {
+export const useToc = ({
+  levels,
+  disable = false,
+}: UseTocParams) => {
   const [activeId, setActiveId] = useState("")
 
-  const isLargeScreen = useMediaQuery(`(min-width: ${options.breakpoint}px)`)
-
   useEffect(() => {
-    if (!isLargeScreen) {
+    if (disable) {
       return undefined
     }
 
@@ -58,7 +57,7 @@ export function useToc(
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [levels, isLargeScreen, options.breakpoint])
+  }, [levels, disable])
 
   return activeId
 }

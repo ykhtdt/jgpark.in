@@ -2,7 +2,7 @@ export type TableOfContent = TableOfContentItem & {
   children: TableOfContentItem[]
 }
 
-interface TableOfContentItem {
+export interface TableOfContentItem {
   slug: string
   text: string
 }

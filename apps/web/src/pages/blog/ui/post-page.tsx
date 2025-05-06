@@ -2,11 +2,12 @@ import type { PostFrontmatter } from "@/entities/blog"
 
 import { Fragment } from "react"
 
+import { TableOfContents } from "@workspace/core/widgets/blog-post"
+
 import { MDXComponents } from "@/features/markdown"
 import {
   Frontmatter,
   Giscus,
-  TableOfContent,
 } from "@/widgets/blog-post"
 
 interface BlogPostPageProps {
@@ -21,7 +22,7 @@ export const BlogPostPage = ({
 
   return (
     <Fragment>
-      <TableOfContent content={content} />
+      <TableOfContents content={content} levels={{ topLevel: 2, subLevel: 3 }} />
       <div className="flex flex-col gap-6 sm:gap-10">
         <Frontmatter frontmatter={frontmatter} />
         <article>
