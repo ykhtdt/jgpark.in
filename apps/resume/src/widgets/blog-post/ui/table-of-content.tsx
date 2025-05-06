@@ -1,18 +1,17 @@
 "use client"
 
 import { cn } from "@workspace/ui/lib/utils"
+import { breakpoints } from "@workspace/ui/consts/breakpoints"
 
 import {
   TableOfContentsList,
   TableOfContentsTitle,
   TableOfContentsItem,
   TableOfContentsLink,
-} from "@workspace/core/features/toc"
-
-import {
   useToc,
   generateToc,
-} from "@/features/toc"
+} from "@workspace/core/features/toc"
+import { useMediaQuery } from "@workspace/core/shared/lib"
 
 interface Props {
   className?: string
@@ -24,7 +23,9 @@ export const TableOfContent = ({
   content,
 }: Props) => {
   const tableOfContent = generateToc({ content, levels: { topLevel: 2 } })
-  const activeId = useToc({ topLevel: 2 })
+
+  const isDisableToc = useMediaQuery(`(max-width: ${breakpoints.xl})`)
+  const activeId = useToc({ levels: { topLevel: 2 }, disable: isDisableToc })
 
   return (
     <div className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
