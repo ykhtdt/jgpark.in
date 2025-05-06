@@ -2,11 +2,11 @@ import type { PostFrontmatter } from "@/entities/blog"
 
 import { Fragment } from "react"
 
-import { TableOfContents } from "@workspace/core/widgets/blog-post"
+import { TableOfContents } from "@workspace/core/widgets/post"
 
-import { Container } from "@/shared/ui"
-import { MDXComponents } from "@/features/markdown"
 import { Header } from "@/widgets/header"
+import { MDXComponents } from "@/features/markdown"
+import { Container } from "@/shared/ui"
 
 import "@/app/styles/print.css"
 

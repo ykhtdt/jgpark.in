@@ -3,7 +3,6 @@
 import { cn } from "@workspace/ui/lib/utils"
 import { breakpoints } from "@workspace/ui/consts/breakpoints"
 
-import { useMediaQuery } from "@workspace/core/shared/lib"
 import {
   type TableOfContentLevel,
   TableOfContentsList,
@@ -13,6 +12,7 @@ import {
   useToc,
   generateToc,
 } from "@workspace/core/features/toc"
+import { useMediaQuery } from "@workspace/core/shared/lib"
 
 interface Props {
   className?: string
