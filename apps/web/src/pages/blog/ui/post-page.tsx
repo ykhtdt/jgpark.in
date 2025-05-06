@@ -2,7 +2,7 @@ import type { PostFrontmatter } from "@/entities/blog"
 
 import { Fragment } from "react"
 
-import { TableOfContents } from "@workspace/core/widgets/blog-post"
+import { TableOfContents } from "@workspace/core/widgets/post"
 
 import { MDXComponents } from "@/features/markdown"
 import {
