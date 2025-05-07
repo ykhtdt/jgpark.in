@@ -1,10 +1,15 @@
 import Link from "next/link"
 
-import { BaseLayout } from "@/app/layouts"
+import { BaseLayout } from "@/widgets/layout"
+import { Header } from "@/widgets/header"
+import { Footer } from "@/widgets/footer"
 
 export const HomePage = () => {
   return (
-    <BaseLayout>
+    <BaseLayout
+      header={<Header />}
+      footer={<Footer />}
+    >
       <div className="flex flex-col">
         <h1 className="text-3xl font-bold tracking-tight">
           박종광
