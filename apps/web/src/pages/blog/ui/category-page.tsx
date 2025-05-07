@@ -1,4 +1,4 @@
-import type { Post } from "@/entities/blog"
+import type { Post } from "@workspace/core/entities/post"
 
 import { Fragment } from "react"
 import Link from "next/link"

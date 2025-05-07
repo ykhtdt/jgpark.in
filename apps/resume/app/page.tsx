@@ -1,4 +1,4 @@
-import type { PostFrontmatter } from "@/entities/post"
+import type { PostFrontmatter } from "@workspace/core/entities/post"
 
 import { notFound } from "next/navigation"
 

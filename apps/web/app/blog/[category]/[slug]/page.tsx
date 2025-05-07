@@ -1,7 +1,6 @@
-import type {
-  PostFrontmatter,
-  ValidCategory,
-} from "@/entities/blog"
+import type { PostFrontmatter } from "@workspace/core/entities/post"
+
+import type { ValidCategory } from "@/entities/blog"
 
 import { notFound } from "next/navigation"
 

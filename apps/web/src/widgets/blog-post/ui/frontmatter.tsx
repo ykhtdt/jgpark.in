@@ -1,4 +1,4 @@
-import type { PostFrontmatter } from "@/entities/blog"
+import type { PostFrontmatter } from "@workspace/core/entities/post"
 
 import { format, parseISO } from "date-fns"
 

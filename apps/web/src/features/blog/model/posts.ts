@@ -1,4 +1,4 @@
-import type { Post } from "@/entities/blog"
+import type { Post } from "@workspace/core/entities/post"
 
 import fs from "fs"
 import path from "path"
