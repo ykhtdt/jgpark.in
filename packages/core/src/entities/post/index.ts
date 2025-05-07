@@ -1,4 +1,5 @@
 export type {
-  PostStatus,
+  Post,
   PostFrontmatter,
+  PostStatus,
 } from "./model/types"

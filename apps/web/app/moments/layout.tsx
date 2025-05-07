@@ -1,4 +1,6 @@
-import { BaseLayout } from "@/app/layouts"
+import { BaseLayout } from "@/widgets/layout"
+import { Header } from "@/widgets/header"
+import { Footer } from "@/widgets/footer"
 
 export default function Layout({
   children,
@@ -6,7 +8,10 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <BaseLayout>
+    <BaseLayout
+      header={<Header />}
+      footer={<Footer />}
+    >
       {children}
     </BaseLayout>
   )

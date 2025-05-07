@@ -1,11 +1,14 @@
 ---
+status: 'published'
 title: '박종광'
 description: '프론트엔드 엔지니어'
-email: 'jgpark7281@gmail.com'
-github: 'https://github.com/ykhtdt'
-phone: '010-3502-7281'
-draft: 'true'
 publishedAt: '2025-04-30T14:45:00.000Z'
+author:
+  name: 'jgpark'
+  picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
+  github: 'https://github.com/ykhtdt'
+  email: 'jgpark7281@gmail.com'
+  phone: '010-3502-7281'
 ---
 ## About Me
 React, Next.js, Typescript 기반의 6년차 프론트엔드 엔지니어입니다.<br />

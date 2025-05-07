@@ -1,24 +1,29 @@
-import type { PropsWithChildren } from "react"
+import type {
+  PropsWithChildren,
+  ReactNode,
+} from "react"
 
 import { cn } from "@workspace/ui/lib/utils"
 
 import { Container } from "@/shared/ui"
-import { Header } from "@/widgets/header"
-import { Footer } from "@/widgets/footer"
 
 interface BaseLayoutProps {
   className?: string
+  header: ReactNode
+  footer: ReactNode
 }
 
 export const BaseLayout = ({
   children,
   className,
+  header,
+  footer,
 }: PropsWithChildren<BaseLayoutProps>) => {
   return (
     <div className="flex flex-1 pt-10 sm:pt-20">
       <Container>
         {/* Header */}
-        <Header />
+        {header}
 
         {/* Main content */}
         <main className={cn("relative flex-1", className)}>
@@ -26,7 +31,7 @@ export const BaseLayout = ({
         </main>
 
         {/* Footer */}
-        <Footer />
+        {footer}
       </Container>
     </div>
   )

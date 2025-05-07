@@ -1,10 +1,4 @@
 export type {
-  Post,
-  PostStatus,
-  PostFrontmatter,
-} from "./model/types"
-
-export type {
   CategoryGradient,
   BlogCategory,
   ValidCategory,
