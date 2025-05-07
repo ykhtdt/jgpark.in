@@ -1,4 +1,4 @@
-import type { PostFrontmatter } from "@/entities/blog"
+import type { PostFrontmatter } from "@/entities/post"
 
 import { Fragment } from "react"
 
@@ -38,16 +38,16 @@ export const HomePage = ({
               <span className="font-bold">
                 Email
               </span>
-              <a href={`mailto:${frontmatter.email}`} className="dark:text-muted-foreground">
-                {frontmatter.email}
+              <a href={`mailto:${frontmatter.author.email}`} className="dark:text-muted-foreground">
+                {frontmatter.author.email}
               </a>
             </li>
             <li className="flex items-center gap-2">
               <span className="font-bold">
                 Github
               </span>
-              <a href={frontmatter.github} target="_blank" rel="noopener noreferrer" className="dark:text-muted-foreground">
-                {frontmatter.github}
+              <a href={frontmatter.author.github} target="_blank" rel="noopener noreferrer" className="dark:text-muted-foreground">
+                {frontmatter.author.github}
               </a>
             </li>
           </ul>

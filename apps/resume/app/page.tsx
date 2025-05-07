@@ -1,4 +1,4 @@
-import type { PostFrontmatter } from "@/entities/blog"
+import type { PostFrontmatter } from "@/entities/post"
 
 import { notFound } from "next/navigation"
 
