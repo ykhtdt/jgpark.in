@@ -1,13 +1,12 @@
 ---
-title: '글 예시'
 status: 'published'
+title: '글 예시'
+description: '이 글은 예시입니다.'
+publishedAt: '1994-02-25T03:00:33.000Z'
 author:
   name: 'jgpark'
   picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
 slug: 'example'
-description: '이 글은 예시입니다.'
-coverImage: ''
-publishedAt: '1994-02-25T03:00:33.000Z'
 ---
 
 **마크다운**(Markdown)은 경량 마크업 언어로, 텍스트 기반 문서를 간단한 문법으로 작성하여 HTML로 변환할 수 있도록 합니다. 마크다운의 주요 목적은 문서의 가독성을 높이고, 문서를 작성하는 데 필요한 복잡한 태그를 줄여 누구나 쉽게 사용할 수 있도록 하는 것입니다.
