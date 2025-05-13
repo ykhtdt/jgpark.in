@@ -1,32 +1,12 @@
-import type { PostFrontmatter } from "@workspace/core/entities/post"
-
 import { notFound } from "next/navigation"
 
-import { promises } from "fs"
-import path from "path"
-import matter from "gray-matter"
+import { type PostFrontmatter } from "@workspace/core/entities/post"
 
 import { HomePage } from "@/pages/home"
-
-const getMarkdownContent = async () => {
-  const filePath = path.join(process.cwd(), "content", "resume", "resume.md")
-
-  const fileContents = await promises.readFile(filePath, "utf8").catch(() => undefined)
-
-  if (!fileContents) {
-    return undefined
-  }
-
-  const { data, content } = matter(fileContents)
-
-  return {
-    frontmatter: data as PostFrontmatter,
-    content,
-  }
-}
+import { getMarkdownContent } from "@/shared/lib"
 
 const Page = async () => {
-  const post = await getMarkdownContent()
+  const post = await getMarkdownContent<PostFrontmatter>(["content", "resume"], "resume")
 
   if (!post) {
     notFound()
