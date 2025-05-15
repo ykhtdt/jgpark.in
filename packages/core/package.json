@@ -14,6 +14,7 @@
     "@workspace/ui": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.475.0",
     "next": "15.3.1",
