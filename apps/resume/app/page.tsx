@@ -1,12 +1,15 @@
 import { notFound } from "next/navigation"
 
 import { type PostFrontmatter } from "@workspace/core/entities/post"
+import { getMarkdownContent } from "@workspace/core/shared/lib"
 
 import { HomePage } from "@/pages/home"
-import { getMarkdownContent } from "@/shared/lib"
 
 const Page = async () => {
-  const post = await getMarkdownContent<PostFrontmatter>(["content", "resume"], "resume")
+  const post = await getMarkdownContent<PostFrontmatter>(
+    ["content", "resume"],
+    "resume",
+  )
 
   if (!post) {
     notFound()
