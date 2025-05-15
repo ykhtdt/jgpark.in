@@ -47,9 +47,6 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -223,6 +220,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21

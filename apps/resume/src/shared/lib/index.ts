@@ -1,1 +1,0 @@
-export { getMarkdownContent } from "./markdown"

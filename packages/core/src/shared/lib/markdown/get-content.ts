@@ -1,9 +1,12 @@
+"use server"
+
 import { promises } from "fs"
 import path from "path"
+
 import matter from "gray-matter"
 
 export const getMarkdownContent = async <T = {
-  [key: string]: any
+  [key: string]: string
 }>(paths: string[], filename: string) => {
   const filePath = path.join(process.cwd(), ...paths, `${filename}.md`)
 
@@ -20,3 +23,4 @@ export const getMarkdownContent = async <T = {
     content,
   }
 }
+
