@@ -2,16 +2,16 @@ import Link from "next/link"
 
 import { LinkIcon } from "lucide-react"
 
-interface Props extends React.HTMLProps<HTMLHeadingElement> {
-  as: "2" | "3";
+interface MDXHeadingProps extends React.ComponentProps<"h2" | "h3"> {
+  as: "2" | "3"
 }
 
-export function MDXHeading({
+export const MDXHeading = ({
   id,
   as,
   children,
   ...rest
-}: Props) {
+}: MDXHeadingProps) => {
   const Component = `h${as}` as "h2" | "h3"
 
   return (

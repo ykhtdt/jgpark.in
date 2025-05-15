@@ -1,21 +1,28 @@
 "use client"
 
-import { useRef, useState } from "react"
+import {
+  useRef,
+  useState,
+} from "react"
 
-import { ClipboardIcon, CheckIcon } from "@radix-ui/react-icons"
+import {
+  CheckIcon,
+  ClipboardIcon,
+} from "@radix-ui/react-icons"
 
-import { delay } from "@/shared/lib/utils"
 import { Button } from "@workspace/ui/components/button"
 
-interface Props extends React.HTMLAttributes<HTMLPreElement> {
-  "data-language"?: string;
-  "data-theme"?: string;
+import { delay } from "@workspace/core/shared/lib"
+
+interface MDXCodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
+  "data-language"?: string
+  "data-theme"?: string
 }
 
-export function MDXCodeBlock({
+export const MDXCodeBlock = ({
   children,
   ...rest
-}: Props) {
+}: MDXCodeBlockProps) => {
   const ref = useRef<HTMLSpanElement>(null)
   const [isCopied, setIsCopied] = useState(false)
 
@@ -51,11 +58,7 @@ export function MDXCodeBlock({
         onClick={handleCopyToClipboard}
         className="hover:bg-zinc-200 hover:text-zinc-900 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
       >
-        {isCopied ? (
-          <CheckIcon className="size-3.5" />
-        ) : (
-          <ClipboardIcon className="size-3.5" />
-        )}
+        {isCopied ? <CheckIcon className="size-3.5" /> : <ClipboardIcon className="size-3.5" />}
       </Button>
     </pre>
   )

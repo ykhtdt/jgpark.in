@@ -2,10 +2,10 @@ import { Fragment } from "react"
 
 import { TableOfContents } from "@workspace/core/widgets/post"
 import { type PostFrontmatter } from "@workspace/core/entities/post"
+import { MDXComponents } from "@workspace/core/shared/ui"
 
 import "@/app/styles/print.css"
 import { Header } from "@/widgets/header"
-import { MDXComponents } from "@/features/markdown"
 import { Container } from "@/shared/ui"
 
 interface HomePageProps {

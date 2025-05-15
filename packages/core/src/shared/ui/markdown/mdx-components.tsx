@@ -11,17 +11,17 @@ import {
   transformerNotationHighlight,
 } from "@shikijs/transformers"
 
-import { MDXCodeBlock } from "./mdx-code-block"
-import { MDXHeading } from "./mdx-heading"
-import { MDXLink } from "./mdx-link"
-import { MDXImage } from "./mdx-image"
+import { MDXCodeBlock } from "./code-block"
+import { MDXHeading } from "./heading"
+import { MDXLink } from "./link"
+import { MDXImage } from "./image"
 
-interface Props {
-  source: MDXRemoteProps["source"];
+interface MDXComponentsProps {
+  source: MDXRemoteProps["source"]
 }
 
 interface RehypePrettyCodeOptions extends Omit<Options, "theme"> {
-  theme: Options["theme"] | "none";
+  theme: Options["theme"] | "none"
 }
 
 const components: MDXRemoteProps["components"] = {
@@ -52,11 +52,13 @@ const rehypePrettyCodeOptions: RehypePrettyCodeOptions = {
   transformers: [transformerNotationDiff(), transformerNotationHighlight()],
 }
 
-export function MDXComponents(props: Props) {
+export const MDXComponents = ({
+  source
+}: MDXComponentsProps) => {
   return (
     <div className="mdx">
       <MDXRemote
-        source={props.source}
+        source={source}
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm],
