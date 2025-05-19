@@ -44,7 +44,7 @@ export default function Layout({
 
             return (
               <BreadcrumbItem key={path} className="capitalize">
-                <BreadcrumbPage className="capitalize">
+                <BreadcrumbPage>
                   {path}
                 </BreadcrumbPage>
               </BreadcrumbItem>

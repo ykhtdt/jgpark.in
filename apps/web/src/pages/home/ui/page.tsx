@@ -17,7 +17,7 @@ export const HomePage = () => {
           <h2 className="text-base font-medium mt-4">
             프론트엔드 엔지니어
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2">
+          <p className="text-sm text-muted-foreground mt-2">
             넓은 우주를 꿈꾸며, 작은 별에 나만의 의미를 담는 사람
           </p>
         </div>
