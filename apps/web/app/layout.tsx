@@ -22,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href="/texture/noise.webp" type="image/webp" />
+      </head>
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
         <ThemeProvider>
           {children}
