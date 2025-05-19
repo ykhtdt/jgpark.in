@@ -1,9 +1,7 @@
-import { NotFound } from "@workspace/core/widgets/feedback"
+import { PageNotFound } from "@workspace/core/widgets/feedback"
 
-const NotFoundPage = () => {
+export default function NotFound() {
   return (
-    <NotFound />
+    <PageNotFound />
   )
 }
-
-export default NotFoundPage

@@ -1,4 +1,4 @@
-export const NotFound = () => {
+export const PageNotFound = () => {
   return (
     <div className="flex items-center justify-center h-dvh px-2">
       <section className="flex flex-col gap-4">

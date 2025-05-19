@@ -1,1 +1,2 @@
-export { NotFound } from "./ui/not-found"
+export { PageNotFound } from "./ui/not-found"
+export { PageLoading } from "./ui/loading"
