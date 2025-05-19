@@ -5,12 +5,12 @@ import type {
 
 import { cn } from "@workspace/ui/lib/utils"
 
-import { Container } from "@/shared/ui"
+import { Container } from "./container"
 
 interface BaseLayoutProps {
   className?: string
-  header: ReactNode
-  footer: ReactNode
+  header?: ReactNode
+  footer?: ReactNode
 }
 
 export const BaseLayout = ({
