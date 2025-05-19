@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 
 import "@workspace/core/globals.css"
-import "@/app/styles/globals.css"
-
 import {
   pretendard,
   hahmlet,
@@ -10,9 +8,11 @@ import {
 } from "@workspace/core/app/fonts"
 import { ThemeProvider } from "@workspace/core/app/providers"
 
+import "@/app/styles/globals.css"
+
 export const metadata: Metadata = {
   title: "JGPARK",
-  description: "JGPARK - Frontend Engineer based in Seoul, South Korea.",
+  description: "JGPARK - Frontend Engineer",
 }
 
 export default function RootLayout({
