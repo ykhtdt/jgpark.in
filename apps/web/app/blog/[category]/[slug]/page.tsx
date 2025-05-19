@@ -1,6 +1,3 @@
-import type { PostFrontmatter } from "@workspace/core/entities/post"
-
-import type { ValidCategory } from "@/entities/blog"
 
 import { notFound } from "next/navigation"
 
@@ -8,8 +5,13 @@ import { promises } from "fs"
 import path from "path"
 import matter from "gray-matter"
 
-import { BLOG_CATEGORIES } from "@/entities/blog"
+import type { PostFrontmatter } from "@workspace/core/entities/post"
+
 import { BlogPostPage } from "@/pages/blog"
+import {
+  type ValidCategory,
+  BLOG_CATEGORIES
+} from "@/entities/blog"
 
 const getMarkdownContent = async (category: string, slug: string) => {
   const filePath = slug === "example"
@@ -60,9 +62,9 @@ interface PageProps {
   }>
 }
 
-const Page = async ({
+export default async function Page({
   params,
-}: PageProps) => {
+}: PageProps) {
   const { category, slug } = await params
 
   const post = await getMarkdownContent(category, slug)
@@ -77,5 +79,3 @@ const Page = async ({
     <BlogPostPage frontmatter={frontmatter} content={content} />
   )
 }
-
-export default Page
