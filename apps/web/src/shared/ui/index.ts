@@ -7,3 +7,5 @@ export {
   ModeToggle,
   ModeToggleDropdown,
 } from "./mode-toggle"
+
+export { PreloadNoise } from "./preload/preload-noise"

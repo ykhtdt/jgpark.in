@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from "@workspace/core/app/providers"
 
 import "@/app/styles/globals.css"
+import { PreloadNoise } from "@/shared/ui"
 
 export const metadata: Metadata = {
   title: "JGPARK",
@@ -22,10 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preload" as="image" href="/texture/noise.webp" type="image/webp" />
-      </head>
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
+        <PreloadNoise />
         <ThemeProvider>
           {children}
         </ThemeProvider>
