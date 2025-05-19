@@ -1,10 +1,7 @@
 import { BlogHomePage } from "@/pages/blog"
 
-const Page = async () => {
+export default async function Page() {
   return (
     <BlogHomePage />
   )
 }
-
-export default Page
-

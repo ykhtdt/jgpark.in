@@ -8,10 +8,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <BaseLayout
-      header={<Header />}
-      footer={<Footer />}
-    >
+    <BaseLayout header={<Header />} footer={<Footer />}>
       {children}
     </BaseLayout>
   )
