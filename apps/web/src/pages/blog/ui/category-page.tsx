@@ -13,10 +13,6 @@ interface BlogCategoryPageProps {
     name: string
     path: string
     description: string
-    gradient: {
-      from: string
-      to: string
-    }
   }
 }
 
