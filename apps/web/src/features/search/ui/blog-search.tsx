@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 
 import {
@@ -11,27 +10,19 @@ import {
   CommandEmpty,
 } from "@workspace/ui/components/command"
 
-import { SearchablePost } from "@/entities/blog"
+import { useSearch } from "../model/use-search"
 
-interface SearchProps {
-  posts: SearchablePost[]
-}
-
-export const BlogSearch = ({
-  posts,
-}: SearchProps) => {
-  const [search, setSearch] = useState("")
-
-  const filteredPosts = posts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()))
+export const BlogSearch = () => {
+  const { value, onValueChange, result } = useSearch()
 
   return (
     <Command shouldFilter={false}>
-      <CommandInput placeholder="Search" value={search} onValueChange={setSearch} />
+      <CommandInput placeholder="Search" value={value} onValueChange={onValueChange} />
       <CommandList>
-        {filteredPosts.length === 0 ? (
+        {result.length === 0 ? (
           <CommandEmpty>결과가 없습니다.</CommandEmpty>
         ) : (
-          filteredPosts.map((post) => (
+          result.map((post) => (
             <CommandItem key={post.slug}>
               <Link href={`/blog/${post.category}/${post.slug}`} className="w-full">
                 {post.title}
