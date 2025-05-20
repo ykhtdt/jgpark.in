@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from "@workspace/core/app/providers"
 
 import "@/app/styles/globals.css"
+import { ReactQueryProvider } from "@/app/providers"
 import { PreloadNoise } from "@/shared/ui"
 
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
         <PreloadNoise />
         <ThemeProvider>
-          {children}
+          <ReactQueryProvider>
+            {children}
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>
