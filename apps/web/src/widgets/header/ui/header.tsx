@@ -18,6 +18,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogTrigger,
+  DialogDescription,
 } from "@workspace/ui/components/dialog"
 
 import { BlogSearch } from "@/features/search"
@@ -44,13 +45,18 @@ export const Header = () => {
           <ul className="flex items-center gap-x-5 text-sm [&>li]:flex">
             <li>
               <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-                <DialogTitle className="sr-only">Blog Search</DialogTitle>
                 <DialogTrigger asChild>
                   <Button className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
                     <MagnifyingGlassIcon className="size-5" />
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md p-2">
+                  <DialogTitle className="sr-only">
+                    Blog Search
+                  </DialogTitle>
+                  <DialogDescription className="sr-only">
+                    Search for blog posts
+                  </DialogDescription>
                   <BlogSearch />
                 </DialogContent>
               </Dialog>
