@@ -1,18 +1,18 @@
-import { ResultAsync } from "neverthrow"
-
 import { type SearchablePost } from "@/entities/blog"
 
 export const fetchSearchablePosts = async (): Promise<SearchablePost[]> => {
-  const response = await ResultAsync.fromPromise(
-    fetch("/api/search"),
-    () => new Error("Blog post search api error"),
-  )
+  try {
+    const response = await fetch("/api/search")
 
-  if (response.isErr()) {
-    throw response.error
+    if (!response.ok) {
+      throw new Error(`HTTP Error status: ${response.status}`)
+    }
+
+    const data = await response.json() as SearchablePost[]
+
+    return data
+
+  } catch (error) {
+    throw Error("Blog post search api error: " + String(error))
   }
-
-  const data = await response.value.json()
-
-  return data
 }
