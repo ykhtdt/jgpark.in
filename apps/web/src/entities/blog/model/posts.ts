@@ -1,8 +1,13 @@
-import type { Post } from "@workspace/core/entities/post"
-
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
+
+import type { Post } from "@workspace/core/entities/post"
+
+import {
+  ValidCategory,
+  BLOG_CATEGORIES,
+} from "./categories"
 
 export const getPostsByCategory = (category: string): Post[] => {
   const contentDir = path.join(process.cwd(), "content", "blog", category)
@@ -67,4 +72,34 @@ export const getAllPostsWithExample = (category: string): Post[] => {
   }
 
   return sortPostsByDate(allPosts)
+}
+
+export const getAllPosts = (): Array<Post & { category: string }> => {
+  const categories = Object.keys(BLOG_CATEGORIES) as ValidCategory[]
+
+  const allPosts = categories.flatMap((category) => {
+    const posts = getPostsByCategory(category)
+    return posts.map(post => ({
+      ...post,
+      category
+    }))
+  })
+
+  return sortPostsByDate(allPosts as any) as Array<Post & { category: string }>
+}
+
+export interface SearchablePost {
+  slug: string
+  title: string
+  category: string
+}
+
+export const getSearchablePosts = (): SearchablePost[] => {
+  const posts = getAllPosts()
+
+  return posts.map(post => ({
+    slug: post.slug,
+    title: post.frontmatter.title,
+    category: post.category
+  }))
 }

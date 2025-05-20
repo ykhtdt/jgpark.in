@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation"
 
 import { BlogCategoryPage } from "@/pages/blog"
-import { getAllPostsWithExample } from "@/features/blog"
 import {
   type ValidCategory,
   BLOG_CATEGORIES,
+  getAllPostsWithExample,
 } from "@/entities/blog"
 
 export const generateStaticParams = async () => {
