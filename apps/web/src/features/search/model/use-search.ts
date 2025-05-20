@@ -4,8 +4,8 @@ import { useCallback, useState } from "react"
 
 import { useQuery } from "@tanstack/react-query"
 
-import { fetchSearchablePosts } from "../api/search"
 import { type SearchablePost } from "@/entities/blog"
+import { fetchSearchablePosts } from "../api/search"
 
 export const useSearch = () => {
   const [searchValue, setSearchValue] = useState("")
