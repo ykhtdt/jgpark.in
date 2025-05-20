@@ -21,16 +21,9 @@ import {
 } from "@workspace/ui/components/dialog"
 
 import { BlogSearch } from "@/features/search"
-import type { SearchablePost } from "@/entities/blog"
 import { Logo } from "@/shared/ui"
 
-interface HeaderProps {
-  posts?: SearchablePost[]
-}
-
-export const Header = ({
-  posts,
-}: HeaderProps) => {
+export const Header = () => {
   const { theme, setTheme } = useTheme()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
@@ -49,21 +42,19 @@ export const Header = ({
         </Link>
         <nav>
           <ul className="flex items-center gap-x-5 text-sm [&>li]:flex">
-            {posts && (
-              <li>
-                <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-                  <DialogTitle className="sr-only">Blog Search</DialogTitle>
-                  <DialogTrigger asChild>
-                    <Button className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
-                      <MagnifyingGlassIcon className="size-5" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md p-2">
-                    <BlogSearch posts={posts} />
-                  </DialogContent>
-                </Dialog>
-              </li>
-            )}
+            <li>
+              <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+                <DialogTitle className="sr-only">Blog Search</DialogTitle>
+                <DialogTrigger asChild>
+                  <Button className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+                    <MagnifyingGlassIcon className="size-5" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md p-2">
+                  <BlogSearch />
+                </DialogContent>
+              </Dialog>
+            </li>
             <li>
               <Button asChild className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
                 <Link

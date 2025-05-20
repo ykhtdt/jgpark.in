@@ -1,5 +1,5 @@
 import { BaseLayout } from "@/widgets/layout"
-import { HeaderWithSearch } from "@/widgets/header"
+import { Header } from "@/widgets/header"
 import { Footer } from "@/widgets/footer"
 
 export default function Layout({
@@ -8,7 +8,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <BaseLayout header={<HeaderWithSearch />} footer={<Footer />}>
+    <BaseLayout header={<Header />} footer={<Footer />}>
       {children}
     </BaseLayout>
   )
