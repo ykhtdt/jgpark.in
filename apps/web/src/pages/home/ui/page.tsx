@@ -1,12 +1,12 @@
 import Link from "next/link"
 
 import { BaseLayout } from "@/widgets/layout"
-import { Header } from "@/widgets/header"
+import { HeaderWithSearch } from "@/widgets/header"
 import { Footer } from "@/widgets/footer"
 
 export const HomePage = () => {
   return (
-    <BaseLayout header={<Header />} footer={<Footer />}>
+    <BaseLayout header={<HeaderWithSearch />} footer={<Footer />}>
 
       {/* Intro */}
       <div className="flex flex-col gap-y-12">

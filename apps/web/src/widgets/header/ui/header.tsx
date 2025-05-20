@@ -1,7 +1,7 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
-
 import { useTheme } from "next-themes"
 
 import {
@@ -9,14 +9,30 @@ import {
   SunIcon,
   GitHubLogoIcon,
   EnvelopeOpenIcon,
+  MagnifyingGlassIcon,
 } from "@radix-ui/react-icons"
 
 import { Button } from "@workspace/ui/components/button"
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogTrigger,
+} from "@workspace/ui/components/dialog"
 
+import { BlogSearch } from "@/features/search"
+import type { SearchablePost } from "@/entities/blog"
 import { Logo } from "@/shared/ui"
 
-export const Header = () => {
+interface HeaderProps {
+  posts?: SearchablePost[]
+}
+
+export const Header = ({
+  posts,
+}: HeaderProps) => {
   const { theme, setTheme } = useTheme()
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   const handleThemeChange = () => {
     setTheme(theme === "light" ? "dark" : "light")
@@ -33,8 +49,23 @@ export const Header = () => {
         </Link>
         <nav>
           <ul className="flex items-center gap-x-5 text-sm [&>li]:flex">
+            {posts && (
+              <li>
+                <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+                  <DialogTitle className="sr-only">Blog Search</DialogTitle>
+                  <DialogTrigger asChild>
+                    <Button className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+                      <MagnifyingGlassIcon className="size-5" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md p-2">
+                    <BlogSearch posts={posts} />
+                  </DialogContent>
+                </Dialog>
+              </li>
+            )}
             <li>
-              <Button asChild className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+              <Button asChild className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
                 <Link
                   href="mailto:jgpark7281@gmail.com"
                   target="_blank"
@@ -48,7 +79,7 @@ export const Header = () => {
               </Button>
             </li>
             <li>
-              <Button asChild className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
+              <Button asChild className="cursor-pointer size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
                 <Link href="https://github.com/ykhtdt" target="_blank" rel="noopener noreferrer">
                   <GitHubLogoIcon className="size-4" />
                   <span className="sr-only">
@@ -69,6 +100,6 @@ export const Header = () => {
           </ul>
         </nav>
       </div>
-    </header>
+    </header >
   )
 }
