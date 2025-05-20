@@ -1,8 +1,12 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import {
+  useCallback,
+  useMemo,
+  useState,
+} from "react"
 
-import { useQuery } from "@tanstack/react-query"
+import { useSuspenseQuery } from "@tanstack/react-query"
 
 import { type SearchablePost } from "@/entities/blog"
 import { fetchSearchablePosts } from "../api/search"
@@ -10,20 +14,17 @@ import { fetchSearchablePosts } from "../api/search"
 export const useSearch = () => {
   const [searchValue, setSearchValue] = useState("")
 
-  const {
-    data,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ["searchablePosts"],
     queryFn: fetchSearchablePosts,
   })
 
-  const filteredPosts = isSuccess
-    ? data.filter((post: SearchablePost) => post.title.toLowerCase().includes(searchValue.toLowerCase()))
-    : []
+  const filteredPosts = useMemo(() => {
+    const normalized = searchValue.toLowerCase().trim()
+    return data.filter((post: SearchablePost) =>
+      post.title.toLowerCase().includes(normalized)
+    )
+  }, [searchValue, data])
 
   const handleChange = useCallback((value: string) => {
     setSearchValue(value)
@@ -31,8 +32,6 @@ export const useSearch = () => {
 
   return {
     value: searchValue,
-    loading: isLoading,
-    error: isError ? error : null,
     onValueChange: handleChange,
     result: filteredPosts,
   }
