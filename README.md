@@ -1,10 +1,39 @@
-# Template Frontend
+# Personal Website
 
-Frontend template
+개인 웹사이트 및 이력서를 위한 모노레포 프로젝트입니다.
 
-## Features
+**(현재 이전 중입니다)**
 
-- **Framework**: Built with [Next.js](https://nextjs.org/), a powerful React framework for production-ready applications.
-- **Monorepo**: Managed using [Turborepo](https://turbo.build/repo), facilitating efficient build processes and scalable development.
-- **Architecture**: Implements [Feature-Sliced Design (FSD)](https://feature-sliced.design/), promoting maintainable and scalable code structure.
-- **UI Library**: Integrates [Shadcn/ui](https://ui.shadcn.com/), providing flexible and reusable UI components.
+## 프로젝트 구조
+
+```
+jgpark.in/
+├── apps/
+│   ├── resume/             # 이력서
+│   └── web/                # 개인 웹사이트
+├── packages/
+│   ├── core/               # 핵심 유틸리티 및 컴포넌트 등
+│   ├── eslint-config/
+│   ├── typescript-config/
+│   └── ui/
+```
+
+## 기술 스택
+
+- React 19, Next.js 15
+- TailwindCSS 4, Typescript
+- PNPM, Turborepo
+
+## 앱 정보
+
+### 이력서
+
+- 링크: [이력서](https://resume.jgpark.in)
+- 포트: 3000
+- 설명: 개인 이력서 웹사이트
+
+### 웹사이트
+
+- 링크: [웹사이트](https://jgpark.in)
+- 포트: 3001
+- 설명: 개인 블로그 웹사이트
