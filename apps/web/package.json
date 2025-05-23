@@ -14,6 +14,7 @@
     "fsd:watch": "npx steiger ./src --watch"
   },
   "dependencies": {
+    "@next/third-parties": "^15.1.8",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@shikijs/transformers": "^3.2.1",
