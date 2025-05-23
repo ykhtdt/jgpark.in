@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 import "@workspace/core/globals.css"
 import {
@@ -24,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics gaId="G-YZ7LKPECEN" />
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
         <PreloadNoise />
         <ThemeProvider>
