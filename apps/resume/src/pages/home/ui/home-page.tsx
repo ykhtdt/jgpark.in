@@ -1,5 +1,3 @@
-import { Fragment } from "react"
-
 import { TableOfContents } from "@workspace/core/widgets/post"
 import { type PostFrontmatter } from "@workspace/core/entities/post"
 import { MDXComponents } from "@workspace/core/shared/ui"
@@ -18,9 +16,9 @@ export const HomePage = ({
   content,
 }: HomePageProps) => {
   return (
-    <Fragment>
+    <>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
-      <Container className="border print:border-none">
+      <Container className="print:border-none">
         <TableOfContents content={content} levels={{ topLevel: 2 }} className="print:hidden pt-0 md:pt-0" />
         <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
           <div className="flex flex-col gap-2">
@@ -58,6 +56,6 @@ export const HomePage = ({
           </div>
         </div>
       </Container>
-    </Fragment>
+    </>
   )
 }
