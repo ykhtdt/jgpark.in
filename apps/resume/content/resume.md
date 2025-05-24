@@ -2,7 +2,7 @@
 status: 'published'
 title: '박종광'
 description: '프론트엔드 엔지니어'
-publishedAt: '2025-04-30T14:45:00.000Z'
+publishedAt: '2025-05-23T15:15:00.000Z'
 author:
   name: 'jgpark'
   picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
