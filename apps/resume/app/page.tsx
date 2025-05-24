@@ -1,25 +1,16 @@
-import { notFound } from "next/navigation"
-
 import { type PostFrontmatter } from "@workspace/core/entities/post"
 import { getMarkdownContent } from "@workspace/core/shared/lib"
 
 import { HomePage } from "@/pages/home"
 
-const Page = async () => {
-  const post = await getMarkdownContent<PostFrontmatter>(
-    ["content", "resume"],
-    "resume",
-  )
+export default async function Page() {
+  const resume = await getMarkdownContent<PostFrontmatter>(["content"], "resume")
 
-  if (!post) {
-    notFound()
+  if (!resume) {
+    throw new Error("이력서 파일을 찾을 수 없습니다. 파일 경로를 확인해주세요.")
   }
 
-  const { content, frontmatter } = post
+  const { content, frontmatter } = resume
 
-  return (
-    <HomePage frontmatter={frontmatter} content={content} />
-  )
+  return <HomePage frontmatter={frontmatter} content={content} />
 }
-
-export default Page
