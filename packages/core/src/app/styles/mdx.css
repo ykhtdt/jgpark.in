@@ -45,7 +45,7 @@
 }
 
 .mdx p {
-  @apply text-sm leading-6 [&:not(:first-child)]:mt-4;
+  @apply text-sm leading-7 [&:not(:first-child)]:mt-4;
 }
 
 .mdx h2,
