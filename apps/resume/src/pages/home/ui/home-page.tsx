@@ -25,7 +25,7 @@ export const HomePage = ({
             <h1 className="text-2xl font-bold">
               {frontmatter.title}
             </h1>
-            <p className="font-normal dark:text-muted-foreground">
+            <p className="font-normal">
               {frontmatter.description}
             </p>
           </div>
