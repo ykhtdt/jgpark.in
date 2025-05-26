@@ -1,5 +1,5 @@
 .mdx {
-  @apply w-full max-w-4xl text-zinc-900 dark:text-zinc-300/80;
+  @apply w-full max-w-4xl text-zinc-900 dark:text-zinc-300/80 text-sm sm:text-base;
 }
 
 .mdx h1,
@@ -45,7 +45,7 @@
 }
 
 .mdx p {
-  @apply text-sm leading-7 [&:not(:first-child)]:mt-4;
+  @apply leading-7 [&:not(:first-child)]:mt-4;
 }
 
 .mdx h2,
@@ -80,11 +80,11 @@
 }
 
 .mdx ol {
-  @apply list-decimal my-3 pl-6 text-sm;
+  @apply list-decimal my-3 pl-6;
 }
 
 .mdx ul {
-  @apply list-disc pl-6 text-sm;
+  @apply list-disc pl-6;
 }
 
 .mdx ul:not(li>ul) {
@@ -100,7 +100,7 @@
 }
 
 .mdx pre {
-  @apply relative flex flex-row gap-2 w-full my-4 py-3 px-2 rounded-lg text-sm bg-muted;
+  @apply relative flex flex-row gap-2 w-full my-4 py-3 px-2 rounded-lg bg-muted;
 }
 
 .mdx pre>span {
@@ -113,7 +113,6 @@
 }
 
 .mdx code {
-  @apply text-xs sm:text-sm;
   --default-mono-font-family: var(--font-mono);
 }
 
