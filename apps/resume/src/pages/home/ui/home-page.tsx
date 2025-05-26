@@ -34,9 +34,9 @@ export const HomePage = ({
               <span className="font-bold">
                 Phone
               </span>
-              <a href={frontmatter.author.phone} className="dark:text-muted-foreground">
+              <span className="dark:text-muted-foreground">
                 {frontmatter.author.phone}
-              </a>
+              </span>
             </li>
             <li className="space-x-2">
               <span className="font-bold">
