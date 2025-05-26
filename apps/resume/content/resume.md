@@ -218,7 +218,7 @@ author:
 
 - JavaScript에서 TypeScript로의 점진적인 마이그레이션을 수행했습니다. 기존 PropTypes를 TypeScript 인터페이스로 마이그레이션하여 타입 안정성을 확보하고, API 응답 데이터에 대한 타입 정의로 데이터 핸들링 오류를 감소시켰습니다. 또한 타입스크립트 namespace를 이용하여 관련 타입을 계층 구조화하고 같은 타입 이름을 다른 컨텍스트에서 사용할 수 있게 했습니다.
 
-`React 16` `Next.js 8~9` `TypeScript` `SCSS` `Redux` `Redux-Saga` `Chart.js` `Yarn` `Docker`
+`React 16` `Next.js 8~9` `TypeScript` `SCSS` `Redux` `Redux-Saga` `Chart.js` `Yarn` `Jest` `Enzyme`
 
 ### 일본 군마 현청 경찰 업무 시스템 개발
 
