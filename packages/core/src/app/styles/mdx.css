@@ -92,7 +92,7 @@
 }
 
 .mdx li {
-  @apply my-2 leading-6;
+  @apply my-2 leading-7;
 }
 
 .mdx li>ul {
