@@ -184,6 +184,10 @@
   break-after: page;
 }
 
+.mdx p code:not(pre code) {
+  @apply text-foreground/90 inline-block text-xs bg-zinc-200/40 dark:bg-zinc-800 px-2 py-1 mx-0.5 my-1 rounded-sm;
+}
+
 @media print {
   .mdx .page-break {
     height: 0;
