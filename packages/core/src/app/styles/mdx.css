@@ -3,7 +3,10 @@
 }
 
 .mdx h1,
-.mdx h2,
+.mdx h2 {
+  @apply text-emerald-600;
+}
+
 .mdx h3 {
   @apply text-zinc-950 dark:text-zinc-50;
 }
