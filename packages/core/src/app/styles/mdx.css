@@ -62,12 +62,13 @@
   }
 }
 
-.mdx strong {
-  @apply text-zinc-950 dark:text-zinc-50;
+.mdx p em>strong,
+.mdx li em>strong {
+  @apply text-emerald-600 font-bold dark:font-medium not-italic;
 }
 
-.mdx .highlight {
-  @apply text-emerald-600 font-bold dark:font-medium;
+.mdx p>strong {
+  @apply text-zinc-950 dark:text-zinc-50 font-bold;
 }
 
 .mdx blockquote {
