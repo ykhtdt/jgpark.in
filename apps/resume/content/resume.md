@@ -215,9 +215,9 @@ author:
 
 - 인터랙티브한 채팅 UI를 통해 설문을 받는 페이지를 개발했으며, Chart.js를 이용하여 Gauge, Doughnut, Bar, Line, Pie 등 다양한 차트를 구현하여 설문 결과에 따른 부족/과다 성분, 추천 성분 등 여러 데이터를 시각화했습니다.
 
-- JavaScript에서 TypeScript로의 마이그레이션을 수행했습니다. 기존 PropTypes를 TypeScript 인터페이스로 마이그레이션하여 타입 안정성을 확보하고, API 응답 데이터에 대한 타입 정의로 데이터 핸들링 오류를 감소시켰습니다. 또한 타입스크립트 namespace를 이용하여 관련 타입을 계층 구조화하고 같은 타입 이름을 다른 컨텍스트에서 사용할 수 있게 했습니다.
+- JavaScript에서 TypeScript로의 점진적인 마이그레이션을 수행했습니다. 기존 PropTypes를 TypeScript 인터페이스로 마이그레이션하여 타입 안정성을 확보하고, API 응답 데이터에 대한 타입 정의로 데이터 핸들링 오류를 감소시켰습니다. 또한 타입스크립트 namespace를 이용하여 관련 타입을 계층 구조화하고 같은 타입 이름을 다른 컨텍스트에서 사용할 수 있게 했습니다.
 
-`React 16` `Next.js 8~9` `TypeScript` `SCSS` `Redux` `Redux-Saga` `Chart.js` `Yarn`
+`React 16` `Next.js 8~9` `TypeScript` `SCSS` `Redux` `Redux-Saga` `Chart.js` `Yarn` `Docker`
 
 ### 일본 군마 현청 경찰 업무 시스템 개발
 
