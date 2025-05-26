@@ -22,7 +22,7 @@ export const HomePage = ({
         <TableOfContents content={content} levels={{ topLevel: 2 }} className="print:hidden pt-0 md:pt-0" />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold text-emerald-600">
               {frontmatter.title}
             </h1>
             <p className="font-normal">
