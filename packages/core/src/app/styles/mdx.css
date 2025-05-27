@@ -194,4 +194,11 @@
     height: 0;
     visibility: hidden;
   }
+
+  .mdx h1,
+  .mdx h2,
+  .mdx p em>strong,
+  .mdx li em>strong {
+    @apply text-foreground;
+  }
 }
