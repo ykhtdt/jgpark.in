@@ -65,6 +65,8 @@ author:
 
 - 일본 군마 현청에서 경찰이 PDA 통해 업무를 수행할 수 있도록 지원하는 시스템(GP-WAN)의 교통계 방치주차위반 관리 시스템의 프론트엔드 및 백엔드 개발
 
+<div className="page-break" />
+
 ## Work Skills
 
 ### 프론트엔드팀 매니지먼트
@@ -136,6 +138,8 @@ author:
 
   또한 Storybook을 도입해 ***문서화와 시각적 테스트 환경을 구성하여 협업 효율과 유지보수성을 개선***했습니다.
 
+<div className="page-break" />
+
 ## Work Projects
 
 ### 실험적 비즈니스 모델 검증을 위한 MVP 프론트엔드 개발
@@ -164,6 +168,8 @@ author:
 - 사용자 경험 향상을 위해 AI 응답의 타이핑 애니메이션, 스크롤 자동 조정 등 인터랙티브한 채팅 UI를 디자인하고 개발했습니다.
 
 `React 18` `Next.js 14` `TypeScript` `Tailwind CSS` `shadcn/ui` `Tanstack/React Query` `Jotai` `Streams API` `Sentry` `Yarn` `Jest` `React Testing Library`
+
+<div className="page-break" />
 
 ### AI•WebGL 기반 모션캡쳐 애니메이션 편집 툴 개발
 
@@ -215,6 +221,8 @@ author:
 
 `React 16` `Next.js 8~12` `TypeScript` `SCSS` `Redux` `Redux-Saga` `Redux Toolkit` `Framer Motion` `Chart.js` `Turborepo` `Storybook` `Vercel` `Yarn`
 
+<div className="page-break" />
+
 ### 섭취 영양제/복용 중인 약 등을 기반으로 한 건강기능식품 추천 서비스 개발
 
 **왓비타**
@@ -243,6 +251,8 @@ author:
 
 `React` `Java` `Spring Boot 2.0` `MySQL`
 
+<div className="page-break" />
+
 ## Skills
 
 ### JavaScript/React
@@ -266,6 +276,8 @@ author:
 ### 성능 최적화
 - 프론트엔드 성능 개선 경험이 많습니다. ***렌더링 속도 향상, 불필요한 리렌더링 최소화, 번들 사이즈 경량화, 네트워크 비용 최적화***의 경험이 있습니다.
 
+<div className="page-break" />
+
 ### 도구 및 테스트
 - 팬텀 디펜던시 문제, Yarn Berry 대비 초기 설정 간편함을 고려하여 패키지 매니저로 ***PNPM***을 선호합니다.
 - ***Jest와 React Testing Library***를 이용해 테스트 코드를 작성한 경험이 있고, Babel과 Typescript 초기 환경 설정의 복잡성을 이유로 최근에는 Vitest 학습 및 도입을 진행하고 있습니다.
@@ -278,6 +290,8 @@ author:
 - ***애자일과 스쿼드 조직***에서 PO, 디자이너, 백엔드, 마케터 등 다양한 직군과 원활하게 협업한 경험이 있습니다.
 - 최신 기술이 항상 최선은 아니라고 생각하며, 기술이 나오게 된 배경과 적절한 적용 상황에 깊은 관심을 가지고 학습합니다.
 - 조직 및 팀의 업무 프로세스와 개발 문화를 ***적극적으로 개선***하고, 팀원들의 성장과 협업 효율성을 높이기 위해 협력한 경험이 많습니다.
+
+<div className="page-break" />
 
 ## Educations
 
