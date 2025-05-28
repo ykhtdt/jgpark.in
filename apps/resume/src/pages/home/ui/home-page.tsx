@@ -1,5 +1,3 @@
-import { Fragment } from "react"
-
 import { TableOfContents } from "@workspace/core/widgets/post"
 import { type PostFrontmatter } from "@workspace/core/entities/post"
 import { MDXComponents } from "@workspace/core/shared/ui"
@@ -18,21 +16,29 @@ export const HomePage = ({
   content,
 }: HomePageProps) => {
   return (
-    <Fragment>
+    <>
       <Header className="print:hidden mx-auto w-full max-w-4xl px-4" />
-      <Container className="border print:border-none">
+      <Container className="py-8 print:border-none">
         <TableOfContents content={content} levels={{ topLevel: 2 }} className="print:hidden pt-0 md:pt-0" />
-        <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0">
+        <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold text-emerald-600 print:text-foreground">
               {frontmatter.title}
             </h1>
-            <p className="font-normal dark:text-muted-foreground">
+            <p className="font-normal">
               {frontmatter.description}
             </p>
           </div>
-          <ul className="flex flex-col space-y-px text-sm">
-            <li className="flex items-center gap-2">
+          <ul className="space-y-2 text-sm list-disc pl-4 marker:text-muted-foreground">
+            <li className="space-x-2">
+              <span className="font-bold">
+                Phone
+              </span>
+              <span className="dark:text-muted-foreground">
+                {frontmatter.author.phone}
+              </span>
+            </li>
+            <li className="space-x-2">
               <span className="font-bold">
                 Email
               </span>
@@ -40,7 +46,7 @@ export const HomePage = ({
                 {frontmatter.author.email}
               </a>
             </li>
-            <li className="flex items-center gap-2">
+            <li className="space-x-2">
               <span className="font-bold">
                 Github
               </span>
@@ -58,6 +64,6 @@ export const HomePage = ({
           </div>
         </div>
       </Container>
-    </Fragment>
+    </>
   )
 }

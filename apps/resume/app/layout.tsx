@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${pretendard.variable} ${hahmlet.variable} ${source.variable} font-sans antialiased`}>
-        <ThemeProvider>
+        <ThemeProvider defaultTheme="dark">
           {children}
         </ThemeProvider>
       </body>

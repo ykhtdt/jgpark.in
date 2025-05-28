@@ -18,11 +18,11 @@ import { useSearch } from "../model/use-search"
 
 export const BlogSearch = () => {
   return (
-    <Suspense fallback={<LoadingState />}>
-      <ErrorBoundary fallbackRender={({ error }) => <ErrorState error={error} />}>
+    <ErrorBoundary fallbackRender={({ error }) => <ErrorState error={error} />}>
+      <Suspense fallback={<LoadingState />}>
         <BlogSearchCommand />
-      </ErrorBoundary>
-    </Suspense>
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 

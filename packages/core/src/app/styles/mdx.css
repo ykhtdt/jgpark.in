@@ -1,19 +1,22 @@
 .mdx {
-  @apply w-full max-w-4xl text-zinc-800 dark:text-muted-foreground;
+  @apply w-full max-w-4xl text-zinc-900 dark:text-zinc-300/80 text-sm sm:text-base;
 }
 
 .mdx h1,
-.mdx h2,
+.mdx h2 {
+  @apply text-emerald-600;
+}
+
 .mdx h3 {
   @apply text-zinc-950 dark:text-zinc-50;
 }
 
 .mdx h1 {
-  @apply text-xl font-bold mt-2;
+  @apply text-2xl font-bold mt-2;
 }
 
 .mdx h2 {
-  @apply text-lg font-semibold mt-10 first:mt-0;
+  @apply text-xl font-bold mt-10 first:mt-0;
 
   a {
     @apply flex items-center gap-1;
@@ -29,7 +32,7 @@
 }
 
 .mdx h3 {
-  @apply text-base font-semibold mt-8;
+  @apply text-base font-bold mt-8;
 
   a {
     @apply flex items-center gap-1;
@@ -42,16 +45,12 @@
   &:hover a svg {
     @apply visible;
   }
-}
-
-.mdx p {
-  @apply text-sm leading-6 [&:not(:first-child)]:mt-4;
 }
 
 .mdx h2,
 .mdx h3 {
   a {
-    @apply flex items-center font-medium hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
+    @apply flex items-center font-bold hover:underline hover:underline-offset-4 hover:decoration-zinc-400 dark:hover:decoration-zinc-600;
   }
 }
 
@@ -63,8 +62,13 @@
   }
 }
 
-.mdx strong {
-  @apply text-zinc-950 dark:text-zinc-50;
+.mdx p em>strong,
+.mdx li em>strong {
+  @apply text-emerald-600 font-bold dark:font-medium not-italic;
+}
+
+.mdx p>strong {
+  @apply text-zinc-950 dark:text-zinc-50 font-bold;
 }
 
 .mdx blockquote {
@@ -80,11 +84,11 @@
 }
 
 .mdx ol {
-  @apply list-decimal my-3 pl-6 text-sm;
+  @apply list-decimal my-3 pl-6;
 }
 
 .mdx ul {
-  @apply list-disc pl-6 text-sm;
+  @apply list-disc pl-6;
 }
 
 .mdx ul:not(li>ul) {
@@ -92,15 +96,23 @@
 }
 
 .mdx li {
-  @apply my-2 leading-6;
+  @apply my-4 leading-7;
 }
 
 .mdx li>ul {
   list-style-type: circle;
 }
 
+.mdx p:not(li p) {
+  @apply leading-7 [&:not(:first-child)]:mt-4;
+}
+
+.mdx li p {
+  @apply leading-7 mt-2;
+}
+
 .mdx pre {
-  @apply relative flex flex-row gap-2 w-full my-4 py-3 px-2 rounded-lg text-sm bg-muted;
+  @apply relative flex flex-row gap-2 w-full my-4 py-3 px-2 rounded-lg bg-muted;
 }
 
 .mdx pre>span {
@@ -113,7 +125,6 @@
 }
 
 .mdx code {
-  @apply text-xs sm:text-sm;
   --default-mono-font-family: var(--font-mono);
 }
 
@@ -174,9 +185,20 @@
   break-after: page;
 }
 
+.mdx p code:not(pre code) {
+  @apply text-foreground/90 inline-block text-xs bg-zinc-200/80 dark:bg-zinc-800 px-2 py-1 mx-0.5 my-1 rounded-sm;
+}
+
 @media print {
   .mdx .page-break {
     height: 0;
     visibility: hidden;
+  }
+
+  .mdx h1,
+  .mdx h2,
+  .mdx p em>strong,
+  .mdx li em>strong {
+    @apply text-foreground;
   }
 }
