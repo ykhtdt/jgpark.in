@@ -259,7 +259,7 @@ author:
 - React, Next.js 기반의 프론트엔드 개발 경험을 해왔습니다.
 - 함수 컴포넌트와 React Hooks에 익숙하고, 과거에는 클래스 컴포넌트를 사용했던 경험이 있습니다.
 - 상태 관리는 기존에 Redux를 사용했으나, 최근에는 ***코드량을 줄이기 위해*** Zustand를 사용하고 있습니다.
--  ***데이터 캐싱, Revalidate를 위해*** Tanstack/React Query를 도입하여 사용하고 있습니다.
+- ***데이터 캐싱, Revalidate를 위해*** Tanstack/React Query를 도입하여 사용하고 있습니다.
 - ***React Suspense와 Error Boundary***를 활용해 사용자 경험과 안정성을 높이고 있습니다.
 - Next.js를 이용해 ***SSR, SSG, ISR, CSR 등 다양한 렌더링 방식***을 프로젝트 요구에 맞게 적용했습니다.
 - 선언형 코드를 작성해 가독성이 뛰어나고, ***응집도는 높으며 결합도는 낮은 모듈화***를 항상 고민합니다.

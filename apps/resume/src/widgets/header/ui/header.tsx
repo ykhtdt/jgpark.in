@@ -26,7 +26,7 @@ export const Header = ({
               <Button asChild className="size-5 border-none bg-inherit p-0 text-foreground shadow-none hover:bg-inherit focus:outline-none focus-visible:ring-0">
                 <a
                   download
-                  href="/resume.pdf"
+                  href="/jgpark-resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
