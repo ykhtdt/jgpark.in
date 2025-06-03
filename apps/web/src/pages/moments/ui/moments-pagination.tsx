@@ -82,6 +82,7 @@ export const MomentsPagination = ({
   currentPage,
 }: MomentsPaginationProps) => {
   const router = useRouter()
+
   const maxDisplayedPages = 5
   const startPage = Math.max(1, currentPage - Math.floor(maxDisplayedPages / 2))
   const endPage = Math.min(totalPages, startPage + maxDisplayedPages - 1)
@@ -96,7 +97,7 @@ export const MomentsPagination = ({
   const isNextDisabled = currentPage >= totalPages
 
   const handleNavigation = (page: number) => {
-    router.push(`/moments?page=${page}`)
+    router.push(`/moments?page=${page}`, { scroll: false })
   }
 
   const handlePrevClick = (e: React.MouseEvent) => {

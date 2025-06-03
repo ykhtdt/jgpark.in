@@ -1,9 +1,17 @@
-import { Suspense } from "react"
+"use client"
+
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+
+import { useQuery } from "@tanstack/react-query"
 
 import { fetchImagesWithPagination } from "@/entities/storage"
-import { Spinner } from "@/shared/ui"
 import { MomentsGrid } from "./moments-grid"
 import { MomentsPagination } from "./moments-pagination"
+import {
+  PaginationSkeleton,
+  MomentsGridSkeleton,
+} from "./moments-skeleton-grid"
 
 // 한 페이지에 표시할 이미지 개수
 const IMAGES_PER_PAGE = 12
@@ -16,27 +24,38 @@ interface MomentsPageProps {
   pageIndex?: string
 }
 
-export const MomentsPage = async ({
+export const MomentsPage = ({
   pageIndex,
 }: MomentsPageProps) => {
+  const router = useRouter()
   const currentPage = pageIndex ? parseInt(pageIndex) : 1
 
-  /**
-   * offset이란,
-   * 페이지네이션에서 데이터 목록의 시작 위치를 나타낸다.
-   * 예를 들어, 페이지 번호가 1일 때, offset은 0이다.
-   * 페이지 번호가 2일 때, offset은 12이다.
-   * 페이지 번호가 3일 때, offset은 24이다.
-   */
-  const offset = (currentPage - 1) * IMAGES_PER_PAGE
+  useEffect(() => {
+    const isInvalidUrlParameter = pageIndex && (isNaN(parseInt(pageIndex)) || parseInt(pageIndex) < 1)
 
-  const { files, totalCount } = await fetchImagesWithPagination(BUCKET_NAME, FOLDER_PATH, {
-    limit: IMAGES_PER_PAGE,
-    offset: offset,
-    sortBy: "created_at",
-    sortOrder: "desc"
+    if (isInvalidUrlParameter) {
+      router.replace("/moments")
+    }
+  }, [pageIndex, router])
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["moments", currentPage],
+    queryFn: async () => {
+      const offset = (currentPage - 1) * IMAGES_PER_PAGE
+      return await fetchImagesWithPagination(BUCKET_NAME, FOLDER_PATH, {
+        limit: IMAGES_PER_PAGE,
+        offset: offset,
+        sortBy: "created_at",
+        sortOrder: "desc"
+      })
+    },
+    staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
   })
 
+  const files = data?.files || null
+  const totalCount = data?.totalCount || 0
   const totalPages = Math.ceil(totalCount / IMAGES_PER_PAGE)
 
   return (
@@ -54,19 +73,25 @@ export const MomentsPage = async ({
       </div>
 
       <div className="flex flex-col min-h-[calc(100vh-240px)]">
-        {/* Images */}
-        <Suspense fallback={
+        {isLoading ? (
+          <MomentsGridSkeleton imagesPerPage={IMAGES_PER_PAGE} />
+        ) : isError ? (
           <div className="flex flex-1 items-center justify-center">
-            <Spinner />
+            <p className="text-muted-foreground">
+              이미지를 불러오는 중 오류가 발생했습니다.
+            </p>
           </div>
-        }>
+        ) : (
           <MomentsGrid files={files} currentPage={currentPage} imagesPerPage={IMAGES_PER_PAGE} />
-        </Suspense>
-
-        {/* Pagination */}
-        {totalPages > 0 && (
-          <MomentsPagination currentPage={currentPage} totalPages={totalPages} />
         )}
+
+        <div className="pagination-container">
+          {isLoading ? (
+            <PaginationSkeleton />
+          ) : totalPages > 0 ? (
+            <MomentsPagination currentPage={currentPage} totalPages={totalPages} />
+          ) : null}
+        </div>
       </div>
     </>
   )
