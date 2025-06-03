@@ -1,6 +1,7 @@
-import { Fragment } from "react"
+import { Suspense } from "react"
 
 import { fetchImagesWithPagination } from "@/entities/storage"
+import { Spinner } from "@/shared/ui"
 import { MomentsGrid } from "./moments-grid"
 import { MomentsPagination } from "./moments-pagination"
 
@@ -15,7 +16,9 @@ interface MomentsPageProps {
   pageIndex?: string
 }
 
-export const MomentsPage = async ({ pageIndex }: MomentsPageProps) => {
+export const MomentsPage = async ({
+  pageIndex,
+}: MomentsPageProps) => {
   const currentPage = pageIndex ? parseInt(pageIndex) : 1
 
   /**
@@ -37,8 +40,7 @@ export const MomentsPage = async ({ pageIndex }: MomentsPageProps) => {
   const totalPages = Math.ceil(totalCount / IMAGES_PER_PAGE)
 
   return (
-    <Fragment>
-
+    <>
       {/* Intro */}
       <div className="mb-8">
         <h1 className="text-base font-bold tracking-wider mb-2">
@@ -53,13 +55,19 @@ export const MomentsPage = async ({ pageIndex }: MomentsPageProps) => {
 
       <div className="flex flex-col min-h-[calc(100vh-240px)]">
         {/* Images */}
-        <MomentsGrid files={files} currentPage={currentPage} imagesPerPage={IMAGES_PER_PAGE} />
+        <Suspense fallback={
+          <div className="flex flex-1 items-center justify-center">
+            <Spinner />
+          </div>
+        }>
+          <MomentsGrid files={files} currentPage={currentPage} imagesPerPage={IMAGES_PER_PAGE} />
+        </Suspense>
 
         {/* Pagination */}
         {totalPages > 0 && (
           <MomentsPagination currentPage={currentPage} totalPages={totalPages} />
         )}
       </div>
-    </Fragment>
+    </>
   )
 }

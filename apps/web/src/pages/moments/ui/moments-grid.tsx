@@ -1,8 +1,12 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 
 import { ImageIcon } from "lucide-react"
 
 import { StorageFile } from "@/entities/storage"
+import { Spinner } from "@/shared/ui"
 
 interface MomentsGridProps {
   files: (StorageFile & { url: string })[] | null
@@ -38,26 +42,11 @@ export const MomentsGrid = ({
         const priority = indexInPage <= 3
 
         return (
-          <div
+          <ImageCell
             key={file.id || file.name}
-            className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
-          >
-            <div className="relative w-full h-full overflow-hidden rounded-xs">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative size-full rounded-xs overflow-hidden group">
-                  <Image
-                    src={file.url}
-                    alt={file.name}
-                    fill
-                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
-                    loading={priority ? undefined : "lazy"}
-                    priority={priority}
-                    className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+            file={file}
+            priority={priority}
+          />
         )
       })}
 
@@ -75,6 +64,48 @@ export const MomentsGrid = ({
           </div>
         </div>
       ))}
+    </div>
+  )
+}
+
+interface ImageCellProps {
+  file: StorageFile & { url: string }
+  priority: boolean
+}
+
+const ImageCell = ({
+  file,
+  priority,
+}: ImageCellProps) => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  return (
+    <div
+      className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
+    >
+      <div className="relative w-full h-full overflow-hidden rounded-xs">
+        <div className="absolute inset-0 flex items-center justify-center">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/75 z-10">
+              <Spinner size="small" />
+            </div>
+          )}
+          <div className="relative size-full rounded-xs overflow-hidden group">
+            <Image
+              src={file.url}
+              alt={file.name}
+              fill
+              sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
+              loading={priority ? undefined : "lazy"}
+              priority={priority}
+              className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
+              onLoadStart={() => setIsLoading(true)}
+              onLoad={() => setIsLoading(false)}
+              onError={() => setIsLoading(false)}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
