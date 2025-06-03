@@ -39,7 +39,7 @@ export const MomentsGrid = ({
       {/* Image Cells */}
       {files.map((file, index) => {
         const indexInPage = index % imagesPerPage
-        const priority = indexInPage <= 3
+        const priority = indexInPage < 8
 
         return (
           <ImageCell
@@ -78,32 +78,45 @@ const ImageCell = ({
   priority,
 }: ImageCellProps) => {
   const [isLoading, setIsLoading] = useState(true)
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+
+  const handleImageLoad = () => {
+    setIsLoading(false)
+    setIsImageLoaded(true)
+  }
 
   return (
     <div
       className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
     >
       <div className="relative w-full h-full overflow-hidden rounded-xs">
-        <div className="absolute inset-0 flex items-center justify-center">
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/75 z-10">
-              <Spinner size="small" />
-            </div>
-          )}
-          <div className="relative size-full rounded-xs overflow-hidden group">
-            <Image
-              src={file.url}
-              alt={file.name}
-              fill
-              sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, (max-width: 1024px) 30vw, 22vw"
-              loading={priority ? undefined : "lazy"}
-              priority={priority}
-              className="object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all"
-              onLoadStart={() => setIsLoading(true)}
-              onLoad={() => setIsLoading(false)}
-              onError={() => setIsLoading(false)}
-            />
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/75 z-10">
+            <Spinner size="small" />
           </div>
+        )}
+
+        <div className="relative size-full rounded-xs overflow-hidden group">
+          <Image
+            src={file.url}
+            alt={file.name || "Gallery image"}
+            fill
+            sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 22vw"
+            loading={priority ? "eager" : "lazy"}
+            priority={priority}
+            quality={85}
+            className={`
+              object-cover
+              duration-300
+              group-hover:scale-110
+              filter grayscale-25 brightness-95
+              group-hover:filter-none
+              transition-all
+              ${isImageLoaded ? "opacity-100" : "opacity-0"}
+            `}
+            onLoad={handleImageLoad}
+            onError={() => setIsLoading(false)}
+          />
         </div>
       </div>
     </div>
