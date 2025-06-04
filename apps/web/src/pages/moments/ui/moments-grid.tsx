@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 import { ImageIcon } from "lucide-react"
+
+import { cn } from "@workspace/ui/lib/utils"
 
 import { StorageFile } from "@/entities/storage"
 import { Spinner } from "@/shared/ui"
@@ -68,8 +71,14 @@ export const MomentsGrid = ({
   )
 }
 
+interface EnhancedStorageFile extends StorageFile {
+  url: string
+  contentType?: string
+  size?: number
+}
+
 interface ImageCellProps {
-  file: StorageFile & { url: string }
+  file: EnhancedStorageFile
   priority: boolean
 }
 
@@ -77,6 +86,8 @@ const ImageCell = ({
   file,
   priority,
 }: ImageCellProps) => {
+  const router = useRouter()
+
   const [isLoading, setIsLoading] = useState(true)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
@@ -85,9 +96,16 @@ const ImageCell = ({
     setIsImageLoaded(true)
   }
 
+  const handleImageClick = () => {
+    if (file && file.name) {
+      router.push(`/moments/images/${file.name}`, { scroll: false })
+    }
+  }
+
   return (
     <div
-      className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4"
+      className="aspect-square rounded-xs overflow-hidden bg-zinc-200/25 dark:bg-zinc-800/75 shadow-sm hover:shadow-md transition-all p-4 cursor-pointer"
+      onClick={handleImageClick}
     >
       <div className="relative w-full h-full overflow-hidden rounded-xs">
         {isLoading && (
@@ -105,15 +123,10 @@ const ImageCell = ({
             loading={priority ? "eager" : "lazy"}
             priority={priority}
             quality={85}
-            className={`
-              object-cover
-              duration-300
-              group-hover:scale-110
-              filter grayscale-25 brightness-95
-              group-hover:filter-none
-              transition-all
-              ${isImageLoaded ? "opacity-100" : "opacity-0"}
-            `}
+            className={cn(
+              "object-cover duration-300 group-hover:scale-110 filter grayscale-25 brightness-95 group-hover:filter-none transition-all",
+              isImageLoaded ? "opacity-100" : "opacity-0",
+            )}
             onLoad={handleImageLoad}
             onError={() => setIsLoading(false)}
           />
