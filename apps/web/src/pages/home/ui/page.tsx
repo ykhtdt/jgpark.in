@@ -26,8 +26,13 @@ export const HomePage = () => {
         <nav>
           <ul className="flex gap-6">
             <li>
-              <Link href="/blog" className="text-sm font-medium hover:underline hover:underline-offset-4">
+              <Link href="/blog" className="text-sm font-medium decoration-2 decoration-emerald-600 hover:underline hover:underline-offset-4">
                 블로그
+              </Link>
+            </li>
+            <li>
+              <Link href="/moments" className="text-sm font-medium decoration-2 decoration-emerald-600 hover:underline hover:underline-offset-4">
+                순간
               </Link>
             </li>
           </ul>
