@@ -4,15 +4,18 @@ import { Footer } from "@/widgets/footer"
 
 export default function Layout({
   children,
-}: Readonly<{
+  modal,
+}: {
   children: React.ReactNode
-}>) {
+  modal: React.ReactNode
+}) {
   return (
     <BaseLayout
       header={<Header />}
       footer={<Footer />}
     >
       {children}
+      {modal}
     </BaseLayout>
   )
 }
