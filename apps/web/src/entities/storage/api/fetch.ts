@@ -227,3 +227,29 @@ const addUrlsToFiles = (
     url: getImageUrl(bucketName, `${normalizedPath}${file.name}`)
   }))
 }
+
+/**
+ * 이미지 ID로 이미지 정보 조회
+ *
+ * @param id - 이미지 ID
+ * @returns 이미지 정보 또는 null
+ */
+export async function fetchImageById(id: string): Promise<StorageFile | null> {
+  try {
+    const { data } = supabase.storage.from("jgpark.in").getPublicUrl(`moments/${id}`)
+
+    if (!data) {
+      console.error("Error fetching image by id")
+      return null
+    }
+
+    return {
+      id,
+      name: id,
+      bucket_id: "jgpark.in",
+    }
+  } catch (error) {
+    console.error("Error fetching image by id:", error)
+    return null
+  }
+}
