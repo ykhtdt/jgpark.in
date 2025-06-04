@@ -6,7 +6,7 @@ interface PageProps {
   }>
 }
 
-export default async function ImageModalPage({
+export default async function Page({
   params,
 }: PageProps) {
   const { id } = await params
