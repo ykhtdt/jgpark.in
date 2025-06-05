@@ -1,6 +1,14 @@
+"use client"
+
+import { useRouter } from "next/navigation"
+
+import { Button } from "@workspace/ui/components/button"
+
 export const PageNotFound = () => {
+  const router = useRouter()
+
   return (
-    <div className="flex items-center justify-center h-dvh px-2">
+    <div className="flex items-center justify-center flex-1 h-full px-2">
       <section className="flex flex-col gap-4">
         <h1 className="text-center">
           <span className="font-bold text-2xl sm:text-3xl">
@@ -17,6 +25,11 @@ export const PageNotFound = () => {
           <br />
           입력하신 페이지의 주소가 정확한지 다시 한번 확인해 주세요.
         </p>
+        <div className="flex justify-center">
+          <Button variant="secondary" onClick={() => router.back()} className="cursor-pointer">
+            돌아가기
+          </Button>
+        </div>
       </section>
     </div>
   )
