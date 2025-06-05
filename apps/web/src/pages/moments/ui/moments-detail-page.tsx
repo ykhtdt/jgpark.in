@@ -16,23 +16,24 @@ import {
   DialogOverlay,
 } from "@workspace/ui/components/dialog"
 
-import { useMomentsDetail } from "@/pages/moments"
-import { getImageUrl } from "@/entities/storage"
+import {
+  type StorageFile,
+  getImageUrl,
+} from "@/entities/storage"
 
 interface MomentsDetailProps {
-  id: string
+  image: StorageFile
 }
 
 export function MomentsDetailPage({
-  id,
+  image,
 }: MomentsDetailProps) {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(true)
-  const { image } = useMomentsDetail(id)
 
   useEffect(() => {
     setIsOpen(true)
-  }, [id])
+  }, [])
 
   const closeModal = () => {
     setIsOpen(false)
@@ -46,12 +47,12 @@ export function MomentsDetailPage({
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleOpenChange} key={`modal-${id}`}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange} key={`modal-${image.id}`}>
       <DialogOverlay className="backdrop-blur-md" />
-      <DialogContent className="sm:max-w-6xl h-[90vh] overflow-hidden flex flex-col">
+      <DialogContent className="flex flex-col sm:max-w-6xl h-[90vh] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="sr-only">
-            {image?.name || "이미지 상세"}
+            {image.name || "이미지 상세"}
           </DialogTitle>
           <DialogDescription className="sr-only">
             Image Detail
@@ -59,19 +60,13 @@ export function MomentsDetailPage({
         </DialogHeader>
 
         <div className="relative flex-1 min-h-[50vh] overflow-hidden">
-          {image ? (
-            <Image
-              src={getImageUrl(image.bucket_id || "jgpark.in", `moments/${image.name}`)}
-              alt={image.name || "갤러리 이미지"}
-              fill
-              priority
-              className="object-contain p-4"
-            />
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <p>이미지를 찾을 수 없습니다.</p>
-            </div>
-          )}
+          <Image
+            src={getImageUrl(image.bucket_id || "jgpark.in", `moments/${image.name}`)}
+            alt={image.name || "갤러리 이미지"}
+            fill
+            priority
+            className="object-contain p-4"
+          />
         </div>
       </DialogContent>
     </Dialog>

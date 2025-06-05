@@ -1,17 +1,3 @@
-import { MomentsDetailPage } from "@/pages/moments"
+import ImageIdPage from "~/app/moments/images/[id]/page"
 
-interface PageProps {
-  params: Promise<{
-    id: string
-  }>
-}
-
-export default async function Page({
-  params,
-}: PageProps) {
-  const { id } = await params
-
-  return (
-    <MomentsDetailPage id={id} />
-  )
-}
+export default ImageIdPage
