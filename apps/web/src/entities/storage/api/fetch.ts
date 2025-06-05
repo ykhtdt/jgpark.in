@@ -236,10 +236,23 @@ const addUrlsToFiles = (
  */
 export async function fetchImageById(id: string): Promise<StorageFile | null> {
   try {
+    const { data: fileData, error: fileError } = await supabase.storage
+      .from("jgpark.in")
+      .list("moments", {
+        search: id
+      })
+
+    const isFileNotFound = fileError || !fileData || fileData.length === 0
+
+    if (isFileNotFound) {
+      console.error("Error fetching image by id or file not found:", fileError)
+      return null
+    }
+
     const { data } = supabase.storage.from("jgpark.in").getPublicUrl(`moments/${id}`)
 
     if (!data) {
-      console.error("Error fetching image by id")
+      console.error("Error generating public URL for image")
       return null
     }
 
