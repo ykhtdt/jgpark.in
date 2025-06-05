@@ -4,7 +4,10 @@ import {
   useState,
   useEffect,
 } from "react"
-import { useRouter } from "next/navigation"
+import {
+  useRouter,
+  usePathname,
+} from "next/navigation"
 import Image from "next/image"
 
 import {
@@ -29,15 +32,32 @@ export function MomentsDetailPage({
   image,
 }: MomentsDetailProps) {
   const router = useRouter()
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(true)
+  const [previousPath, setPreviousPath] = useState<string>("")
 
   useEffect(() => {
     setIsOpen(true)
-  }, [])
+
+    const isWindow = typeof window !== "undefined"
+
+    if (isWindow) {
+      const previousPath = sessionStorage.getItem("previousPath") || ""
+      setPreviousPath(previousPath)
+      sessionStorage.setItem("previousPath", pathname || "")
+    }
+  }, [pathname])
 
   const closeModal = () => {
     setIsOpen(false)
-    router.back()
+
+    const isDirectAccess = !previousPath || !previousPath.includes("/moments")
+
+    if (isDirectAccess) {
+      router.push("/moments")
+    } else {
+      router.back()
+    }
   }
 
   const handleOpenChange = (open: boolean) => {
