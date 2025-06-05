@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import { MomentsPage } from "@/pages/moments"
 
 interface PageProps {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ page?: string; imageId?: string }>
 }
 
 export const metadata: Metadata = {
