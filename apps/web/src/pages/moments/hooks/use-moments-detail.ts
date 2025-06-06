@@ -2,7 +2,10 @@
 
 import { useQuery } from "@tanstack/react-query"
 
-import { StorageFile, fetchImageById } from "@/entities/storage"
+import {
+  type StorageFile,
+  fetchImageById,
+} from "@/entities/storage"
 
 interface UseMomentsDetailsResult {
   image: StorageFile | null
