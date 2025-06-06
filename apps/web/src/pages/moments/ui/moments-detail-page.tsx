@@ -3,6 +3,7 @@
 import {
   useState,
   useEffect,
+  ReactNode,
 } from "react"
 import {
   useRouter,
@@ -19,22 +20,22 @@ import {
   DialogOverlay,
 } from "@workspace/ui/components/dialog"
 
-import {
-  type StorageFile,
-  getImageUrl,
-} from "@/entities/storage"
+import { getImageUrl } from "@/entities/storage"
+import { Spinner } from "@/shared/ui"
+import { useMomentsDetail } from "../hooks/use-moments-detail"
 
 interface MomentsDetailProps {
-  image: StorageFile
+  imageId: string
 }
 
 export function MomentsDetailPage({
-  image,
+  imageId,
 }: MomentsDetailProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(true)
   const [previousPath, setPreviousPath] = useState<string>("")
+  const { image, error } = useMomentsDetail(imageId)
 
   useEffect(() => {
     setIsOpen(true)
@@ -67,28 +68,77 @@ export function MomentsDetailPage({
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleOpenChange} key={`modal-${image.id}`}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogOverlay className="backdrop-blur-md" />
       <DialogContent className="flex flex-col sm:max-w-6xl h-[90vh] overflow-hidden">
-        <DialogHeader>
-          <DialogTitle className="sr-only">
-            {image.name || "이미지 상세"}
-          </DialogTitle>
-          <DialogDescription className="sr-only">
-            Image Detail
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="relative flex-1 min-h-[50vh] overflow-hidden">
-          <Image
-            src={getImageUrl(image.bucket_id || "jgpark.in", `moments/${image.name}`)}
-            alt={image.name || "갤러리 이미지"}
-            fill
-            priority
-            className="object-contain p-4"
+        {error ? (
+          <ImageDetailContent
+            title="이미지 상세"
+            description="Image Detail"
+            errorMessage="이미지를 불러올 수 없습니다."
           />
-        </div>
+        ) : !error && image ? (
+          <ImageDetailContent
+            title={image.name || "이미지 상세"}
+            description="Image Detail"
+          >
+            <Image
+              src={getImageUrl(image.bucket_id || "jgpark.in", `moments/${image.name}`)}
+              alt={image.name || "Gallery image"}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1536px) 90vw, 1280px"
+              priority
+              className="object-contain p-4"
+            />
+          </ImageDetailContent>
+        ) : (
+          <ImageDetailContent
+            title="이미지 상세"
+            description="Image Detail"
+          >
+            <div className="absolute inset-0 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800/75 z-10">
+              <Spinner size="small" />
+            </div>
+          </ImageDetailContent>
+        )}
       </DialogContent>
     </Dialog>
+  )
+}
+
+interface ImageDetailContentProps {
+  title: string
+  description: string
+  errorMessage?: string
+  children?: ReactNode
+}
+
+const ImageDetailContent = ({
+  title,
+  description,
+  errorMessage,
+  children
+}: ImageDetailContentProps) => {
+  return (
+    <>
+      <DialogHeader>
+        <DialogTitle className="sr-only">
+          {title}
+        </DialogTitle>
+        <DialogDescription className="sr-only">
+          {description}
+        </DialogDescription>
+      </DialogHeader>
+
+      <div className="relative flex-1 min-h-[50vh] overflow-hidden">
+        {errorMessage ? (
+          <p className="text-lg">
+            {errorMessage}
+          </p>
+        ) : (
+          children
+        )}
+      </div>
+    </>
   )
 }

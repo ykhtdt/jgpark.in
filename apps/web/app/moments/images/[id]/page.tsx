@@ -1,7 +1,4 @@
-import { notFound } from "next/navigation"
-
 import { MomentsDetailPage } from "@/pages/moments"
-import { fetchImageById } from "@/entities/storage"
 
 interface PageProps {
   params: Promise<{
@@ -14,13 +11,7 @@ export default async function Page({
 }: PageProps) {
   const { id } = await params
 
-  const image = await fetchImageById(id)
-
-  if (!image) {
-    notFound()
-  }
-
   return (
-    <MomentsDetailPage image={image} />
+    <MomentsDetailPage imageId={id} />
   )
 }
