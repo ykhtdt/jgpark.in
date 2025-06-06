@@ -125,6 +125,7 @@
 }
 
 .mdx code {
+  @apply text-sm;
   --default-mono-font-family: var(--font-mono);
 }
 
