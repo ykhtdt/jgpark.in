@@ -31,7 +31,7 @@ export const TableOfContents = ({
   const activeId = useToc({ levels, disable: isDisableToc })
 
   return (
-    <div className={cn("fixed hidden w-44 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
+    <div className={cn("fixed hidden w-56 translate-x-[56rem] pt-4 md:pt-8 xl:flex", className)}>
       <TableOfContentsList className="w-full text-sm text-muted-foreground">
         <TableOfContentsTitle>
           On This Page
