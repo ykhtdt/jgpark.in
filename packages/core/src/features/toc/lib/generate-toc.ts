@@ -21,10 +21,11 @@ const getHeadingInfo = (headingLine: string) => {
   }
 
   const headingText = headingLine.replace(/^#{2,3}\s*/, "").trim()
+  const textWithoutNumber = headingText.replace(/^\d+\.\s+/, "")
 
   return {
-    slug: headingText.replace(/\s/g, "-").toLowerCase(),
-    text: tocTitle || headingText
+    slug: textWithoutNumber.replace(/\s/g, "-").toLowerCase(),
+    text: tocTitle || textWithoutNumber
   }
 }
 
