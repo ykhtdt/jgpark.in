@@ -62,6 +62,10 @@
   }
 }
 
+.mdx strong {
+  @apply text-foreground;
+}
+
 .mdx p em>strong,
 .mdx li em>strong {
   @apply text-emerald-600 font-bold dark:font-medium not-italic;
