@@ -9,23 +9,14 @@ interface GenerateTocParams {
 }
 
 const HEADING_PATTERN = /^(#{2,3})\s/
-const TOC_TITLE_PATTERN = /\{\/\* toc-title: (.*?) \*\/\}/
 
 const getHeadingInfo = (headingLine: string) => {
-  const tocTitleMatch = headingLine.match(TOC_TITLE_PATTERN)
-  let tocTitle = ""
-
-  if (tocTitleMatch && tocTitleMatch[1]) {
-    tocTitle = tocTitleMatch[1]
-    headingLine = headingLine.replace(TOC_TITLE_PATTERN, "").trim()
-  }
-
   const headingText = headingLine.replace(/^#{2,3}\s*/, "").trim()
   const textWithoutNumber = headingText.replace(/^\d+\.\s+/, "")
 
   return {
     slug: textWithoutNumber.replace(/\s/g, "-").toLowerCase(),
-    text: tocTitle || textWithoutNumber
+    text: textWithoutNumber,
   }
 }
 
