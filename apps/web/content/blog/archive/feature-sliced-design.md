@@ -2,7 +2,7 @@
 status: 'draft'
 title: 'Feature Sliced Design: 프론트엔드 아키텍처 방법론'
 description: '기존 아키텍처의 문제점과 Feature Sliced Design의 해결책, 그리고 실무에서의 점진적 적용 방법'
-publishedAt: ''
+publishedAt: '2025-06-08T11:00:00.000Z'
 author:
   name: 'jgpark'
   picture: 'https://avatars.githubusercontent.com/u/150231680?v=4'
