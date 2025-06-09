@@ -62,6 +62,10 @@
   }
 }
 
+.mdx strong {
+  @apply text-foreground;
+}
+
 .mdx p em>strong,
 .mdx li em>strong {
   @apply text-emerald-600 font-bold dark:font-medium not-italic;
@@ -125,6 +129,7 @@
 }
 
 .mdx code {
+  @apply text-sm;
   --default-mono-font-family: var(--font-mono);
 }
 
