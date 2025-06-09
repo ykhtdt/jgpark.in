@@ -10,12 +10,21 @@ interface GenerateTocParams {
 
 const HEADING_PATTERN = /^(#{2,3})\s/
 
+const createSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-가-힣]/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
 const getHeadingInfo = (headingLine: string) => {
   const headingText = headingLine.replace(/^#{2,3}\s*/, "").trim()
   const textWithoutNumber = headingText.replace(/^\d+\.\s+/, "")
 
   return {
-    slug: textWithoutNumber.replace(/\s/g, "-").toLowerCase(),
+    slug: createSlug(headingText),
     text: textWithoutNumber,
   }
 }
